@@ -1,0 +1,76 @@
+import gql from "graphql-tag";
+
+export const enums = gql`
+enum Role {
+  ADMINISTRATOR
+  FARMER
+  BUYER
+  WAREHOUSE_GUY
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  MOBILE_MONEY
+  CHEQUE
+  CREDIT_CARD
+  DEBIT_CARD
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  EXPIRED
+}
+
+enum MovementType {
+  IN
+  OUT
+  ADJUSTMENT
+  TRANSFER
+  DAMAGED
+  EXPIRED
+}
+
+enum ActionType {
+  CREATED
+  UPDATED
+  DELETED
+  ACTIVATED
+  DEACTIVATED
+  SUSPENDED
+  INVITED
+  ACCEPTED_INVITATION
+  REJECTED_INVITATION
+  PAYMENT_PROCESSED
+  INVENTORY_UPDATED
+  PASSWORD_RESET
+  LOGIN
+  LOGOUT
+}
+
+enum EntityType {
+  USER
+  PRODUCT
+  WAREHOUSE
+  PAYMENT
+  INVITATION
+  INVENTORY
+  SYSTEM
+}
+`

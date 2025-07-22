@@ -1,0 +1,32 @@
+{
+    "version":2,
+    "builds":[
+        {
+            "src":"src/index.ts",
+            "use":"@vercel/node",
+            "config":{
+                "includeFiles":[
+                    "prisma/schema.prisma",
+                    "prisma/migrations/**",
+                    ".env"
+                ]
+            }
+        }
+    ],
+    "routes":[
+        {
+            "src":"/graphql",
+            "dest":"src/index.ts"
+
+        },
+        {
+            "src": "/(.*)",
+            "dest":"src/index.ts"
+        }
+    ],
+    "env":{
+        "DATABASE_URL":"postgresql://cofeeHub-api_owner:npg_5xwcQfbZjU8y@ep-morning-silence-a8sqd8xk-pooler.eastus2.azure.neon.tech/cofeeHub-api?sslmode=require",
+        "SECRET_KEY":"thisisisisisisoiahddbafsbfb&*&^%%$%^(BHVGKIO(*&^**^$E$CO+_*^$#!#DCXGHHGH))",
+        "FRONTEND_URL":"https://marketplace-zeta-fawn.vercel.app/"  
+    }
+}

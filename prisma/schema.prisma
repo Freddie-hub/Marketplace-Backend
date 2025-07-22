@@ -1,0 +1,253 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMINISTRATOR
+  FARMER
+  BUYER
+  WAREHOUSE_GUY
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  BANK_TRANSFER
+  MOBILE_MONEY
+  CHEQUE
+  CREDIT_CARD
+  DEBIT_CARD
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  EXPIRED
+}
+
+enum MovementType {
+  IN
+  OUT
+  ADJUSTMENT
+  TRANSFER
+  DAMAGED
+  EXPIRED
+}
+
+enum ActionType {
+  CREATED
+  UPDATED
+  DELETED
+  ACTIVATED
+  DEACTIVATED
+  SUSPENDED
+  INVITED
+  ACCEPTED_INVITATION
+  REJECTED_INVITATION
+  PAYMENT_PROCESSED
+  INVENTORY_UPDATED
+  PASSWORD_RESET
+  LOGIN
+  LOGOUT
+}
+
+enum EntityType {
+  USER
+  PRODUCT
+  WAREHOUSE
+  PAYMENT
+  INVITATION
+  INVENTORY
+  SYSTEM
+}
+
+model User {
+  id               Int             @id @default(autoincrement())
+  email            String          @unique
+  password         String?
+  Fname            String
+  Mname            String?
+  Lname            String
+  photo            String?
+  phone            String?
+  address          String?
+  role             Role            @default(FARMER)
+  status           UserStatus      @default(INACTIVE)
+  isGoogleUser     Boolean?        @default(false)
+  googleId         String?         @unique
+  emailVerified               Boolean?  @default(false)
+  emailConfirmationToken      String?   @unique
+  emailConfirmationTokenExpiry DateTime?
+  resetToken       String?         @unique
+  resetTokenExpiry DateTime?
+  warehouseId      Int? 
+  warehouse        Warehouse?      @relation("WarehouseFarmers", fields: [warehouseId], references: [id], onDelete: Cascade)
+  managedWarehouse Warehouse?      @relation("WarehouseManager")
+  createdById      Int?
+  createdBy        User?           @relation("UserCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  createdUsers     User[]          @relation("UserCreator")
+  
+  lastModifiedById Int?
+  lastModifiedBy   User?           @relation("UserModifier", fields: [lastModifiedById], references: [id], onDelete: Cascade)
+  modifiedUsers    User[]          @relation("UserModifier")
+  
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  
+  products         Products[]
+  farmerPayments   Payment[]       @relation("FarmerPayments")
+  processedPayments Payment[]      @relation("PaymentProcessor")
+  sentInvitations  Invitation[]    @relation("InvitationSender")
+  receivedInvitations Invitation[] @relation("InvitationReceiver")
+  activityLogs     ActivityLog[]   @relation("UserActivities")
+  performedActions ActivityLog[]   @relation("ActionPerformer")
+  inventoryRecords WarehouseInventory[] @relation("InventoryRecorder")
+}
+
+model Warehouse {
+  id          Int      @id @default(autoincrement())
+  name        String
+  location    String
+  address     String?
+  capacity    Int?
+  phone       String?
+  email       String?
+  managerId   Int      @unique
+  manager     User     @relation("WarehouseManager", fields: [managerId], references: [id], onDelete: Cascade)
+  farmers     User[]   @relation("WarehouseFarmers")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  inventory   WarehouseInventory[]
+  products    Products[]
+  invitations Invitation[]
+}
+
+model Products {
+  id          Int       @id @default(autoincrement())
+  name        String
+  grade       String
+  quantity    Int
+  price       Float
+  variety     String
+  location    String
+  image       String?
+  description String?
+  farmerId    Int
+  farmer      User      @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  warehouseId Int
+  warehouse   Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  inventoryMovements WarehouseInventory[]
+  payments           Payment[]
+}
+
+model WarehouseInventory {
+  id              Int          @id @default(autoincrement())
+  productId       Int
+  product         Products     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  warehouseId     Int
+  warehouse       Warehouse    @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  quantityIn      Int?
+  quantityOut     Int?
+  currentStock    Int
+  movementType    MovementType
+  reason          String?
+  recordedById    Int
+  recordedBy      User         @relation("InventoryRecorder", fields: [recordedById], references: [id], onDelete: Cascade)
+  createdAt       DateTime     @default(now())
+  @@unique([productId, warehouseId])
+}
+
+model Payment {
+  id              Int           @id @default(autoincrement())
+  
+  farmerId        Int
+  farmer          User          @relation("FarmerPayments", fields: [farmerId], references: [id], onDelete: Cascade)
+  
+  productId       Int
+  product         Products      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  amount          Float
+  quantity        Int
+  pricePerUnit    Float
+  
+  status          PaymentStatus @default(PENDING)
+  paymentMethod   PaymentMethod?
+  referenceNumber String?       @unique
+  dueDate         DateTime?
+  paidDate        DateTime?
+  notes           String?
+  processedById   Int?
+  processedBy     User?         @relation("PaymentProcessor", fields: [processedById], references: [id], onDelete: Cascade)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Invitation {
+  id          Int              @id @default(autoincrement())
+  
+  senderId    Int
+  sender      User             @relation("InvitationSender", fields: [senderId], references: [id], onDelete: Cascade)
+  
+  receiverId  Int
+  receiver    User             @relation("InvitationReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  
+  warehouseId Int
+  warehouse   Warehouse        @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  
+  status      InvitationStatus @default(PENDING)
+  message     String?
+  
+  sentAt      DateTime         @default(now())
+  respondedAt DateTime?
+  expiresAt   DateTime
+  
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model ActivityLog {
+  id          Int        @id @default(autoincrement())
+  
+  performedById Int
+  performedBy   User     @relation("ActionPerformer", fields: [performedById], references: [id], onDelete: Cascade)
+  
+  targetUserId  Int?
+  targetUser    User?    @relation("UserActivities", fields: [targetUserId], references: [id], onDelete: Cascade)
+  
+  action        ActionType   
+  entityType    EntityType   
+  entityId      Int?        
+  
+  description   String       
+  metadata      Json?        
+  
+  createdAt     DateTime @default(now())
+  
+  @@index([performedById])
+  @@index([targetUserId])
+  @@index([action])
+  @@index([entityType])
+}
