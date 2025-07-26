@@ -17,15 +17,15 @@ export default async function sendConfirmationEmail(args: SendConfirmationEmailA
         
         const result = await transporter.sendMail({
             from: {
-                name: "CoffeeHub",
+                name: "Green Mafia",
                 address: process.env.EMAIL_USER
             },
             to: email,
-            subject: "Confirm Your Email - CoffeeHub Account Activation",
+            subject: "Confirm Your Email - Green Mafia Account Activation",
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                     <div style="text-align: center; margin-bottom: 30px;">
-                        <h1 style="color: #007bff; margin-bottom: 10px;">Welcome to CoffeeHub</h1>
+                        <h1 style="color: #007bff; margin-bottom: 10px;">Welcome to Greeb Mafia</h1>
                         <div style="height: 3px; background: linear-gradient(90deg, #007bff, #28a745); margin: 20px auto; width: 100px;"></div>
                     </div>
                     
@@ -33,7 +33,7 @@ export default async function sendConfirmationEmail(args: SendConfirmationEmailA
                         <h2 style="color: #333; margin-top: 0;">Email Confirmation Required</h2>
                         <p style="margin-bottom: 15px;">Hello <strong>${firstName} ${lastName}</strong>,</p>
                         <p style="margin-bottom: 15px;">
-                            Thank you for registering with CoffeeHub! To complete your account setup and start using our platform, 
+                            Thank you for registering with Green Mafia! To complete your account setup and start using our platform, 
                             please confirm your email address by clicking the button below.
                         </p>
                     </div>
@@ -75,7 +75,7 @@ export default async function sendConfirmationEmail(args: SendConfirmationEmailA
                             <li>Click the confirmation link above</li>
                             <li>Your account will be automatically activated</li>
                             <li>You'll be redirected to login to your account</li>
-                            <li>Start exploring CoffeeHub features!</li>
+                            <li>Start exploring Green Mafia features!</li>
                         </ol>
                         <p style="margin: 15px 0 0 0; color: #6c757d; font-size: 14px;">
                             After confirmation, you can log in at: 

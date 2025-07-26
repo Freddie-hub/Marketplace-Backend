@@ -15,7 +15,7 @@ async function sendPasswordResetEmail(email, resetToken) {
         const resetUrl = `${process.env.FRONTEND_URL || 'https://marketplace-zeta-fawn.vercel.app'}/password-reset?token=${resetToken}`;
         const result = await nodemailerTransporter_1.default.sendMail({
             from: {
-                name: 'CoffeeHub System',
+                name: 'Green Mafia',
                 address: process.env.EMAIL_USER
             },
             to: email,

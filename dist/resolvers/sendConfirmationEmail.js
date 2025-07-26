@@ -17,11 +17,11 @@ async function sendConfirmationEmail(args) {
         const loginUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/login`;
         const result = await nodemailerTransporter_1.default.sendMail({
             from: {
-                name: "CoffeeHub",
+                name: "Green Mafia",
                 address: process.env.EMAIL_USER
             },
             to: email,
-            subject: "Confirm Your Email - CoffeeHub Account Activation",
+            subject: "Confirm Your Email - Green Mafia Account Activation",
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                     <div style="text-align: center; margin-bottom: 30px;">

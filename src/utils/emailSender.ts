@@ -12,7 +12,7 @@ export async function sendPasswordResetEmail(email: string, resetToken: string) 
         
         const result = await transporter.sendMail({
             from: {
-                name: 'CoffeeHub System',
+                name: 'Green Mafia',
                 address: process.env.EMAIL_USER
             },
             to: email, 

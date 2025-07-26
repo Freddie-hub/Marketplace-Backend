@@ -322,7 +322,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\HP\\Documents\\codes\\coffee-sys-api\\generated\\prisma",
+      "value": "C:\\Users\\HP\\Downloads\\Marketplace\\Marketplace backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -344,7 +344,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\HP\\Documents\\codes\\coffee-sys-api\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\HP\\Downloads\\Marketplace\\Marketplace backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -358,7 +358,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

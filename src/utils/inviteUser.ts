@@ -11,15 +11,15 @@ export async function inviteUserEmail(args: InviteUserEmailArgs) {
             throw new Error("EMAIL_USER environment variable is not set");
         }
         
-        const loginUrl = `${process.env.FRONTEND_URL || 'https://marketplace-zeta-fawn.vercel.app'}/login`;
+        const loginUrl = `${process.env.FRONTEND_URL || 'https://localhost3000'}/login`;
         
         const result = await transporter.sendMail({
             from: {
-                name: "Coffee System",
+                name: "Green Mafia",
                 address: process.env.EMAIL_USER
             },
             to: email,
-            subject: "Welcome to CoffeeHub - Account Created",
+            subject: "Welcome to Green Mafia - Account Created",
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                     <div style="text-align: center; margin-bottom: 30px;">
