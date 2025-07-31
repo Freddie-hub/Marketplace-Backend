@@ -2,13 +2,18 @@ import prisma from "../context/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+import { v4 as uuidv4 } from "uuid";
 import { FarmerRegistrationArgs } from "../types/FarmerRegistrationArgs";
 import { WarehouseRegistrationArgs } from "../types/WarehouseRegistrationArgs";
+import { InviteFarmerInput } from "../types/InviteFarmerInput";
 import sendConfirmationEmail from "./sendConfirmationEmail";
+import { inviteUserEmail } from "../utils/inviteUser";
+import { generatePassword } from "../utils/passwordGenerator";
+import { InvitationResponse } from "../types/InvitationResponse";
 
 const userResolvers = {
   Mutation: {
-    createFarmer: async (_: any, { args }: FarmerRegistrationArgs ) => {
+    createFarmer: async (_: any, { args }: FarmerRegistrationArgs) => {
       try {
         const {
           email,
@@ -98,7 +103,7 @@ const userResolvers = {
                 confirmationToken,
               }
             });
-          } catch (emailError:any) {
+          } catch (emailError: any) {
             console.error("Failed to send confirmation email:", emailError.message);
           }
         }
@@ -125,13 +130,13 @@ const userResolvers = {
           user: result,
           requiresEmailConfirmation: !isGoogleUser
         };
-      } catch (error:any) {
+      } catch (error: any) {
         console.log("Error while creating user:", error.message);
         throw new Error(error.message);
       }
     },
 
-    createWarehouseWithManager: async (_:any, {args}: WarehouseRegistrationArgs) => {
+    createWarehouseWithManager: async (_: any, { args }: WarehouseRegistrationArgs) => {
       try {
         const {
           email,
@@ -266,7 +271,7 @@ const userResolvers = {
                 confirmationToken,
               }
             });
-          } catch (emailError:any) {
+          } catch (emailError: any) {
             console.error("Failed to send confirmation email:", emailError.message);
           }
         }
@@ -300,11 +305,156 @@ const userResolvers = {
           },
           requiresEmailConfirmation: !isGoogleUser
         };
-      } catch (error:any) {
+      } catch (error: any) {
         console.log("Error while creating warehouse with manager:", error.message);
         throw new Error(error.message);
       }
     },
+
+    inviteFarmer: async (_: any, { input }: { input: InviteFarmerInput }, context: { userId?: number }): Promise<InvitationResponse> => {
+      try {
+        if (!context.userId) {
+          throw new Error("Authentication required");
+        }
+
+        const { name, email, crops, warehouseId } = input;
+
+        const warehouse = await prisma.warehouse.findUnique({
+          where: { id: warehouseId },
+          include: { manager: true }
+        });
+
+        if (!warehouse) {
+          throw new Error("Warehouse not found");
+        }
+
+        if (warehouse.managerId !== context.userId || warehouse.manager.role !== "WAREHOUSE_GUY") {
+          throw new Error("Only warehouse managers can invite farmers");
+        }
+
+        const existingUser = await prisma.user.findUnique({ where: { email } });
+        if (existingUser) {
+          throw new Error("User with this email already exists");
+        }
+
+        const { plainPassword, hashedPassword } = await generatePassword();
+        const invitationToken = uuidv4();
+        const expiresAt = new Date();
+        expiresAt.setHours(expiresAt.getHours() + 24);
+
+        const result = await prisma.$transaction(async (tx) => {
+          const newUser = await tx.user.create({
+            data: {
+              email,
+              password: hashedPassword,
+              Fname: name,
+              Lname: "",
+              phone: warehouse.phone,
+              address: warehouse.address,
+              role: "FARMER",
+              status: "INACTIVE",
+              isGoogleUser: false,
+              warehouseId,
+              createdById: context.userId,
+              emailVerified: false,
+            }
+          });
+
+          const invitation = await tx.invitation.create({
+            data: {
+              senderId: context.userId,
+              receiverId: newUser.id,
+              warehouseId,
+              status: "PENDING",
+              token: invitationToken,
+              tokenUsed: false,
+              expiresAt,
+              message: `Invitation to join ${warehouse.name} as a farmer`
+            }
+          });
+
+          const createdProducts = await Promise.all(
+            crops.map(async (crop) => {
+              const product = await tx.products.create({
+                data: {
+                  name: crop.name,
+                  grade: "Standard",
+                  quantity: crop.quantity,
+                  price: 0,
+                  variety: "Unknown",
+                  location: warehouse.location,
+                  farmerId: newUser.id,
+                  warehouseId,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                }
+              });
+
+              await tx.warehouseInventory.create({
+                data: {
+                  productId: product.id,
+                  warehouseId,
+                  quantityIn: crop.quantity,
+                  currentStock: crop.quantity,
+                  movementType: "IN",
+                  recordedById: context.userId,
+                  createdAt: new Date(),
+                }
+              });
+
+              return product;
+            })
+          );
+
+          await tx.activityLog.create({
+            data: {
+              performedById: context.userId,
+              action: "INVITED",
+              entityType: "USER",
+              entityId: newUser.id,
+              description: `Warehouse manager invited farmer ${email} to ${warehouse.name}`,
+              metadata: {
+                warehouseId,
+                warehouseName: warehouse.name,
+                crops: crops.map(crop => ({ name: crop.name, quantity: crop.quantity }))
+              }
+            }
+          });
+
+          return { newUser, invitation, createdProducts };
+        });
+
+        try {
+          await inviteUserEmail({
+            args: {
+              email: result.newUser.email,
+              firstName: result.newUser.Fname,
+              lastName: result.newUser.Lname,
+              role: "FARMER",
+              password: plainPassword,
+              warehouseName: warehouse.name,
+              warehouseLocation: warehouse.location,
+              warehouseAddress: warehouse.address,
+              crops,
+              invitationToken
+            }
+          });
+        } catch (emailError: any) {
+          console.error("Failed to send invitation email:", emailError.message);
+        }
+
+        return {
+          success: true,
+          message: "Farmer invited successfully. An invitation email has been sent."
+        };
+      } catch (error: any) {
+        console.error("Error inviting farmer:", error.message);
+        return {
+          success: false,
+          message: `Failed to invite farmer: ${error.message}`
+        };
+      }
+    }
   }
 };
 
