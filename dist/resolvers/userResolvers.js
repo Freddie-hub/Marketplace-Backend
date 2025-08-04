@@ -7,7 +7,10 @@ const prisma_1 = __importDefault(require("../context/prisma"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const crypto_1 = __importDefault(require("crypto"));
+const uuid_1 = require("uuid");
 const sendConfirmationEmail_1 = __importDefault(require("./sendConfirmationEmail"));
+const inviteUser_1 = require("../utils/inviteUser");
+const passwordGenerator_1 = require("../utils/passwordGenerator");
 const userResolvers = {
     Mutation: {
         createFarmer: async (_, { args }) => {
@@ -249,6 +252,135 @@ const userResolvers = {
                 throw new Error(error.message);
             }
         },
+        inviteFarmer: async (_, { input }, context) => {
+            try {
+                if (!context.userId) {
+                    throw new Error("Authentication required");
+                }
+                const { name, email, crops, warehouseId } = input;
+                const warehouse = await prisma_1.default.warehouse.findUnique({
+                    where: { id: warehouseId },
+                    include: { manager: true }
+                });
+                if (!warehouse) {
+                    throw new Error("Warehouse not found");
+                }
+                if (warehouse.managerId !== context.userId || warehouse.manager.role !== "WAREHOUSE_GUY") {
+                    throw new Error("Only warehouse managers can invite farmers");
+                }
+                const existingUser = await prisma_1.default.user.findUnique({ where: { email } });
+                if (existingUser) {
+                    throw new Error("User with this email already exists");
+                }
+                const { plainPassword, hashedPassword } = await (0, passwordGenerator_1.generatePassword)();
+                const invitationToken = (0, uuid_1.v4)();
+                const expiresAt = new Date();
+                expiresAt.setHours(expiresAt.getHours() + 24);
+                const result = await prisma_1.default.$transaction(async (tx) => {
+                    const newUser = await tx.user.create({
+                        data: {
+                            email,
+                            password: hashedPassword,
+                            Fname: name,
+                            Lname: "",
+                            phone: warehouse.phone,
+                            address: warehouse.address,
+                            role: "FARMER",
+                            status: "INACTIVE",
+                            isGoogleUser: false,
+                            warehouseId,
+                            createdById: context.userId,
+                            emailVerified: false,
+                        }
+                    });
+                    const invitation = await tx.invitation.create({
+                        data: {
+                            senderId: context.userId,
+                            receiverId: newUser.id,
+                            warehouseId,
+                            status: "PENDING",
+                            token: invitationToken,
+                            tokenUsed: false,
+                            expiresAt,
+                            message: `Invitation to join ${warehouse.name} as a farmer`
+                        }
+                    });
+                    const createdProducts = await Promise.all(crops.map(async (crop) => {
+                        const product = await tx.products.create({
+                            data: {
+                                name: crop.name,
+                                grade: "Standard",
+                                quantity: crop.quantity,
+                                price: 0,
+                                variety: "Unknown",
+                                location: warehouse.location,
+                                farmerId: newUser.id,
+                                warehouseId,
+                                createdAt: new Date(),
+                                updatedAt: new Date(),
+                            }
+                        });
+                        await tx.warehouseInventory.create({
+                            data: {
+                                productId: product.id,
+                                warehouseId,
+                                quantityIn: crop.quantity,
+                                currentStock: crop.quantity,
+                                movementType: "IN",
+                                recordedById: context.userId,
+                                createdAt: new Date(),
+                            }
+                        });
+                        return product;
+                    }));
+                    await tx.activityLog.create({
+                        data: {
+                            performedById: context.userId,
+                            action: "INVITED",
+                            entityType: "USER",
+                            entityId: newUser.id,
+                            description: `Warehouse manager invited farmer ${email} to ${warehouse.name}`,
+                            metadata: {
+                                warehouseId,
+                                warehouseName: warehouse.name,
+                                crops: crops.map(crop => ({ name: crop.name, quantity: crop.quantity }))
+                            }
+                        }
+                    });
+                    return { newUser, invitation, createdProducts };
+                });
+                try {
+                    await (0, inviteUser_1.inviteUserEmail)({
+                        args: {
+                            email: result.newUser.email,
+                            firstName: result.newUser.Fname,
+                            lastName: result.newUser.Lname,
+                            role: "FARMER",
+                            password: plainPassword,
+                            warehouseName: warehouse.name,
+                            warehouseLocation: warehouse.location,
+                            warehouseAddress: warehouse.address,
+                            crops,
+                            invitationToken
+                        }
+                    });
+                }
+                catch (emailError) {
+                    console.error("Failed to send invitation email:", emailError.message);
+                }
+                return {
+                    success: true,
+                    message: "Farmer invited successfully. An invitation email has been sent."
+                };
+            }
+            catch (error) {
+                console.error("Error inviting farmer:", error.message);
+                return {
+                    success: false,
+                    message: `Failed to invite farmer: ${error.message}`
+                };
+            }
+        }
     }
 };
 exports.default = userResolvers;

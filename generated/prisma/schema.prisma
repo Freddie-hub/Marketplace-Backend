@@ -70,6 +70,7 @@ enum ActionType {
   PASSWORD_RESET
   LOGIN
   LOGOUT
+  PAYMENT_DETAILS_UPDATED
 }
 
 enum EntityType {
@@ -114,6 +115,8 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  paymentDetails Json? // Stores Mpesa number for farmer onboarding
 
   products            Products[]
   farmerPayments      Payment[]            @relation("FarmerPayments")
@@ -227,6 +230,9 @@ model Invitation {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  token     String? @unique
+  tokenUsed Boolean @default(false) // Tracks if invitation link was used
 }
 
 model ActivityLog {

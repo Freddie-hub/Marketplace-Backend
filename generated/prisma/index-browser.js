@@ -143,7 +143,8 @@ exports.Prisma.UserScalarFieldEnum = {
   createdById: 'createdById',
   lastModifiedById: 'lastModifiedById',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  paymentDetails: 'paymentDetails'
 };
 
 exports.Prisma.WarehouseScalarFieldEnum = {
@@ -217,7 +218,9 @@ exports.Prisma.InvitationScalarFieldEnum = {
   respondedAt: 'respondedAt',
   expiresAt: 'expiresAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  token: 'token',
+  tokenUsed: 'tokenUsed'
 };
 
 exports.Prisma.ActivityLogScalarFieldEnum = {
@@ -247,15 +250,15 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 exports.Prisma.JsonNullValueFilter = {
   DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.Role = exports.$Enums.Role = {
   ADMINISTRATOR: 'ADMINISTRATOR',
@@ -317,7 +320,8 @@ exports.ActionType = exports.$Enums.ActionType = {
   INVENTORY_UPDATED: 'INVENTORY_UPDATED',
   PASSWORD_RESET: 'PASSWORD_RESET',
   LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  PAYMENT_DETAILS_UPDATED: 'PAYMENT_DETAILS_UPDATED'
 };
 
 exports.EntityType = exports.$Enums.EntityType = {

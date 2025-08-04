@@ -1,4 +1,3 @@
-```prisma
 generator client {
   provider = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
@@ -258,4 +257,3 @@ model ActivityLog {
   @@index([action])
   @@index([entityType])
 }
-```

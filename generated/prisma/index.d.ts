@@ -131,7 +131,8 @@ export const ActionType: {
   INVENTORY_UPDATED: 'INVENTORY_UPDATED',
   PASSWORD_RESET: 'PASSWORD_RESET',
   LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  PAYMENT_DETAILS_UPDATED: 'PAYMENT_DETAILS_UPDATED'
 };
 
 export type ActionType = (typeof ActionType)[keyof typeof ActionType]
@@ -1860,6 +1861,7 @@ export namespace Prisma {
     lastModifiedById: number
     createdAt: number
     updatedAt: number
+    paymentDetails: number
     _all: number
   }
 
@@ -1954,6 +1956,7 @@ export namespace Prisma {
     lastModifiedById?: true
     createdAt?: true
     updatedAt?: true
+    paymentDetails?: true
     _all?: true
   }
 
@@ -2067,6 +2070,7 @@ export namespace Prisma {
     lastModifiedById: number | null
     createdAt: Date
     updatedAt: Date
+    paymentDetails: JsonValue | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2112,6 +2116,7 @@ export namespace Prisma {
     lastModifiedById?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    paymentDetails?: boolean
     warehouse?: boolean | User$warehouseArgs<ExtArgs>
     managedWarehouse?: boolean | User$managedWarehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
@@ -2153,6 +2158,7 @@ export namespace Prisma {
     lastModifiedById?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    paymentDetails?: boolean
     warehouse?: boolean | User$warehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
@@ -2182,6 +2188,7 @@ export namespace Prisma {
     lastModifiedById?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    paymentDetails?: boolean
     warehouse?: boolean | User$warehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
@@ -2211,9 +2218,10 @@ export namespace Prisma {
     lastModifiedById?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    paymentDetails?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "Fname" | "Mname" | "Lname" | "photo" | "phone" | "address" | "role" | "status" | "isGoogleUser" | "googleId" | "emailVerified" | "emailConfirmationToken" | "emailConfirmationTokenExpiry" | "resetToken" | "resetTokenExpiry" | "warehouseId" | "createdById" | "lastModifiedById" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "Fname" | "Mname" | "Lname" | "photo" | "phone" | "address" | "role" | "status" | "isGoogleUser" | "googleId" | "emailVerified" | "emailConfirmationToken" | "emailConfirmationTokenExpiry" | "resetToken" | "resetTokenExpiry" | "warehouseId" | "createdById" | "lastModifiedById" | "createdAt" | "updatedAt" | "paymentDetails", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     warehouse?: boolean | User$warehouseArgs<ExtArgs>
     managedWarehouse?: boolean | User$managedWarehouseArgs<ExtArgs>
@@ -2284,6 +2292,7 @@ export namespace Prisma {
       lastModifiedById: number | null
       createdAt: Date
       updatedAt: Date
+      paymentDetails: Prisma.JsonValue | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2744,6 +2753,7 @@ export namespace Prisma {
     readonly lastModifiedById: FieldRef<"User", 'Int'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly paymentDetails: FieldRef<"User", 'Json'>
   }
     
 
@@ -8547,6 +8557,8 @@ export namespace Prisma {
     expiresAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    token: string | null
+    tokenUsed: boolean | null
   }
 
   export type InvitationMaxAggregateOutputType = {
@@ -8561,6 +8573,8 @@ export namespace Prisma {
     expiresAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    token: string | null
+    tokenUsed: boolean | null
   }
 
   export type InvitationCountAggregateOutputType = {
@@ -8575,6 +8589,8 @@ export namespace Prisma {
     expiresAt: number
     createdAt: number
     updatedAt: number
+    token: number
+    tokenUsed: number
     _all: number
   }
 
@@ -8605,6 +8621,8 @@ export namespace Prisma {
     expiresAt?: true
     createdAt?: true
     updatedAt?: true
+    token?: true
+    tokenUsed?: true
   }
 
   export type InvitationMaxAggregateInputType = {
@@ -8619,6 +8637,8 @@ export namespace Prisma {
     expiresAt?: true
     createdAt?: true
     updatedAt?: true
+    token?: true
+    tokenUsed?: true
   }
 
   export type InvitationCountAggregateInputType = {
@@ -8633,6 +8653,8 @@ export namespace Prisma {
     expiresAt?: true
     createdAt?: true
     updatedAt?: true
+    token?: true
+    tokenUsed?: true
     _all?: true
   }
 
@@ -8734,6 +8756,8 @@ export namespace Prisma {
     expiresAt: Date
     createdAt: Date
     updatedAt: Date
+    token: string | null
+    tokenUsed: boolean
     _count: InvitationCountAggregateOutputType | null
     _avg: InvitationAvgAggregateOutputType | null
     _sum: InvitationSumAggregateOutputType | null
@@ -8767,6 +8791,8 @@ export namespace Prisma {
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    token?: boolean
+    tokenUsed?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     receiver?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
@@ -8784,6 +8810,8 @@ export namespace Prisma {
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    token?: boolean
+    tokenUsed?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     receiver?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
@@ -8801,6 +8829,8 @@ export namespace Prisma {
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    token?: boolean
+    tokenUsed?: boolean
     sender?: boolean | UserDefaultArgs<ExtArgs>
     receiver?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
@@ -8818,9 +8848,11 @@ export namespace Prisma {
     expiresAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    token?: boolean
+    tokenUsed?: boolean
   }
 
-  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "receiverId" | "warehouseId" | "status" | "message" | "sentAt" | "respondedAt" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+  export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "receiverId" | "warehouseId" | "status" | "message" | "sentAt" | "respondedAt" | "expiresAt" | "createdAt" | "updatedAt" | "token" | "tokenUsed", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sender?: boolean | UserDefaultArgs<ExtArgs>
     receiver?: boolean | UserDefaultArgs<ExtArgs>
@@ -8856,6 +8888,8 @@ export namespace Prisma {
       expiresAt: Date
       createdAt: Date
       updatedAt: Date
+      token: string | null
+      tokenUsed: boolean
     }, ExtArgs["result"]["invitation"]>
     composites: {}
   }
@@ -9293,6 +9327,8 @@ export namespace Prisma {
     readonly expiresAt: FieldRef<"Invitation", 'DateTime'>
     readonly createdAt: FieldRef<"Invitation", 'DateTime'>
     readonly updatedAt: FieldRef<"Invitation", 'DateTime'>
+    readonly token: FieldRef<"Invitation", 'String'>
+    readonly tokenUsed: FieldRef<"Invitation", 'Boolean'>
   }
     
 
@@ -10923,7 +10959,8 @@ export namespace Prisma {
     createdById: 'createdById',
     lastModifiedById: 'lastModifiedById',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    paymentDetails: 'paymentDetails'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -11012,7 +11049,9 @@ export namespace Prisma {
     respondedAt: 'respondedAt',
     expiresAt: 'expiresAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    token: 'token',
+    tokenUsed: 'tokenUsed'
   };
 
   export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
@@ -11057,14 +11096,6 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   export const JsonNullValueFilter: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull,
@@ -11072,6 +11103,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -11153,6 +11192,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -11252,20 +11305,6 @@ export namespace Prisma {
    */
   export type ListEnumEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EntityType[]'>
     
-
-
-  /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
   /**
    * Deep Input Types
    */
@@ -11298,6 +11337,7 @@ export namespace Prisma {
     lastModifiedById?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    paymentDetails?: JsonNullableFilter<"User">
     warehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
     managedWarehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11338,6 +11378,7 @@ export namespace Prisma {
     lastModifiedById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    paymentDetails?: SortOrderInput | SortOrder
     warehouse?: WarehouseOrderByWithRelationInput
     managedWarehouse?: WarehouseOrderByWithRelationInput
     createdBy?: UserOrderByWithRelationInput
@@ -11381,6 +11422,7 @@ export namespace Prisma {
     lastModifiedById?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    paymentDetails?: JsonNullableFilter<"User">
     warehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
     managedWarehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11421,6 +11463,7 @@ export namespace Prisma {
     lastModifiedById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    paymentDetails?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -11455,6 +11498,7 @@ export namespace Prisma {
     lastModifiedById?: IntNullableWithAggregatesFilter<"User"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    paymentDetails?: JsonNullableWithAggregatesFilter<"User">
   }
 
   export type WarehouseWhereInput = {
@@ -11874,6 +11918,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFilter<"Invitation"> | Date | string
     createdAt?: DateTimeFilter<"Invitation"> | Date | string
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
+    token?: StringNullableFilter<"Invitation"> | string | null
+    tokenUsed?: BoolFilter<"Invitation"> | boolean
     sender?: XOR<UserScalarRelationFilter, UserWhereInput>
     receiver?: XOR<UserScalarRelationFilter, UserWhereInput>
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
@@ -11891,6 +11937,8 @@ export namespace Prisma {
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrderInput | SortOrder
+    tokenUsed?: SortOrder
     sender?: UserOrderByWithRelationInput
     receiver?: UserOrderByWithRelationInput
     warehouse?: WarehouseOrderByWithRelationInput
@@ -11898,6 +11946,7 @@ export namespace Prisma {
 
   export type InvitationWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    token?: string
     AND?: InvitationWhereInput | InvitationWhereInput[]
     OR?: InvitationWhereInput[]
     NOT?: InvitationWhereInput | InvitationWhereInput[]
@@ -11911,10 +11960,11 @@ export namespace Prisma {
     expiresAt?: DateTimeFilter<"Invitation"> | Date | string
     createdAt?: DateTimeFilter<"Invitation"> | Date | string
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
+    tokenUsed?: BoolFilter<"Invitation"> | boolean
     sender?: XOR<UserScalarRelationFilter, UserWhereInput>
     receiver?: XOR<UserScalarRelationFilter, UserWhereInput>
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
-  }, "id">
+  }, "id" | "token">
 
   export type InvitationOrderByWithAggregationInput = {
     id?: SortOrder
@@ -11928,6 +11978,8 @@ export namespace Prisma {
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrderInput | SortOrder
+    tokenUsed?: SortOrder
     _count?: InvitationCountOrderByAggregateInput
     _avg?: InvitationAvgOrderByAggregateInput
     _max?: InvitationMaxOrderByAggregateInput
@@ -11950,6 +12002,8 @@ export namespace Prisma {
     expiresAt?: DateTimeWithAggregatesFilter<"Invitation"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"Invitation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Invitation"> | Date | string
+    token?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
+    tokenUsed?: BoolWithAggregatesFilter<"Invitation"> | boolean
   }
 
   export type ActivityLogWhereInput = {
@@ -12052,6 +12106,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -12092,6 +12147,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -12125,6 +12181,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -12165,6 +12222,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -12202,6 +12260,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUpdateManyMutationInput = {
@@ -12224,6 +12283,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -12250,6 +12310,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type WarehouseCreateInput = {
@@ -12683,6 +12744,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
     sender: UserCreateNestedOneWithoutSentInvitationsInput
     receiver: UserCreateNestedOneWithoutReceivedInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
@@ -12700,6 +12763,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type InvitationUpdateInput = {
@@ -12710,6 +12775,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentInvitationsNestedInput
     receiver?: UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
@@ -12727,6 +12794,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InvitationCreateManyInput = {
@@ -12741,6 +12810,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type InvitationUpdateManyMutationInput = {
@@ -12751,6 +12822,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InvitationUncheckedUpdateManyInput = {
@@ -12765,6 +12838,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ActivityLogCreateInput = {
@@ -12938,6 +13013,29 @@ export namespace Prisma {
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type WarehouseNullableScalarRelationFilter = {
     is?: WarehouseWhereInput | null
@@ -13038,6 +13136,7 @@ export namespace Prisma {
     lastModifiedById?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    paymentDetails?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -13228,6 +13327,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -13583,6 +13708,11 @@ export namespace Prisma {
     not?: NestedEnumInvitationStatusFilter<$PrismaModel> | $Enums.InvitationStatus
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type InvitationCountOrderByAggregateInput = {
     id?: SortOrder
     senderId?: SortOrder
@@ -13595,6 +13725,8 @@ export namespace Prisma {
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrder
+    tokenUsed?: SortOrder
   }
 
   export type InvitationAvgOrderByAggregateInput = {
@@ -13616,6 +13748,8 @@ export namespace Prisma {
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrder
+    tokenUsed?: SortOrder
   }
 
   export type InvitationMinOrderByAggregateInput = {
@@ -13630,6 +13764,8 @@ export namespace Prisma {
     expiresAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrder
+    tokenUsed?: SortOrder
   }
 
   export type InvitationSumOrderByAggregateInput = {
@@ -13649,6 +13785,14 @@ export namespace Prisma {
     _max?: NestedEnumInvitationStatusFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type EnumActionTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.ActionType | EnumActionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.ActionType[] | ListEnumActionTypeFieldRefInput<$PrismaModel>
@@ -13661,29 +13805,6 @@ export namespace Prisma {
     in?: $Enums.EntityType[] | ListEnumEntityTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.EntityType[] | ListEnumEntityTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumEntityTypeFilter<$PrismaModel> | $Enums.EntityType
-  }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type ActivityLogCountOrderByAggregateInput = {
@@ -13752,32 +13873,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEntityTypeFilter<$PrismaModel>
     _max?: NestedEnumEntityTypeFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type WarehouseCreateNestedOneWithoutFarmersInput = {
@@ -14746,6 +14841,10 @@ export namespace Prisma {
     set?: $Enums.InvitationStatus
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutSentInvitationsNestedInput = {
     create?: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutSentInvitationsInput
@@ -15042,6 +15141,29 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
@@ -15117,6 +15239,11 @@ export namespace Prisma {
     not?: NestedEnumInvitationStatusFilter<$PrismaModel> | $Enums.InvitationStatus
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedEnumInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.InvitationStatus | EnumInvitationStatusFieldRefInput<$PrismaModel>
     in?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
@@ -15125,6 +15252,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumInvitationStatusFilter<$PrismaModel>
     _max?: NestedEnumInvitationStatusFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumActionTypeFilter<$PrismaModel = never> = {
@@ -15159,29 +15294,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEntityTypeFilter<$PrismaModel>
     _max?: NestedEnumEntityTypeFilter<$PrismaModel>
-  }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type WarehouseCreateWithoutFarmersInput = {
@@ -15276,6 +15388,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -15315,6 +15428,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
     products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
@@ -15352,6 +15466,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
@@ -15390,6 +15505,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -15433,6 +15549,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -15472,6 +15589,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
@@ -15509,6 +15627,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -15547,6 +15666,7 @@ export namespace Prisma {
     createdById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -15707,6 +15827,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
     receiver: UserCreateNestedOneWithoutReceivedInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
@@ -15722,6 +15844,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type InvitationCreateOrConnectWithoutSenderInput = {
@@ -15742,6 +15866,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
     sender: UserCreateNestedOneWithoutSentInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
@@ -15757,6 +15883,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type InvitationCreateOrConnectWithoutReceiverInput = {
@@ -15979,6 +16107,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -16018,6 +16147,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
     products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
@@ -16073,6 +16203,7 @@ export namespace Prisma {
     lastModifiedById?: IntNullableFilter<"User"> | number | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    paymentDetails?: JsonNullableFilter<"User">
   }
 
   export type UserUpsertWithoutModifiedUsersInput = {
@@ -16106,6 +16237,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -16145,6 +16277,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
@@ -16292,6 +16425,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFilter<"Invitation"> | Date | string
     createdAt?: DateTimeFilter<"Invitation"> | Date | string
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
+    token?: StringNullableFilter<"Invitation"> | string | null
+    tokenUsed?: BoolFilter<"Invitation"> | boolean
   }
 
   export type InvitationUpsertWithWhereUniqueWithoutReceiverInput = {
@@ -16409,6 +16544,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
@@ -16448,6 +16584,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
     products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
@@ -16485,6 +16622,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
@@ -16523,6 +16661,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -16630,6 +16769,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
     sender: UserCreateNestedOneWithoutSentInvitationsInput
     receiver: UserCreateNestedOneWithoutReceivedInvitationsInput
   }
@@ -16645,6 +16786,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type InvitationCreateOrConnectWithoutWarehouseInput = {
@@ -16688,6 +16831,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
@@ -16727,6 +16871,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
     products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
@@ -16823,6 +16968,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -16862,6 +17008,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -17022,6 +17169,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -17061,6 +17209,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -17241,6 +17390,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -17280,6 +17430,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -17414,6 +17565,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -17453,6 +17605,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -17485,6 +17638,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -17524,6 +17678,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -17599,6 +17754,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -17638,6 +17794,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -17686,6 +17843,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -17725,6 +17883,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -17812,6 +17971,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -17851,6 +18011,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -17883,6 +18044,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -17922,6 +18084,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -17959,6 +18122,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -17998,6 +18162,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -18082,6 +18247,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -18121,6 +18287,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -18164,6 +18331,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -18203,6 +18371,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -18277,6 +18446,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -18316,6 +18486,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -18353,6 +18524,7 @@ export namespace Prisma {
     resetTokenExpiry?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
     managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
@@ -18392,6 +18564,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
@@ -18440,6 +18613,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -18479,6 +18653,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -18522,6 +18697,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -18561,6 +18737,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -18596,6 +18773,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserCreateManyLastModifiedByInput = {
@@ -18621,6 +18799,7 @@ export namespace Prisma {
     createdById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ProductsCreateManyFarmerInput = {
@@ -18683,6 +18862,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type InvitationCreateManyReceiverInput = {
@@ -18696,6 +18877,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type ActivityLogCreateManyTargetUserInput = {
@@ -18752,6 +18935,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
@@ -18790,6 +18974,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -18826,6 +19011,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserUpdateWithoutLastModifiedByInput = {
@@ -18848,6 +19034,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
@@ -18886,6 +19073,7 @@ export namespace Prisma {
     createdById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -18922,6 +19110,7 @@ export namespace Prisma {
     createdById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ProductsUpdateWithoutFarmerInput = {
@@ -19080,6 +19269,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
     receiver?: UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
@@ -19095,6 +19286,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InvitationUncheckedUpdateManyWithoutSenderInput = {
@@ -19108,6 +19301,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InvitationUpdateWithoutReceiverInput = {
@@ -19118,6 +19313,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
@@ -19133,6 +19330,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InvitationUncheckedUpdateManyWithoutReceiverInput = {
@@ -19146,6 +19345,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ActivityLogUpdateWithoutTargetUserInput = {
@@ -19270,6 +19471,7 @@ export namespace Prisma {
     lastModifiedById?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type WarehouseInventoryCreateManyWarehouseInput = {
@@ -19310,6 +19512,8 @@ export namespace Prisma {
     expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type UserUpdateWithoutWarehouseInput = {
@@ -19332,6 +19536,7 @@ export namespace Prisma {
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
@@ -19370,6 +19575,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
@@ -19406,6 +19612,7 @@ export namespace Prisma {
     lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type WarehouseInventoryUpdateWithoutWarehouseInput = {
@@ -19499,6 +19706,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
     sender?: UserUpdateOneRequiredWithoutSentInvitationsNestedInput
     receiver?: UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput
   }
@@ -19514,6 +19723,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type InvitationUncheckedUpdateManyWithoutWarehouseInput = {
@@ -19527,6 +19738,8 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type WarehouseInventoryCreateManyProductInput = {

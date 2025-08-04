@@ -18,24 +18,40 @@ const authResolvers = {
                     where: { email: email.toLowerCase().trim() },
                     include: {
                         warehouse: true,
-                        managedWarehouse: true
+                        managedWarehouse: true,
+                        receivedInvitations: {
+                            where: { status: "ACCEPTED" },
+                            orderBy: { sentAt: "desc" },
+                            take: 1
+                        }
                     }
                 });
                 if (!user) {
                     throw new Error("No account found with this email. Please sign up first.");
+                }
+                // Check if user is a FARMER and has an accepted invitation
+                if (user.role === "FARMER" && user.status !== "ACTIVE") {
+                    const hasAcceptedInvitation = user.receivedInvitations.length > 0 && user.receivedInvitations[0].status === "ACCEPTED";
+                    if (!hasAcceptedInvitation) {
+                        throw new Error("Account not activated. Please accept your invitation to log in.");
+                    }
                 }
                 if (user.isGoogleUser && !user.password) {
                     if (!password) {
                         const token = jsonwebtoken_1.default.sign({
                             userId: user.id,
                             role: user.role,
-                            warehouseId: user.warehouseId
+                            warehouseId: user.warehouseId,
+                            paymentDetails: user.paymentDetails
                         }, process.env.SECRET_KEY || "make-sure-there-is-a-secret-key-in-the-application", { expiresIn: "7h" });
                         return {
                             status: "Success",
                             message: "User logged in successfully with Google",
                             token,
-                            user
+                            user: {
+                                ...user,
+                                requiresOnboarding: user.role === "FARMER" && !user.paymentDetails
+                            }
                         };
                     }
                     else {
@@ -57,13 +73,17 @@ const authResolvers = {
                 const token = jsonwebtoken_1.default.sign({
                     userId: user.id,
                     role: user.role,
-                    warehouseId: user.warehouseId
+                    warehouseId: user.warehouseId,
+                    paymentDetails: user.paymentDetails
                 }, process.env.SECRET_KEY || "make-sure-there-is-a-secret-key-in-the-application", { expiresIn: "7h" });
                 return {
                     status: "Success",
                     message: "User logged in successfully",
                     token,
-                    user
+                    user: {
+                        ...user,
+                        requiresOnboarding: user.role === "FARMER" && !user.paymentDetails
+                    }
                 };
             }
             catch (error) {
@@ -124,6 +144,10 @@ const authResolvers = {
                         resetTokenExpiry: {
                             gt: new Date()
                         }
+                    },
+                    include: {
+                        warehouse: true,
+                        managedWarehouse: true
                     }
                 });
                 if (!user) {
@@ -141,7 +165,8 @@ const authResolvers = {
                 const authToken = jsonwebtoken_1.default.sign({
                     userId: user.id,
                     role: user.role,
-                    warehouseId: user.warehouseId
+                    warehouseId: user.warehouseId,
+                    paymentDetails: user.paymentDetails
                 }, process.env.SECRET_KEY || "make-sure-there-is-a-secret-key-in-the-application", { expiresIn: "7h" });
                 const updatedUser = await prisma_1.default.user.findUnique({
                     where: { id: user.id },
@@ -154,7 +179,10 @@ const authResolvers = {
                     status: "Success",
                     message: "Password reset successfully. Please Log In.",
                     token: authToken,
-                    user: updatedUser
+                    user: {
+                        ...updatedUser,
+                        requiresOnboarding: updatedUser?.role === "FARMER" && !updatedUser?.paymentDetails
+                    }
                 };
             }
             catch (error) {
