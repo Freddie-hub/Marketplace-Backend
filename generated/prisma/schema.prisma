@@ -1,12 +1,168 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
   output        = "../generated/prisma"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id                           Int                  @id @default(autoincrement())
+  email                        String               @unique
+  password                     String?
+  Fname                        String
+  Lname                        String
+  Mname                        String?
+  address                      String?
+  createdAt                    DateTime             @default(now())
+  createdById                  Int?
+  emailConfirmationToken       String?              @unique
+  emailConfirmationTokenExpiry DateTime?
+  emailVerified                Boolean?             @default(false)
+  googleId                     String?              @unique
+  isGoogleUser                 Boolean?             @default(false)
+  lastModifiedById             Int?
+  phone                        String?
+  photo                        String?
+  resetToken                   String?              @unique
+  resetTokenExpiry             DateTime?
+  role                         Role                 @default(FARMER)
+  status                       UserStatus           @default(INACTIVE)
+  updatedAt                    DateTime             @updatedAt
+  warehouseId                  Int?
+  paymentDetails               Json?
+  performedActions             ActivityLog[]        @relation("ActionPerformer")
+  activityLogs                 ActivityLog[]        @relation("UserActivities")
+  receivedInvitations          Invitation[]         @relation("InvitationReceiver")
+  sentInvitations              Invitation[]         @relation("InvitationSender")
+  farmerPayments               Payment[]            @relation("FarmerPayments")
+  processedPayments            Payment[]            @relation("PaymentProcessor")
+  products                     Products[]
+  createdBy                    User?                @relation("UserCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  createdUsers                 User[]               @relation("UserCreator")
+  lastModifiedBy               User?                @relation("UserModifier", fields: [lastModifiedById], references: [id], onDelete: Cascade)
+  modifiedUsers                User[]               @relation("UserModifier")
+  warehouse                    Warehouse?           @relation("WarehouseFarmers", fields: [warehouseId], references: [id], onDelete: Cascade)
+  managedWarehouse             Warehouse?           @relation("WarehouseManager")
+  inventoryRecords             WarehouseInventory[] @relation("InventoryRecorder")
+}
+
+model Warehouse {
+  id          Int                  @id @default(autoincrement())
+  name        String
+  location    String
+  address     String?
+  capacity    Int?
+  phone       String?
+  email       String?
+  managerId   Int                  @unique
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+  invitations Invitation[]
+  products    Products[]
+  farmers     User[]               @relation("WarehouseFarmers")
+  manager     User                 @relation("WarehouseManager", fields: [managerId], references: [id], onDelete: Cascade)
+  inventory   WarehouseInventory[]
+}
+
+model Products {
+  id                 Int                  @id @default(autoincrement())
+  name               String
+  grade              String
+  quantity           Int
+  price              Float
+  variety            String
+  location           String
+  image              String?
+  createdAt          DateTime             @default(now())
+  description        String?
+  farmerId           Int
+  updatedAt          DateTime             @updatedAt
+  warehouseId        Int
+  payments           Payment[]
+  farmer             User                 @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  warehouse          Warehouse            @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  inventoryMovements WarehouseInventory[]
+}
+
+model WarehouseInventory {
+  id           Int          @id @default(autoincrement())
+  productId    Int
+  warehouseId  Int
+  quantityIn   Int?
+  quantityOut  Int?
+  currentStock Int
+  movementType MovementType
+  reason       String?
+  recordedById Int?
+  createdAt    DateTime     @default(now())
+  product      Products     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  recordedBy   User?        @relation("InventoryRecorder", fields: [recordedById], references: [id], onDelete: Cascade)
+  warehouse    Warehouse    @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, warehouseId])
+}
+
+model Payment {
+  id              Int            @id @default(autoincrement())
+  farmerId        Int
+  productId       Int
+  amount          Float
+  quantity        Int
+  pricePerUnit    Float
+  status          PaymentStatus  @default(PENDING)
+  paymentMethod   PaymentMethod?
+  referenceNumber String?        @unique
+  dueDate         DateTime?
+  paidDate        DateTime?
+  notes           String?
+  processedById   Int?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  farmer          User           @relation("FarmerPayments", fields: [farmerId], references: [id], onDelete: Cascade)
+  processedBy     User?          @relation("PaymentProcessor", fields: [processedById], references: [id], onDelete: Cascade)
+  product         Products       @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Invitation {
+  id          Int              @id @default(autoincrement())
+  senderId    Int?
+  receiverId  Int?
+  warehouseId Int
+  status      InvitationStatus @default(PENDING)
+  message     String?
+  sentAt      DateTime         @default(now())
+  respondedAt DateTime?
+  expiresAt   DateTime
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  token       String?          @unique
+  tokenUsed   Boolean          @default(false)
+  receiver    User?            @relation("InvitationReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  sender      User?            @relation("InvitationSender", fields: [senderId], references: [id], onDelete: Cascade)
+  warehouse   Warehouse        @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+}
+
+model ActivityLog {
+  id            Int        @id @default(autoincrement())
+  performedById Int?
+  targetUserId  Int?
+  action        ActionType
+  entityType    EntityType
+  entityId      Int?
+  description   String
+  metadata      Json?
+  createdAt     DateTime   @default(now())
+  performedBy   User?      @relation("ActionPerformer", fields: [performedById], references: [id], onDelete: Cascade)
+  targetUser    User?      @relation("UserActivities", fields: [targetUserId], references: [id], onDelete: Cascade)
+
+  @@index([performedById])
+  @@index([targetUserId])
+  @@index([action])
+  @@index([entityType])
 }
 
 enum Role {
@@ -81,180 +237,4 @@ enum EntityType {
   INVITATION
   INVENTORY
   SYSTEM
-}
-
-model User {
-  id                           Int        @id @default(autoincrement())
-  email                        String     @unique
-  password                     String?
-  Fname                        String
-  Mname                        String?
-  Lname                        String
-  photo                        String?
-  phone                        String?
-  address                      String
-  role                         Role       @default(FARMER)
-  status                       UserStatus @default(INACTIVE)
-  isGoogleUser                 Boolean?   @default(false)
-  googleId                     String?    @unique
-  emailVerified                Boolean?   @default(false)
-  emailConfirmationToken       String?    @unique
-  emailConfirmationTokenExpiry DateTime?
-  resetToken                   String?    @unique
-  resetTokenExpiry             DateTime?
-  warehouseId                  Int?
-  warehouse                    Warehouse? @relation("WarehouseFarmers", fields: [warehouseId], references: [id], onDelete: Cascade)
-  managedWarehouse             Warehouse? @relation("WarehouseManager")
-  createdById                  Int?
-  createdBy                    User?      @relation("UserCreator", fields: [createdById], references: [id], onDelete: Cascade)
-  createdUsers                 User[]     @relation("UserCreator")
-
-  lastModifiedById Int?
-  lastModifiedBy   User?  @relation("UserModifier", fields: [lastModifiedById], references: [id], onDelete: Cascade)
-  modifiedUsers    User[] @relation("UserModifier")
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  paymentDetails Json? // Stores Mpesa number for farmer onboarding
-
-  products            Products[]
-  farmerPayments      Payment[]            @relation("FarmerPayments")
-  processedPayments   Payment[]            @relation("PaymentProcessor")
-  sentInvitations     Invitation[]         @relation("InvitationSender")
-  receivedInvitations Invitation[]         @relation("InvitationReceiver")
-  activityLogs        ActivityLog[]        @relation("UserActivities")
-  performedActions    ActivityLog[]        @relation("ActionPerformer")
-  inventoryRecords    WarehouseInventory[] @relation("InventoryRecorder")
-}
-
-model Warehouse {
-  id          Int                  @id @default(autoincrement())
-  name        String
-  location    String
-  address     String?
-  capacity    Int?
-  phone       String?
-  email       String?
-  managerId   Int                  @unique
-  manager     User                 @relation("WarehouseManager", fields: [managerId], references: [id], onDelete: Cascade)
-  farmers     User[]               @relation("WarehouseFarmers")
-  createdAt   DateTime             @default(now())
-  updatedAt   DateTime             @updatedAt
-  inventory   WarehouseInventory[]
-  products    Products[]
-  invitations Invitation[]
-}
-
-model Products {
-  id                 Int                  @id @default(autoincrement())
-  name               String
-  grade              String
-  quantity           Int
-  price              Float
-  variety            String
-  location           String
-  image              String?
-  description        String?
-  farmerId           Int
-  farmer             User                 @relation(fields: [farmerId], references: [id], onDelete: Cascade)
-  warehouseId        Int
-  warehouse          Warehouse            @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
-  inventoryMovements WarehouseInventory[]
-  payments           Payment[]
-}
-
-model WarehouseInventory {
-  id           Int          @id @default(autoincrement())
-  productId    Int
-  product      Products     @relation(fields: [productId], references: [id], onDelete: Cascade)
-  warehouseId  Int
-  warehouse    Warehouse    @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
-  quantityIn   Int?
-  quantityOut  Int?
-  currentStock Int
-  movementType MovementType
-  reason       String?
-  recordedById Int?
-  recordedBy   User?        @relation("InventoryRecorder", fields: [recordedById], references: [id], onDelete: Cascade)
-  createdAt    DateTime     @default(now())
-
-  @@unique([productId, warehouseId])
-}
-
-model Payment {
-  id Int @id @default(autoincrement())
-
-  farmerId Int
-  farmer   User @relation("FarmerPayments", fields: [farmerId], references: [id], onDelete: Cascade)
-
-  productId Int
-  product   Products @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  amount       Float
-  quantity     Int
-  pricePerUnit Float
-
-  status          PaymentStatus  @default(PENDING)
-  paymentMethod   PaymentMethod?
-  referenceNumber String?        @unique
-  dueDate         DateTime?
-  paidDate        DateTime?
-  notes           String?
-  processedById   Int?
-  processedBy     User?          @relation("PaymentProcessor", fields: [processedById], references: [id], onDelete: Cascade)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-}
-
-model Invitation {
-  id Int @id @default(autoincrement())
-
-  senderId Int?
-  sender   User? @relation("InvitationSender", fields: [senderId], references: [id], onDelete: Cascade)
-
-  receiverId Int?
-  receiver   User? @relation("InvitationReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
-
-  warehouseId Int
-  warehouse   Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
-
-  status  InvitationStatus @default(PENDING)
-  message String?
-
-  sentAt      DateTime  @default(now())
-  respondedAt DateTime?
-  expiresAt   DateTime
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  token     String? @unique
-  tokenUsed Boolean @default(false) // Tracks if invitation link was used
-}
-
-model ActivityLog {
-  id Int @id @default(autoincrement())
-
-  performedById Int?
-  performedBy   User? @relation("ActionPerformer", fields: [performedById], references: [id], onDelete: Cascade)
-
-  targetUserId Int?
-  targetUser   User? @relation("UserActivities", fields: [targetUserId], references: [id], onDelete: Cascade)
-
-  action     ActionType
-  entityType EntityType
-  entityId   Int?
-
-  description String
-  metadata    Json?
-
-  createdAt DateTime @default(now())
-
-  @@index([performedById])
-  @@index([targetUserId])
-  @@index([action])
-  @@index([entityType])
 }

@@ -1550,28 +1550,28 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    createdUsers: number
-    modifiedUsers: number
-    products: number
+    performedActions: number
+    activityLogs: number
+    receivedInvitations: number
+    sentInvitations: number
     farmerPayments: number
     processedPayments: number
-    sentInvitations: number
-    receivedInvitations: number
-    activityLogs: number
-    performedActions: number
+    products: number
+    createdUsers: number
+    modifiedUsers: number
     inventoryRecords: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdUsers?: boolean | UserCountOutputTypeCountCreatedUsersArgs
-    modifiedUsers?: boolean | UserCountOutputTypeCountModifiedUsersArgs
-    products?: boolean | UserCountOutputTypeCountProductsArgs
+    performedActions?: boolean | UserCountOutputTypeCountPerformedActionsArgs
+    activityLogs?: boolean | UserCountOutputTypeCountActivityLogsArgs
+    receivedInvitations?: boolean | UserCountOutputTypeCountReceivedInvitationsArgs
+    sentInvitations?: boolean | UserCountOutputTypeCountSentInvitationsArgs
     farmerPayments?: boolean | UserCountOutputTypeCountFarmerPaymentsArgs
     processedPayments?: boolean | UserCountOutputTypeCountProcessedPaymentsArgs
-    sentInvitations?: boolean | UserCountOutputTypeCountSentInvitationsArgs
-    receivedInvitations?: boolean | UserCountOutputTypeCountReceivedInvitationsArgs
-    activityLogs?: boolean | UserCountOutputTypeCountActivityLogsArgs
-    performedActions?: boolean | UserCountOutputTypeCountPerformedActionsArgs
+    products?: boolean | UserCountOutputTypeCountProductsArgs
+    createdUsers?: boolean | UserCountOutputTypeCountCreatedUsersArgs
+    modifiedUsers?: boolean | UserCountOutputTypeCountModifiedUsersArgs
     inventoryRecords?: boolean | UserCountOutputTypeCountInventoryRecordsArgs
   }
 
@@ -1589,22 +1589,29 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountCreatedUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
+  export type UserCountOutputTypeCountPerformedActionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ActivityLogWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountModifiedUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
+  export type UserCountOutputTypeCountActivityLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ActivityLogWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProductsWhereInput
+  export type UserCountOutputTypeCountReceivedInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSentInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationWhereInput
   }
 
   /**
@@ -1624,29 +1631,22 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSentInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: InvitationWhereInput
+  export type UserCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductsWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountReceivedInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: InvitationWhereInput
+  export type UserCountOutputTypeCountCreatedUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountActivityLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ActivityLogWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountPerformedActionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ActivityLogWhereInput
+  export type UserCountOutputTypeCountModifiedUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
   }
 
   /**
@@ -1662,17 +1662,17 @@ export namespace Prisma {
    */
 
   export type WarehouseCountOutputType = {
+    invitations: number
+    products: number
     farmers: number
     inventory: number
-    products: number
-    invitations: number
   }
 
   export type WarehouseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitations?: boolean | WarehouseCountOutputTypeCountInvitationsArgs
+    products?: boolean | WarehouseCountOutputTypeCountProductsArgs
     farmers?: boolean | WarehouseCountOutputTypeCountFarmersArgs
     inventory?: boolean | WarehouseCountOutputTypeCountInventoryArgs
-    products?: boolean | WarehouseCountOutputTypeCountProductsArgs
-    invitations?: boolean | WarehouseCountOutputTypeCountInvitationsArgs
   }
 
   // Custom InputTypes
@@ -1689,15 +1689,8 @@ export namespace Prisma {
   /**
    * WarehouseCountOutputType without action
    */
-  export type WarehouseCountOutputTypeCountFarmersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-  /**
-   * WarehouseCountOutputType without action
-   */
-  export type WarehouseCountOutputTypeCountInventoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WarehouseInventoryWhereInput
+  export type WarehouseCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InvitationWhereInput
   }
 
   /**
@@ -1710,8 +1703,15 @@ export namespace Prisma {
   /**
    * WarehouseCountOutputType without action
    */
-  export type WarehouseCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: InvitationWhereInput
+  export type WarehouseCountOutputTypeCountFarmersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+  /**
+   * WarehouseCountOutputType without action
+   */
+  export type WarehouseCountOutputTypeCountInventoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WarehouseInventoryWhereInput
   }
 
 
@@ -1720,13 +1720,13 @@ export namespace Prisma {
    */
 
   export type ProductsCountOutputType = {
-    inventoryMovements: number
     payments: number
+    inventoryMovements: number
   }
 
   export type ProductsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    inventoryMovements?: boolean | ProductsCountOutputTypeCountInventoryMovementsArgs
     payments?: boolean | ProductsCountOutputTypeCountPaymentsArgs
+    inventoryMovements?: boolean | ProductsCountOutputTypeCountInventoryMovementsArgs
   }
 
   // Custom InputTypes
@@ -1743,15 +1743,15 @@ export namespace Prisma {
   /**
    * ProductsCountOutputType without action
    */
-  export type ProductsCountOutputTypeCountInventoryMovementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WarehouseInventoryWhereInput
+  export type ProductsCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PaymentWhereInput
   }
 
   /**
    * ProductsCountOutputType without action
    */
-  export type ProductsCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PaymentWhereInput
+  export type ProductsCountOutputTypeCountInventoryMovementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WarehouseInventoryWhereInput
   }
 
 
@@ -1773,16 +1773,16 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
-    warehouseId: number | null
     createdById: number | null
     lastModifiedById: number | null
+    warehouseId: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
-    warehouseId: number | null
     createdById: number | null
     lastModifiedById: number | null
+    warehouseId: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -1790,25 +1790,25 @@ export namespace Prisma {
     email: string | null
     password: string | null
     Fname: string | null
-    Mname: string | null
     Lname: string | null
-    photo: string | null
-    phone: string | null
+    Mname: string | null
     address: string | null
-    role: $Enums.Role | null
-    status: $Enums.UserStatus | null
-    isGoogleUser: boolean | null
-    googleId: string | null
-    emailVerified: boolean | null
+    createdAt: Date | null
+    createdById: number | null
     emailConfirmationToken: string | null
     emailConfirmationTokenExpiry: Date | null
+    emailVerified: boolean | null
+    googleId: string | null
+    isGoogleUser: boolean | null
+    lastModifiedById: number | null
+    phone: string | null
+    photo: string | null
     resetToken: string | null
     resetTokenExpiry: Date | null
-    warehouseId: number | null
-    createdById: number | null
-    lastModifiedById: number | null
-    createdAt: Date | null
+    role: $Enums.Role | null
+    status: $Enums.UserStatus | null
     updatedAt: Date | null
+    warehouseId: number | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1816,25 +1816,25 @@ export namespace Prisma {
     email: string | null
     password: string | null
     Fname: string | null
-    Mname: string | null
     Lname: string | null
-    photo: string | null
-    phone: string | null
+    Mname: string | null
     address: string | null
-    role: $Enums.Role | null
-    status: $Enums.UserStatus | null
-    isGoogleUser: boolean | null
-    googleId: string | null
-    emailVerified: boolean | null
+    createdAt: Date | null
+    createdById: number | null
     emailConfirmationToken: string | null
     emailConfirmationTokenExpiry: Date | null
+    emailVerified: boolean | null
+    googleId: string | null
+    isGoogleUser: boolean | null
+    lastModifiedById: number | null
+    phone: string | null
+    photo: string | null
     resetToken: string | null
     resetTokenExpiry: Date | null
-    warehouseId: number | null
-    createdById: number | null
-    lastModifiedById: number | null
-    createdAt: Date | null
+    role: $Enums.Role | null
+    status: $Enums.UserStatus | null
     updatedAt: Date | null
+    warehouseId: number | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1842,25 +1842,25 @@ export namespace Prisma {
     email: number
     password: number
     Fname: number
-    Mname: number
     Lname: number
-    photo: number
-    phone: number
+    Mname: number
     address: number
-    role: number
-    status: number
-    isGoogleUser: number
-    googleId: number
-    emailVerified: number
+    createdAt: number
+    createdById: number
     emailConfirmationToken: number
     emailConfirmationTokenExpiry: number
+    emailVerified: number
+    googleId: number
+    isGoogleUser: number
+    lastModifiedById: number
+    phone: number
+    photo: number
     resetToken: number
     resetTokenExpiry: number
-    warehouseId: number
-    createdById: number
-    lastModifiedById: number
-    createdAt: number
+    role: number
+    status: number
     updatedAt: number
+    warehouseId: number
     paymentDetails: number
     _all: number
   }
@@ -1868,16 +1868,16 @@ export namespace Prisma {
 
   export type UserAvgAggregateInputType = {
     id?: true
-    warehouseId?: true
     createdById?: true
     lastModifiedById?: true
+    warehouseId?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
-    warehouseId?: true
     createdById?: true
     lastModifiedById?: true
+    warehouseId?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -1885,25 +1885,25 @@ export namespace Prisma {
     email?: true
     password?: true
     Fname?: true
-    Mname?: true
     Lname?: true
-    photo?: true
-    phone?: true
+    Mname?: true
     address?: true
-    role?: true
-    status?: true
-    isGoogleUser?: true
-    googleId?: true
-    emailVerified?: true
+    createdAt?: true
+    createdById?: true
     emailConfirmationToken?: true
     emailConfirmationTokenExpiry?: true
+    emailVerified?: true
+    googleId?: true
+    isGoogleUser?: true
+    lastModifiedById?: true
+    phone?: true
+    photo?: true
     resetToken?: true
     resetTokenExpiry?: true
-    warehouseId?: true
-    createdById?: true
-    lastModifiedById?: true
-    createdAt?: true
+    role?: true
+    status?: true
     updatedAt?: true
+    warehouseId?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1911,25 +1911,25 @@ export namespace Prisma {
     email?: true
     password?: true
     Fname?: true
-    Mname?: true
     Lname?: true
-    photo?: true
-    phone?: true
+    Mname?: true
     address?: true
-    role?: true
-    status?: true
-    isGoogleUser?: true
-    googleId?: true
-    emailVerified?: true
+    createdAt?: true
+    createdById?: true
     emailConfirmationToken?: true
     emailConfirmationTokenExpiry?: true
+    emailVerified?: true
+    googleId?: true
+    isGoogleUser?: true
+    lastModifiedById?: true
+    phone?: true
+    photo?: true
     resetToken?: true
     resetTokenExpiry?: true
-    warehouseId?: true
-    createdById?: true
-    lastModifiedById?: true
-    createdAt?: true
+    role?: true
+    status?: true
     updatedAt?: true
+    warehouseId?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1937,25 +1937,25 @@ export namespace Prisma {
     email?: true
     password?: true
     Fname?: true
-    Mname?: true
     Lname?: true
-    photo?: true
-    phone?: true
+    Mname?: true
     address?: true
-    role?: true
-    status?: true
-    isGoogleUser?: true
-    googleId?: true
-    emailVerified?: true
+    createdAt?: true
+    createdById?: true
     emailConfirmationToken?: true
     emailConfirmationTokenExpiry?: true
+    emailVerified?: true
+    googleId?: true
+    isGoogleUser?: true
+    lastModifiedById?: true
+    phone?: true
+    photo?: true
     resetToken?: true
     resetTokenExpiry?: true
-    warehouseId?: true
-    createdById?: true
-    lastModifiedById?: true
-    createdAt?: true
+    role?: true
+    status?: true
     updatedAt?: true
+    warehouseId?: true
     paymentDetails?: true
     _all?: true
   }
@@ -2051,25 +2051,25 @@ export namespace Prisma {
     email: string
     password: string | null
     Fname: string
-    Mname: string | null
     Lname: string
-    photo: string | null
-    phone: string | null
-    address: string
-    role: $Enums.Role
-    status: $Enums.UserStatus
-    isGoogleUser: boolean | null
-    googleId: string | null
-    emailVerified: boolean | null
+    Mname: string | null
+    address: string | null
+    createdAt: Date
+    createdById: number | null
     emailConfirmationToken: string | null
     emailConfirmationTokenExpiry: Date | null
+    emailVerified: boolean | null
+    googleId: string | null
+    isGoogleUser: boolean | null
+    lastModifiedById: number | null
+    phone: string | null
+    photo: string | null
     resetToken: string | null
     resetTokenExpiry: Date | null
-    warehouseId: number | null
-    createdById: number | null
-    lastModifiedById: number | null
-    createdAt: Date
+    role: $Enums.Role
+    status: $Enums.UserStatus
     updatedAt: Date
+    warehouseId: number | null
     paymentDetails: JsonValue | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
@@ -2097,39 +2097,39 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     Fname?: boolean
-    Mname?: boolean
     Lname?: boolean
-    photo?: boolean
-    phone?: boolean
+    Mname?: boolean
     address?: boolean
-    role?: boolean
-    status?: boolean
-    isGoogleUser?: boolean
-    googleId?: boolean
-    emailVerified?: boolean
+    createdAt?: boolean
+    createdById?: boolean
     emailConfirmationToken?: boolean
     emailConfirmationTokenExpiry?: boolean
+    emailVerified?: boolean
+    googleId?: boolean
+    isGoogleUser?: boolean
+    lastModifiedById?: boolean
+    phone?: boolean
+    photo?: boolean
     resetToken?: boolean
     resetTokenExpiry?: boolean
-    warehouseId?: boolean
-    createdById?: boolean
-    lastModifiedById?: boolean
-    createdAt?: boolean
+    role?: boolean
+    status?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
     paymentDetails?: boolean
-    warehouse?: boolean | User$warehouseArgs<ExtArgs>
-    managedWarehouse?: boolean | User$managedWarehouseArgs<ExtArgs>
+    performedActions?: boolean | User$performedActionsArgs<ExtArgs>
+    activityLogs?: boolean | User$activityLogsArgs<ExtArgs>
+    receivedInvitations?: boolean | User$receivedInvitationsArgs<ExtArgs>
+    sentInvitations?: boolean | User$sentInvitationsArgs<ExtArgs>
+    farmerPayments?: boolean | User$farmerPaymentsArgs<ExtArgs>
+    processedPayments?: boolean | User$processedPaymentsArgs<ExtArgs>
+    products?: boolean | User$productsArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     createdUsers?: boolean | User$createdUsersArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
     modifiedUsers?: boolean | User$modifiedUsersArgs<ExtArgs>
-    products?: boolean | User$productsArgs<ExtArgs>
-    farmerPayments?: boolean | User$farmerPaymentsArgs<ExtArgs>
-    processedPayments?: boolean | User$processedPaymentsArgs<ExtArgs>
-    sentInvitations?: boolean | User$sentInvitationsArgs<ExtArgs>
-    receivedInvitations?: boolean | User$receivedInvitationsArgs<ExtArgs>
-    activityLogs?: boolean | User$activityLogsArgs<ExtArgs>
-    performedActions?: boolean | User$performedActionsArgs<ExtArgs>
+    warehouse?: boolean | User$warehouseArgs<ExtArgs>
+    managedWarehouse?: boolean | User$managedWarehouseArgs<ExtArgs>
     inventoryRecords?: boolean | User$inventoryRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2139,29 +2139,29 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     Fname?: boolean
-    Mname?: boolean
     Lname?: boolean
-    photo?: boolean
-    phone?: boolean
+    Mname?: boolean
     address?: boolean
-    role?: boolean
-    status?: boolean
-    isGoogleUser?: boolean
-    googleId?: boolean
-    emailVerified?: boolean
+    createdAt?: boolean
+    createdById?: boolean
     emailConfirmationToken?: boolean
     emailConfirmationTokenExpiry?: boolean
+    emailVerified?: boolean
+    googleId?: boolean
+    isGoogleUser?: boolean
+    lastModifiedById?: boolean
+    phone?: boolean
+    photo?: boolean
     resetToken?: boolean
     resetTokenExpiry?: boolean
-    warehouseId?: boolean
-    createdById?: boolean
-    lastModifiedById?: boolean
-    createdAt?: boolean
+    role?: boolean
+    status?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
     paymentDetails?: boolean
-    warehouse?: boolean | User$warehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
+    warehouse?: boolean | User$warehouseArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2169,29 +2169,29 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     Fname?: boolean
-    Mname?: boolean
     Lname?: boolean
-    photo?: boolean
-    phone?: boolean
+    Mname?: boolean
     address?: boolean
-    role?: boolean
-    status?: boolean
-    isGoogleUser?: boolean
-    googleId?: boolean
-    emailVerified?: boolean
+    createdAt?: boolean
+    createdById?: boolean
     emailConfirmationToken?: boolean
     emailConfirmationTokenExpiry?: boolean
+    emailVerified?: boolean
+    googleId?: boolean
+    isGoogleUser?: boolean
+    lastModifiedById?: boolean
+    phone?: boolean
+    photo?: boolean
     resetToken?: boolean
     resetTokenExpiry?: boolean
-    warehouseId?: boolean
-    createdById?: boolean
-    lastModifiedById?: boolean
-    createdAt?: boolean
+    role?: boolean
+    status?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
     paymentDetails?: boolean
-    warehouse?: boolean | User$warehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
+    warehouse?: boolean | User$warehouseArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2199,73 +2199,73 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     Fname?: boolean
-    Mname?: boolean
     Lname?: boolean
-    photo?: boolean
-    phone?: boolean
+    Mname?: boolean
     address?: boolean
-    role?: boolean
-    status?: boolean
-    isGoogleUser?: boolean
-    googleId?: boolean
-    emailVerified?: boolean
+    createdAt?: boolean
+    createdById?: boolean
     emailConfirmationToken?: boolean
     emailConfirmationTokenExpiry?: boolean
+    emailVerified?: boolean
+    googleId?: boolean
+    isGoogleUser?: boolean
+    lastModifiedById?: boolean
+    phone?: boolean
+    photo?: boolean
     resetToken?: boolean
     resetTokenExpiry?: boolean
-    warehouseId?: boolean
-    createdById?: boolean
-    lastModifiedById?: boolean
-    createdAt?: boolean
+    role?: boolean
+    status?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
     paymentDetails?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "Fname" | "Mname" | "Lname" | "photo" | "phone" | "address" | "role" | "status" | "isGoogleUser" | "googleId" | "emailVerified" | "emailConfirmationToken" | "emailConfirmationTokenExpiry" | "resetToken" | "resetTokenExpiry" | "warehouseId" | "createdById" | "lastModifiedById" | "createdAt" | "updatedAt" | "paymentDetails", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "Fname" | "Lname" | "Mname" | "address" | "createdAt" | "createdById" | "emailConfirmationToken" | "emailConfirmationTokenExpiry" | "emailVerified" | "googleId" | "isGoogleUser" | "lastModifiedById" | "phone" | "photo" | "resetToken" | "resetTokenExpiry" | "role" | "status" | "updatedAt" | "warehouseId" | "paymentDetails", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    warehouse?: boolean | User$warehouseArgs<ExtArgs>
-    managedWarehouse?: boolean | User$managedWarehouseArgs<ExtArgs>
+    performedActions?: boolean | User$performedActionsArgs<ExtArgs>
+    activityLogs?: boolean | User$activityLogsArgs<ExtArgs>
+    receivedInvitations?: boolean | User$receivedInvitationsArgs<ExtArgs>
+    sentInvitations?: boolean | User$sentInvitationsArgs<ExtArgs>
+    farmerPayments?: boolean | User$farmerPaymentsArgs<ExtArgs>
+    processedPayments?: boolean | User$processedPaymentsArgs<ExtArgs>
+    products?: boolean | User$productsArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     createdUsers?: boolean | User$createdUsersArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
     modifiedUsers?: boolean | User$modifiedUsersArgs<ExtArgs>
-    products?: boolean | User$productsArgs<ExtArgs>
-    farmerPayments?: boolean | User$farmerPaymentsArgs<ExtArgs>
-    processedPayments?: boolean | User$processedPaymentsArgs<ExtArgs>
-    sentInvitations?: boolean | User$sentInvitationsArgs<ExtArgs>
-    receivedInvitations?: boolean | User$receivedInvitationsArgs<ExtArgs>
-    activityLogs?: boolean | User$activityLogsArgs<ExtArgs>
-    performedActions?: boolean | User$performedActionsArgs<ExtArgs>
+    warehouse?: boolean | User$warehouseArgs<ExtArgs>
+    managedWarehouse?: boolean | User$managedWarehouseArgs<ExtArgs>
     inventoryRecords?: boolean | User$inventoryRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    warehouse?: boolean | User$warehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
+    warehouse?: boolean | User$warehouseArgs<ExtArgs>
   }
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    warehouse?: boolean | User$warehouseArgs<ExtArgs>
     createdBy?: boolean | User$createdByArgs<ExtArgs>
     lastModifiedBy?: boolean | User$lastModifiedByArgs<ExtArgs>
+    warehouse?: boolean | User$warehouseArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      warehouse: Prisma.$WarehousePayload<ExtArgs> | null
-      managedWarehouse: Prisma.$WarehousePayload<ExtArgs> | null
+      performedActions: Prisma.$ActivityLogPayload<ExtArgs>[]
+      activityLogs: Prisma.$ActivityLogPayload<ExtArgs>[]
+      receivedInvitations: Prisma.$InvitationPayload<ExtArgs>[]
+      sentInvitations: Prisma.$InvitationPayload<ExtArgs>[]
+      farmerPayments: Prisma.$PaymentPayload<ExtArgs>[]
+      processedPayments: Prisma.$PaymentPayload<ExtArgs>[]
+      products: Prisma.$ProductsPayload<ExtArgs>[]
       createdBy: Prisma.$UserPayload<ExtArgs> | null
       createdUsers: Prisma.$UserPayload<ExtArgs>[]
       lastModifiedBy: Prisma.$UserPayload<ExtArgs> | null
       modifiedUsers: Prisma.$UserPayload<ExtArgs>[]
-      products: Prisma.$ProductsPayload<ExtArgs>[]
-      farmerPayments: Prisma.$PaymentPayload<ExtArgs>[]
-      processedPayments: Prisma.$PaymentPayload<ExtArgs>[]
-      sentInvitations: Prisma.$InvitationPayload<ExtArgs>[]
-      receivedInvitations: Prisma.$InvitationPayload<ExtArgs>[]
-      activityLogs: Prisma.$ActivityLogPayload<ExtArgs>[]
-      performedActions: Prisma.$ActivityLogPayload<ExtArgs>[]
+      warehouse: Prisma.$WarehousePayload<ExtArgs> | null
+      managedWarehouse: Prisma.$WarehousePayload<ExtArgs> | null
       inventoryRecords: Prisma.$WarehouseInventoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2273,25 +2273,25 @@ export namespace Prisma {
       email: string
       password: string | null
       Fname: string
-      Mname: string | null
       Lname: string
-      photo: string | null
-      phone: string | null
-      address: string
-      role: $Enums.Role
-      status: $Enums.UserStatus
-      isGoogleUser: boolean | null
-      googleId: string | null
-      emailVerified: boolean | null
+      Mname: string | null
+      address: string | null
+      createdAt: Date
+      createdById: number | null
       emailConfirmationToken: string | null
       emailConfirmationTokenExpiry: Date | null
+      emailVerified: boolean | null
+      googleId: string | null
+      isGoogleUser: boolean | null
+      lastModifiedById: number | null
+      phone: string | null
+      photo: string | null
       resetToken: string | null
       resetTokenExpiry: Date | null
-      warehouseId: number | null
-      createdById: number | null
-      lastModifiedById: number | null
-      createdAt: Date
+      role: $Enums.Role
+      status: $Enums.UserStatus
       updatedAt: Date
+      warehouseId: number | null
       paymentDetails: Prisma.JsonValue | null
     }, ExtArgs["result"]["user"]>
     composites: {}
@@ -2687,19 +2687,19 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    warehouse<T extends User$warehouseArgs<ExtArgs> = {}>(args?: Subset<T, User$warehouseArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    managedWarehouse<T extends User$managedWarehouseArgs<ExtArgs> = {}>(args?: Subset<T, User$managedWarehouseArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    performedActions<T extends User$performedActionsArgs<ExtArgs> = {}>(args?: Subset<T, User$performedActionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    activityLogs<T extends User$activityLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$activityLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    receivedInvitations<T extends User$receivedInvitationsArgs<ExtArgs> = {}>(args?: Subset<T, User$receivedInvitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sentInvitations<T extends User$sentInvitationsArgs<ExtArgs> = {}>(args?: Subset<T, User$sentInvitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    farmerPayments<T extends User$farmerPaymentsArgs<ExtArgs> = {}>(args?: Subset<T, User$farmerPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    processedPayments<T extends User$processedPaymentsArgs<ExtArgs> = {}>(args?: Subset<T, User$processedPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    products<T extends User$productsArgs<ExtArgs> = {}>(args?: Subset<T, User$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdBy<T extends User$createdByArgs<ExtArgs> = {}>(args?: Subset<T, User$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     createdUsers<T extends User$createdUsersArgs<ExtArgs> = {}>(args?: Subset<T, User$createdUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     lastModifiedBy<T extends User$lastModifiedByArgs<ExtArgs> = {}>(args?: Subset<T, User$lastModifiedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     modifiedUsers<T extends User$modifiedUsersArgs<ExtArgs> = {}>(args?: Subset<T, User$modifiedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    products<T extends User$productsArgs<ExtArgs> = {}>(args?: Subset<T, User$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    farmerPayments<T extends User$farmerPaymentsArgs<ExtArgs> = {}>(args?: Subset<T, User$farmerPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    processedPayments<T extends User$processedPaymentsArgs<ExtArgs> = {}>(args?: Subset<T, User$processedPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    sentInvitations<T extends User$sentInvitationsArgs<ExtArgs> = {}>(args?: Subset<T, User$sentInvitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    receivedInvitations<T extends User$receivedInvitationsArgs<ExtArgs> = {}>(args?: Subset<T, User$receivedInvitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    activityLogs<T extends User$activityLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$activityLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    performedActions<T extends User$performedActionsArgs<ExtArgs> = {}>(args?: Subset<T, User$performedActionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    warehouse<T extends User$warehouseArgs<ExtArgs> = {}>(args?: Subset<T, User$warehouseArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    managedWarehouse<T extends User$managedWarehouseArgs<ExtArgs> = {}>(args?: Subset<T, User$managedWarehouseArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     inventoryRecords<T extends User$inventoryRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$inventoryRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarehouseInventoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2734,25 +2734,25 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly Fname: FieldRef<"User", 'String'>
-    readonly Mname: FieldRef<"User", 'String'>
     readonly Lname: FieldRef<"User", 'String'>
-    readonly photo: FieldRef<"User", 'String'>
-    readonly phone: FieldRef<"User", 'String'>
+    readonly Mname: FieldRef<"User", 'String'>
     readonly address: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'Role'>
-    readonly status: FieldRef<"User", 'UserStatus'>
-    readonly isGoogleUser: FieldRef<"User", 'Boolean'>
-    readonly googleId: FieldRef<"User", 'String'>
-    readonly emailVerified: FieldRef<"User", 'Boolean'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly createdById: FieldRef<"User", 'Int'>
     readonly emailConfirmationToken: FieldRef<"User", 'String'>
     readonly emailConfirmationTokenExpiry: FieldRef<"User", 'DateTime'>
+    readonly emailVerified: FieldRef<"User", 'Boolean'>
+    readonly googleId: FieldRef<"User", 'String'>
+    readonly isGoogleUser: FieldRef<"User", 'Boolean'>
+    readonly lastModifiedById: FieldRef<"User", 'Int'>
+    readonly phone: FieldRef<"User", 'String'>
+    readonly photo: FieldRef<"User", 'String'>
     readonly resetToken: FieldRef<"User", 'String'>
     readonly resetTokenExpiry: FieldRef<"User", 'DateTime'>
-    readonly warehouseId: FieldRef<"User", 'Int'>
-    readonly createdById: FieldRef<"User", 'Int'>
-    readonly lastModifiedById: FieldRef<"User", 'Int'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly role: FieldRef<"User", 'Role'>
+    readonly status: FieldRef<"User", 'UserStatus'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly warehouseId: FieldRef<"User", 'Int'>
     readonly paymentDetails: FieldRef<"User", 'Json'>
   }
     
@@ -3150,41 +3150,171 @@ export namespace Prisma {
   }
 
   /**
-   * User.warehouse
+   * User.performedActions
    */
-  export type User$warehouseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$performedActionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Warehouse
+     * Select specific fields to fetch from the ActivityLog
      */
-    select?: WarehouseSelect<ExtArgs> | null
+    select?: ActivityLogSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Warehouse
+     * Omit specific fields from the ActivityLog
      */
-    omit?: WarehouseOmit<ExtArgs> | null
+    omit?: ActivityLogOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WarehouseInclude<ExtArgs> | null
-    where?: WarehouseWhereInput
+    include?: ActivityLogInclude<ExtArgs> | null
+    where?: ActivityLogWhereInput
+    orderBy?: ActivityLogOrderByWithRelationInput | ActivityLogOrderByWithRelationInput[]
+    cursor?: ActivityLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ActivityLogScalarFieldEnum | ActivityLogScalarFieldEnum[]
   }
 
   /**
-   * User.managedWarehouse
+   * User.activityLogs
    */
-  export type User$managedWarehouseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$activityLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Warehouse
+     * Select specific fields to fetch from the ActivityLog
      */
-    select?: WarehouseSelect<ExtArgs> | null
+    select?: ActivityLogSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Warehouse
+     * Omit specific fields from the ActivityLog
      */
-    omit?: WarehouseOmit<ExtArgs> | null
+    omit?: ActivityLogOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WarehouseInclude<ExtArgs> | null
-    where?: WarehouseWhereInput
+    include?: ActivityLogInclude<ExtArgs> | null
+    where?: ActivityLogWhereInput
+    orderBy?: ActivityLogOrderByWithRelationInput | ActivityLogOrderByWithRelationInput[]
+    cursor?: ActivityLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ActivityLogScalarFieldEnum | ActivityLogScalarFieldEnum[]
+  }
+
+  /**
+   * User.receivedInvitations
+   */
+  export type User$receivedInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invitation
+     */
+    select?: InvitationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invitation
+     */
+    omit?: InvitationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationInclude<ExtArgs> | null
+    where?: InvitationWhereInput
+    orderBy?: InvitationOrderByWithRelationInput | InvitationOrderByWithRelationInput[]
+    cursor?: InvitationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationScalarFieldEnum | InvitationScalarFieldEnum[]
+  }
+
+  /**
+   * User.sentInvitations
+   */
+  export type User$sentInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invitation
+     */
+    select?: InvitationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invitation
+     */
+    omit?: InvitationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationInclude<ExtArgs> | null
+    where?: InvitationWhereInput
+    orderBy?: InvitationOrderByWithRelationInput | InvitationOrderByWithRelationInput[]
+    cursor?: InvitationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationScalarFieldEnum | InvitationScalarFieldEnum[]
+  }
+
+  /**
+   * User.farmerPayments
+   */
+  export type User$farmerPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    where?: PaymentWhereInput
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    cursor?: PaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * User.processedPayments
+   */
+  export type User$processedPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    where?: PaymentWhereInput
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    cursor?: PaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * User.products
+   */
+  export type User$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Products
+     */
+    select?: ProductsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Products
+     */
+    omit?: ProductsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductsInclude<ExtArgs> | null
+    where?: ProductsWhereInput
+    orderBy?: ProductsOrderByWithRelationInput | ProductsOrderByWithRelationInput[]
+    cursor?: ProductsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductsScalarFieldEnum | ProductsScalarFieldEnum[]
   }
 
   /**
@@ -3274,171 +3404,41 @@ export namespace Prisma {
   }
 
   /**
-   * User.products
+   * User.warehouse
    */
-  export type User$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$warehouseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Products
+     * Select specific fields to fetch from the Warehouse
      */
-    select?: ProductsSelect<ExtArgs> | null
+    select?: WarehouseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Products
+     * Omit specific fields from the Warehouse
      */
-    omit?: ProductsOmit<ExtArgs> | null
+    omit?: WarehouseOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProductsInclude<ExtArgs> | null
-    where?: ProductsWhereInput
-    orderBy?: ProductsOrderByWithRelationInput | ProductsOrderByWithRelationInput[]
-    cursor?: ProductsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProductsScalarFieldEnum | ProductsScalarFieldEnum[]
+    include?: WarehouseInclude<ExtArgs> | null
+    where?: WarehouseWhereInput
   }
 
   /**
-   * User.farmerPayments
+   * User.managedWarehouse
    */
-  export type User$farmerPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$managedWarehouseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Payment
+     * Select specific fields to fetch from the Warehouse
      */
-    select?: PaymentSelect<ExtArgs> | null
+    select?: WarehouseSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Payment
+     * Omit specific fields from the Warehouse
      */
-    omit?: PaymentOmit<ExtArgs> | null
+    omit?: WarehouseOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PaymentInclude<ExtArgs> | null
-    where?: PaymentWhereInput
-    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
-    cursor?: PaymentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
-  }
-
-  /**
-   * User.processedPayments
-   */
-  export type User$processedPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Payment
-     */
-    select?: PaymentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Payment
-     */
-    omit?: PaymentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PaymentInclude<ExtArgs> | null
-    where?: PaymentWhereInput
-    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
-    cursor?: PaymentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
-  }
-
-  /**
-   * User.sentInvitations
-   */
-  export type User$sentInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Invitation
-     */
-    select?: InvitationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Invitation
-     */
-    omit?: InvitationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvitationInclude<ExtArgs> | null
-    where?: InvitationWhereInput
-    orderBy?: InvitationOrderByWithRelationInput | InvitationOrderByWithRelationInput[]
-    cursor?: InvitationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: InvitationScalarFieldEnum | InvitationScalarFieldEnum[]
-  }
-
-  /**
-   * User.receivedInvitations
-   */
-  export type User$receivedInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Invitation
-     */
-    select?: InvitationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Invitation
-     */
-    omit?: InvitationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvitationInclude<ExtArgs> | null
-    where?: InvitationWhereInput
-    orderBy?: InvitationOrderByWithRelationInput | InvitationOrderByWithRelationInput[]
-    cursor?: InvitationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: InvitationScalarFieldEnum | InvitationScalarFieldEnum[]
-  }
-
-  /**
-   * User.activityLogs
-   */
-  export type User$activityLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ActivityLog
-     */
-    select?: ActivityLogSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ActivityLog
-     */
-    omit?: ActivityLogOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ActivityLogInclude<ExtArgs> | null
-    where?: ActivityLogWhereInput
-    orderBy?: ActivityLogOrderByWithRelationInput | ActivityLogOrderByWithRelationInput[]
-    cursor?: ActivityLogWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ActivityLogScalarFieldEnum | ActivityLogScalarFieldEnum[]
-  }
-
-  /**
-   * User.performedActions
-   */
-  export type User$performedActionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ActivityLog
-     */
-    select?: ActivityLogSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ActivityLog
-     */
-    omit?: ActivityLogOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ActivityLogInclude<ExtArgs> | null
-    where?: ActivityLogWhereInput
-    orderBy?: ActivityLogOrderByWithRelationInput | ActivityLogOrderByWithRelationInput[]
-    cursor?: ActivityLogWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ActivityLogScalarFieldEnum | ActivityLogScalarFieldEnum[]
+    include?: WarehouseInclude<ExtArgs> | null
+    where?: WarehouseWhereInput
   }
 
   /**
@@ -3730,11 +3730,11 @@ export namespace Prisma {
     managerId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    manager?: boolean | UserDefaultArgs<ExtArgs>
-    farmers?: boolean | Warehouse$farmersArgs<ExtArgs>
-    inventory?: boolean | Warehouse$inventoryArgs<ExtArgs>
-    products?: boolean | Warehouse$productsArgs<ExtArgs>
     invitations?: boolean | Warehouse$invitationsArgs<ExtArgs>
+    products?: boolean | Warehouse$productsArgs<ExtArgs>
+    farmers?: boolean | Warehouse$farmersArgs<ExtArgs>
+    manager?: boolean | UserDefaultArgs<ExtArgs>
+    inventory?: boolean | Warehouse$inventoryArgs<ExtArgs>
     _count?: boolean | WarehouseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["warehouse"]>
 
@@ -3781,11 +3781,11 @@ export namespace Prisma {
 
   export type WarehouseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "address" | "capacity" | "phone" | "email" | "managerId" | "createdAt" | "updatedAt", ExtArgs["result"]["warehouse"]>
   export type WarehouseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    manager?: boolean | UserDefaultArgs<ExtArgs>
-    farmers?: boolean | Warehouse$farmersArgs<ExtArgs>
-    inventory?: boolean | Warehouse$inventoryArgs<ExtArgs>
-    products?: boolean | Warehouse$productsArgs<ExtArgs>
     invitations?: boolean | Warehouse$invitationsArgs<ExtArgs>
+    products?: boolean | Warehouse$productsArgs<ExtArgs>
+    farmers?: boolean | Warehouse$farmersArgs<ExtArgs>
+    manager?: boolean | UserDefaultArgs<ExtArgs>
+    inventory?: boolean | Warehouse$inventoryArgs<ExtArgs>
     _count?: boolean | WarehouseCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type WarehouseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3798,11 +3798,11 @@ export namespace Prisma {
   export type $WarehousePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Warehouse"
     objects: {
-      manager: Prisma.$UserPayload<ExtArgs>
-      farmers: Prisma.$UserPayload<ExtArgs>[]
-      inventory: Prisma.$WarehouseInventoryPayload<ExtArgs>[]
-      products: Prisma.$ProductsPayload<ExtArgs>[]
       invitations: Prisma.$InvitationPayload<ExtArgs>[]
+      products: Prisma.$ProductsPayload<ExtArgs>[]
+      farmers: Prisma.$UserPayload<ExtArgs>[]
+      manager: Prisma.$UserPayload<ExtArgs>
+      inventory: Prisma.$WarehouseInventoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4209,11 +4209,11 @@ export namespace Prisma {
    */
   export interface Prisma__WarehouseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    manager<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    farmers<T extends Warehouse$farmersArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$farmersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    inventory<T extends Warehouse$inventoryArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$inventoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarehouseInventoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    products<T extends Warehouse$productsArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitations<T extends Warehouse$invitationsArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    products<T extends Warehouse$productsArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    farmers<T extends Warehouse$farmersArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$farmersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    manager<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    inventory<T extends Warehouse$inventoryArgs<ExtArgs> = {}>(args?: Subset<T, Warehouse$inventoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarehouseInventoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4649,6 +4649,54 @@ export namespace Prisma {
   }
 
   /**
+   * Warehouse.invitations
+   */
+  export type Warehouse$invitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invitation
+     */
+    select?: InvitationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invitation
+     */
+    omit?: InvitationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InvitationInclude<ExtArgs> | null
+    where?: InvitationWhereInput
+    orderBy?: InvitationOrderByWithRelationInput | InvitationOrderByWithRelationInput[]
+    cursor?: InvitationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvitationScalarFieldEnum | InvitationScalarFieldEnum[]
+  }
+
+  /**
+   * Warehouse.products
+   */
+  export type Warehouse$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Products
+     */
+    select?: ProductsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Products
+     */
+    omit?: ProductsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductsInclude<ExtArgs> | null
+    where?: ProductsWhereInput
+    orderBy?: ProductsOrderByWithRelationInput | ProductsOrderByWithRelationInput[]
+    cursor?: ProductsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductsScalarFieldEnum | ProductsScalarFieldEnum[]
+  }
+
+  /**
    * Warehouse.farmers
    */
   export type Warehouse$farmersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4694,54 +4742,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WarehouseInventoryScalarFieldEnum | WarehouseInventoryScalarFieldEnum[]
-  }
-
-  /**
-   * Warehouse.products
-   */
-  export type Warehouse$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Products
-     */
-    select?: ProductsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Products
-     */
-    omit?: ProductsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductsInclude<ExtArgs> | null
-    where?: ProductsWhereInput
-    orderBy?: ProductsOrderByWithRelationInput | ProductsOrderByWithRelationInput[]
-    cursor?: ProductsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProductsScalarFieldEnum | ProductsScalarFieldEnum[]
-  }
-
-  /**
-   * Warehouse.invitations
-   */
-  export type Warehouse$invitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Invitation
-     */
-    select?: InvitationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Invitation
-     */
-    omit?: InvitationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: InvitationInclude<ExtArgs> | null
-    where?: InvitationWhereInput
-    orderBy?: InvitationOrderByWithRelationInput | InvitationOrderByWithRelationInput[]
-    cursor?: InvitationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: InvitationScalarFieldEnum | InvitationScalarFieldEnum[]
   }
 
   /**
@@ -4800,11 +4800,11 @@ export namespace Prisma {
     variety: string | null
     location: string | null
     image: string | null
+    createdAt: Date | null
     description: string | null
     farmerId: number | null
-    warehouseId: number | null
-    createdAt: Date | null
     updatedAt: Date | null
+    warehouseId: number | null
   }
 
   export type ProductsMaxAggregateOutputType = {
@@ -4816,11 +4816,11 @@ export namespace Prisma {
     variety: string | null
     location: string | null
     image: string | null
+    createdAt: Date | null
     description: string | null
     farmerId: number | null
-    warehouseId: number | null
-    createdAt: Date | null
     updatedAt: Date | null
+    warehouseId: number | null
   }
 
   export type ProductsCountAggregateOutputType = {
@@ -4832,11 +4832,11 @@ export namespace Prisma {
     variety: number
     location: number
     image: number
+    createdAt: number
     description: number
     farmerId: number
-    warehouseId: number
-    createdAt: number
     updatedAt: number
+    warehouseId: number
     _all: number
   }
 
@@ -4866,11 +4866,11 @@ export namespace Prisma {
     variety?: true
     location?: true
     image?: true
+    createdAt?: true
     description?: true
     farmerId?: true
-    warehouseId?: true
-    createdAt?: true
     updatedAt?: true
+    warehouseId?: true
   }
 
   export type ProductsMaxAggregateInputType = {
@@ -4882,11 +4882,11 @@ export namespace Prisma {
     variety?: true
     location?: true
     image?: true
+    createdAt?: true
     description?: true
     farmerId?: true
-    warehouseId?: true
-    createdAt?: true
     updatedAt?: true
+    warehouseId?: true
   }
 
   export type ProductsCountAggregateInputType = {
@@ -4898,11 +4898,11 @@ export namespace Prisma {
     variety?: true
     location?: true
     image?: true
+    createdAt?: true
     description?: true
     farmerId?: true
-    warehouseId?: true
-    createdAt?: true
     updatedAt?: true
+    warehouseId?: true
     _all?: true
   }
 
@@ -5001,11 +5001,11 @@ export namespace Prisma {
     variety: string
     location: string
     image: string | null
+    createdAt: Date
     description: string | null
     farmerId: number
-    warehouseId: number
-    createdAt: Date
     updatedAt: Date
+    warehouseId: number
     _count: ProductsCountAggregateOutputType | null
     _avg: ProductsAvgAggregateOutputType | null
     _sum: ProductsSumAggregateOutputType | null
@@ -5036,15 +5036,15 @@ export namespace Prisma {
     variety?: boolean
     location?: boolean
     image?: boolean
+    createdAt?: boolean
     description?: boolean
     farmerId?: boolean
-    warehouseId?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
+    payments?: boolean | Products$paymentsArgs<ExtArgs>
     farmer?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     inventoryMovements?: boolean | Products$inventoryMovementsArgs<ExtArgs>
-    payments?: boolean | Products$paymentsArgs<ExtArgs>
     _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["products"]>
 
@@ -5057,11 +5057,11 @@ export namespace Prisma {
     variety?: boolean
     location?: boolean
     image?: boolean
+    createdAt?: boolean
     description?: boolean
     farmerId?: boolean
-    warehouseId?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
     farmer?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["products"]>
@@ -5075,11 +5075,11 @@ export namespace Prisma {
     variety?: boolean
     location?: boolean
     image?: boolean
+    createdAt?: boolean
     description?: boolean
     farmerId?: boolean
-    warehouseId?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
     farmer?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["products"]>
@@ -5093,19 +5093,19 @@ export namespace Prisma {
     variety?: boolean
     location?: boolean
     image?: boolean
+    createdAt?: boolean
     description?: boolean
     farmerId?: boolean
-    warehouseId?: boolean
-    createdAt?: boolean
     updatedAt?: boolean
+    warehouseId?: boolean
   }
 
-  export type ProductsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "grade" | "quantity" | "price" | "variety" | "location" | "image" | "description" | "farmerId" | "warehouseId" | "createdAt" | "updatedAt", ExtArgs["result"]["products"]>
+  export type ProductsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "grade" | "quantity" | "price" | "variety" | "location" | "image" | "createdAt" | "description" | "farmerId" | "updatedAt" | "warehouseId", ExtArgs["result"]["products"]>
   export type ProductsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payments?: boolean | Products$paymentsArgs<ExtArgs>
     farmer?: boolean | UserDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     inventoryMovements?: boolean | Products$inventoryMovementsArgs<ExtArgs>
-    payments?: boolean | Products$paymentsArgs<ExtArgs>
     _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5120,10 +5120,10 @@ export namespace Prisma {
   export type $ProductsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Products"
     objects: {
+      payments: Prisma.$PaymentPayload<ExtArgs>[]
       farmer: Prisma.$UserPayload<ExtArgs>
       warehouse: Prisma.$WarehousePayload<ExtArgs>
       inventoryMovements: Prisma.$WarehouseInventoryPayload<ExtArgs>[]
-      payments: Prisma.$PaymentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5134,11 +5134,11 @@ export namespace Prisma {
       variety: string
       location: string
       image: string | null
+      createdAt: Date
       description: string | null
       farmerId: number
-      warehouseId: number
-      createdAt: Date
       updatedAt: Date
+      warehouseId: number
     }, ExtArgs["result"]["products"]>
     composites: {}
   }
@@ -5533,10 +5533,10 @@ export namespace Prisma {
    */
   export interface Prisma__ProductsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    payments<T extends Products$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Products$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     farmer<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     warehouse<T extends WarehouseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseDefaultArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     inventoryMovements<T extends Products$inventoryMovementsArgs<ExtArgs> = {}>(args?: Subset<T, Products$inventoryMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarehouseInventoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    payments<T extends Products$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Products$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5574,11 +5574,11 @@ export namespace Prisma {
     readonly variety: FieldRef<"Products", 'String'>
     readonly location: FieldRef<"Products", 'String'>
     readonly image: FieldRef<"Products", 'String'>
+    readonly createdAt: FieldRef<"Products", 'DateTime'>
     readonly description: FieldRef<"Products", 'String'>
     readonly farmerId: FieldRef<"Products", 'Int'>
-    readonly warehouseId: FieldRef<"Products", 'Int'>
-    readonly createdAt: FieldRef<"Products", 'DateTime'>
     readonly updatedAt: FieldRef<"Products", 'DateTime'>
+    readonly warehouseId: FieldRef<"Products", 'Int'>
   }
     
 
@@ -5975,30 +5975,6 @@ export namespace Prisma {
   }
 
   /**
-   * Products.inventoryMovements
-   */
-  export type Products$inventoryMovementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the WarehouseInventory
-     */
-    select?: WarehouseInventorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the WarehouseInventory
-     */
-    omit?: WarehouseInventoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WarehouseInventoryInclude<ExtArgs> | null
-    where?: WarehouseInventoryWhereInput
-    orderBy?: WarehouseInventoryOrderByWithRelationInput | WarehouseInventoryOrderByWithRelationInput[]
-    cursor?: WarehouseInventoryWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: WarehouseInventoryScalarFieldEnum | WarehouseInventoryScalarFieldEnum[]
-  }
-
-  /**
    * Products.payments
    */
   export type Products$paymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6020,6 +5996,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Products.inventoryMovements
+   */
+  export type Products$inventoryMovementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WarehouseInventory
+     */
+    select?: WarehouseInventorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WarehouseInventory
+     */
+    omit?: WarehouseInventoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WarehouseInventoryInclude<ExtArgs> | null
+    where?: WarehouseInventoryWhereInput
+    orderBy?: WarehouseInventoryOrderByWithRelationInput | WarehouseInventoryOrderByWithRelationInput[]
+    cursor?: WarehouseInventoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WarehouseInventoryScalarFieldEnum | WarehouseInventoryScalarFieldEnum[]
   }
 
   /**
@@ -6304,8 +6304,8 @@ export namespace Prisma {
     recordedById?: boolean
     createdAt?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
-    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
+    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["warehouseInventory"]>
 
   export type WarehouseInventorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6320,8 +6320,8 @@ export namespace Prisma {
     recordedById?: boolean
     createdAt?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
-    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
+    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["warehouseInventory"]>
 
   export type WarehouseInventorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6336,8 +6336,8 @@ export namespace Prisma {
     recordedById?: boolean
     createdAt?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
-    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
+    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["warehouseInventory"]>
 
   export type WarehouseInventorySelectScalar = {
@@ -6356,26 +6356,26 @@ export namespace Prisma {
   export type WarehouseInventoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "warehouseId" | "quantityIn" | "quantityOut" | "currentStock" | "movementType" | "reason" | "recordedById" | "createdAt", ExtArgs["result"]["warehouseInventory"]>
   export type WarehouseInventoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
-    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
+    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
   export type WarehouseInventoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
-    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
+    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
   export type WarehouseInventoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
-    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
     recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
+    warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
 
   export type $WarehouseInventoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "WarehouseInventory"
     objects: {
       product: Prisma.$ProductsPayload<ExtArgs>
-      warehouse: Prisma.$WarehousePayload<ExtArgs>
       recordedBy: Prisma.$UserPayload<ExtArgs> | null
+      warehouse: Prisma.$WarehousePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6783,8 +6783,8 @@ export namespace Prisma {
   export interface Prisma__WarehouseInventoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     product<T extends ProductsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductsDefaultArgs<ExtArgs>>): Prisma__ProductsClient<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    warehouse<T extends WarehouseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseDefaultArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     recordedBy<T extends WarehouseInventory$recordedByArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseInventory$recordedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    warehouse<T extends WarehouseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseDefaultArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7560,8 +7560,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     farmer?: boolean | UserDefaultArgs<ExtArgs>
-    product?: boolean | ProductsDefaultArgs<ExtArgs>
     processedBy?: boolean | Payment$processedByArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["payment"]>
 
   export type PaymentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7581,8 +7581,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     farmer?: boolean | UserDefaultArgs<ExtArgs>
-    product?: boolean | ProductsDefaultArgs<ExtArgs>
     processedBy?: boolean | Payment$processedByArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["payment"]>
 
   export type PaymentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7602,8 +7602,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     farmer?: boolean | UserDefaultArgs<ExtArgs>
-    product?: boolean | ProductsDefaultArgs<ExtArgs>
     processedBy?: boolean | Payment$processedByArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["payment"]>
 
   export type PaymentSelectScalar = {
@@ -7627,26 +7627,26 @@ export namespace Prisma {
   export type PaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "farmerId" | "productId" | "amount" | "quantity" | "pricePerUnit" | "status" | "paymentMethod" | "referenceNumber" | "dueDate" | "paidDate" | "notes" | "processedById" | "createdAt" | "updatedAt", ExtArgs["result"]["payment"]>
   export type PaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     farmer?: boolean | UserDefaultArgs<ExtArgs>
-    product?: boolean | ProductsDefaultArgs<ExtArgs>
     processedBy?: boolean | Payment$processedByArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
   export type PaymentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     farmer?: boolean | UserDefaultArgs<ExtArgs>
-    product?: boolean | ProductsDefaultArgs<ExtArgs>
     processedBy?: boolean | Payment$processedByArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
   export type PaymentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     farmer?: boolean | UserDefaultArgs<ExtArgs>
-    product?: boolean | ProductsDefaultArgs<ExtArgs>
     processedBy?: boolean | Payment$processedByArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
 
   export type $PaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Payment"
     objects: {
       farmer: Prisma.$UserPayload<ExtArgs>
-      product: Prisma.$ProductsPayload<ExtArgs>
       processedBy: Prisma.$UserPayload<ExtArgs> | null
+      product: Prisma.$ProductsPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8059,8 +8059,8 @@ export namespace Prisma {
   export interface Prisma__PaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     farmer<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    product<T extends ProductsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductsDefaultArgs<ExtArgs>>): Prisma__ProductsClient<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     processedBy<T extends Payment$processedByArgs<ExtArgs> = {}>(args?: Subset<T, Payment$processedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductsDefaultArgs<ExtArgs>>): Prisma__ProductsClient<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8812,8 +8812,8 @@ export namespace Prisma {
     updatedAt?: boolean
     token?: boolean
     tokenUsed?: boolean
-    sender?: boolean | Invitation$senderArgs<ExtArgs>
     receiver?: boolean | Invitation$receiverArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -8831,8 +8831,8 @@ export namespace Prisma {
     updatedAt?: boolean
     token?: boolean
     tokenUsed?: boolean
-    sender?: boolean | Invitation$senderArgs<ExtArgs>
     receiver?: boolean | Invitation$receiverArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -8850,8 +8850,8 @@ export namespace Prisma {
     updatedAt?: boolean
     token?: boolean
     tokenUsed?: boolean
-    sender?: boolean | Invitation$senderArgs<ExtArgs>
     receiver?: boolean | Invitation$receiverArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -8873,26 +8873,26 @@ export namespace Prisma {
 
   export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "receiverId" | "warehouseId" | "status" | "message" | "sentAt" | "respondedAt" | "expiresAt" | "createdAt" | "updatedAt" | "token" | "tokenUsed", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sender?: boolean | Invitation$senderArgs<ExtArgs>
     receiver?: boolean | Invitation$receiverArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
   export type InvitationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sender?: boolean | Invitation$senderArgs<ExtArgs>
     receiver?: boolean | Invitation$receiverArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
   export type InvitationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sender?: boolean | Invitation$senderArgs<ExtArgs>
     receiver?: boolean | Invitation$receiverArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
 
   export type $InvitationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Invitation"
     objects: {
-      sender: Prisma.$UserPayload<ExtArgs> | null
       receiver: Prisma.$UserPayload<ExtArgs> | null
+      sender: Prisma.$UserPayload<ExtArgs> | null
       warehouse: Prisma.$WarehousePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9303,8 +9303,8 @@ export namespace Prisma {
    */
   export interface Prisma__InvitationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    sender<T extends Invitation$senderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$senderArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     receiver<T extends Invitation$receiverArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$receiverArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    sender<T extends Invitation$senderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$senderArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     warehouse<T extends WarehouseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseDefaultArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9744,9 +9744,9 @@ export namespace Prisma {
   }
 
   /**
-   * Invitation.sender
+   * Invitation.receiver
    */
-  export type Invitation$senderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Invitation$receiverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the User
      */
@@ -9763,9 +9763,9 @@ export namespace Prisma {
   }
 
   /**
-   * Invitation.receiver
+   * Invitation.sender
    */
-  export type Invitation$receiverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Invitation$senderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the User
      */
@@ -11017,25 +11017,25 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     Fname: 'Fname',
-    Mname: 'Mname',
     Lname: 'Lname',
-    photo: 'photo',
-    phone: 'phone',
+    Mname: 'Mname',
     address: 'address',
-    role: 'role',
-    status: 'status',
-    isGoogleUser: 'isGoogleUser',
-    googleId: 'googleId',
-    emailVerified: 'emailVerified',
+    createdAt: 'createdAt',
+    createdById: 'createdById',
     emailConfirmationToken: 'emailConfirmationToken',
     emailConfirmationTokenExpiry: 'emailConfirmationTokenExpiry',
+    emailVerified: 'emailVerified',
+    googleId: 'googleId',
+    isGoogleUser: 'isGoogleUser',
+    lastModifiedById: 'lastModifiedById',
+    phone: 'phone',
+    photo: 'photo',
     resetToken: 'resetToken',
     resetTokenExpiry: 'resetTokenExpiry',
-    warehouseId: 'warehouseId',
-    createdById: 'createdById',
-    lastModifiedById: 'lastModifiedById',
-    createdAt: 'createdAt',
+    role: 'role',
+    status: 'status',
     updatedAt: 'updatedAt',
+    warehouseId: 'warehouseId',
     paymentDetails: 'paymentDetails'
   };
 
@@ -11067,11 +11067,11 @@ export namespace Prisma {
     variety: 'variety',
     location: 'location',
     image: 'image',
+    createdAt: 'createdAt',
     description: 'description',
     farmerId: 'farmerId',
-    warehouseId: 'warehouseId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    warehouseId: 'warehouseId'
   };
 
   export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum]
@@ -11223,6 +11223,27 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Role'
    */
   export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
@@ -11247,27 +11268,6 @@ export namespace Prisma {
    * Reference to a field of type 'UserStatus[]'
    */
   export type ListEnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -11394,39 +11394,39 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     password?: StringNullableFilter<"User"> | string | null
     Fname?: StringFilter<"User"> | string
-    Mname?: StringNullableFilter<"User"> | string | null
     Lname?: StringFilter<"User"> | string
-    photo?: StringNullableFilter<"User"> | string | null
-    phone?: StringNullableFilter<"User"> | string | null
-    address?: StringFilter<"User"> | string
-    role?: EnumRoleFilter<"User"> | $Enums.Role
-    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
-    isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
-    googleId?: StringNullableFilter<"User"> | string | null
-    emailVerified?: BoolNullableFilter<"User"> | boolean | null
+    Mname?: StringNullableFilter<"User"> | string | null
+    address?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    createdById?: IntNullableFilter<"User"> | number | null
     emailConfirmationToken?: StringNullableFilter<"User"> | string | null
     emailConfirmationTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
+    emailVerified?: BoolNullableFilter<"User"> | boolean | null
+    googleId?: StringNullableFilter<"User"> | string | null
+    isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
+    lastModifiedById?: IntNullableFilter<"User"> | number | null
+    phone?: StringNullableFilter<"User"> | string | null
+    photo?: StringNullableFilter<"User"> | string | null
     resetToken?: StringNullableFilter<"User"> | string | null
     resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
-    warehouseId?: IntNullableFilter<"User"> | number | null
-    createdById?: IntNullableFilter<"User"> | number | null
-    lastModifiedById?: IntNullableFilter<"User"> | number | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
+    role?: EnumRoleFilter<"User"> | $Enums.Role
+    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    warehouseId?: IntNullableFilter<"User"> | number | null
     paymentDetails?: JsonNullableFilter<"User">
-    warehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
-    managedWarehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
+    performedActions?: ActivityLogListRelationFilter
+    activityLogs?: ActivityLogListRelationFilter
+    receivedInvitations?: InvitationListRelationFilter
+    sentInvitations?: InvitationListRelationFilter
+    farmerPayments?: PaymentListRelationFilter
+    processedPayments?: PaymentListRelationFilter
+    products?: ProductsListRelationFilter
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     createdUsers?: UserListRelationFilter
     lastModifiedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     modifiedUsers?: UserListRelationFilter
-    products?: ProductsListRelationFilter
-    farmerPayments?: PaymentListRelationFilter
-    processedPayments?: PaymentListRelationFilter
-    sentInvitations?: InvitationListRelationFilter
-    receivedInvitations?: InvitationListRelationFilter
-    activityLogs?: ActivityLogListRelationFilter
-    performedActions?: ActivityLogListRelationFilter
+    warehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
+    managedWarehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
     inventoryRecords?: WarehouseInventoryListRelationFilter
   }
 
@@ -11435,110 +11435,110 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrderInput | SortOrder
     Fname?: SortOrder
-    Mname?: SortOrderInput | SortOrder
     Lname?: SortOrder
-    photo?: SortOrderInput | SortOrder
-    phone?: SortOrderInput | SortOrder
-    address?: SortOrder
-    role?: SortOrder
-    status?: SortOrder
-    isGoogleUser?: SortOrderInput | SortOrder
-    googleId?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
+    Mname?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    createdById?: SortOrderInput | SortOrder
     emailConfirmationToken?: SortOrderInput | SortOrder
     emailConfirmationTokenExpiry?: SortOrderInput | SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    googleId?: SortOrderInput | SortOrder
+    isGoogleUser?: SortOrderInput | SortOrder
+    lastModifiedById?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    photo?: SortOrderInput | SortOrder
     resetToken?: SortOrderInput | SortOrder
     resetTokenExpiry?: SortOrderInput | SortOrder
-    warehouseId?: SortOrderInput | SortOrder
-    createdById?: SortOrderInput | SortOrder
-    lastModifiedById?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrderInput | SortOrder
     paymentDetails?: SortOrderInput | SortOrder
-    warehouse?: WarehouseOrderByWithRelationInput
-    managedWarehouse?: WarehouseOrderByWithRelationInput
+    performedActions?: ActivityLogOrderByRelationAggregateInput
+    activityLogs?: ActivityLogOrderByRelationAggregateInput
+    receivedInvitations?: InvitationOrderByRelationAggregateInput
+    sentInvitations?: InvitationOrderByRelationAggregateInput
+    farmerPayments?: PaymentOrderByRelationAggregateInput
+    processedPayments?: PaymentOrderByRelationAggregateInput
+    products?: ProductsOrderByRelationAggregateInput
     createdBy?: UserOrderByWithRelationInput
     createdUsers?: UserOrderByRelationAggregateInput
     lastModifiedBy?: UserOrderByWithRelationInput
     modifiedUsers?: UserOrderByRelationAggregateInput
-    products?: ProductsOrderByRelationAggregateInput
-    farmerPayments?: PaymentOrderByRelationAggregateInput
-    processedPayments?: PaymentOrderByRelationAggregateInput
-    sentInvitations?: InvitationOrderByRelationAggregateInput
-    receivedInvitations?: InvitationOrderByRelationAggregateInput
-    activityLogs?: ActivityLogOrderByRelationAggregateInput
-    performedActions?: ActivityLogOrderByRelationAggregateInput
+    warehouse?: WarehouseOrderByWithRelationInput
+    managedWarehouse?: WarehouseOrderByWithRelationInput
     inventoryRecords?: WarehouseInventoryOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
-    googleId?: string
     emailConfirmationToken?: string
+    googleId?: string
     resetToken?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringNullableFilter<"User"> | string | null
     Fname?: StringFilter<"User"> | string
-    Mname?: StringNullableFilter<"User"> | string | null
     Lname?: StringFilter<"User"> | string
-    photo?: StringNullableFilter<"User"> | string | null
+    Mname?: StringNullableFilter<"User"> | string | null
+    address?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    createdById?: IntNullableFilter<"User"> | number | null
+    emailConfirmationTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
+    emailVerified?: BoolNullableFilter<"User"> | boolean | null
+    isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
+    lastModifiedById?: IntNullableFilter<"User"> | number | null
     phone?: StringNullableFilter<"User"> | string | null
-    address?: StringFilter<"User"> | string
+    photo?: StringNullableFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
-    isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
-    emailVerified?: BoolNullableFilter<"User"> | boolean | null
-    emailConfirmationTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
-    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
-    warehouseId?: IntNullableFilter<"User"> | number | null
-    createdById?: IntNullableFilter<"User"> | number | null
-    lastModifiedById?: IntNullableFilter<"User"> | number | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    warehouseId?: IntNullableFilter<"User"> | number | null
     paymentDetails?: JsonNullableFilter<"User">
-    warehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
-    managedWarehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
+    performedActions?: ActivityLogListRelationFilter
+    activityLogs?: ActivityLogListRelationFilter
+    receivedInvitations?: InvitationListRelationFilter
+    sentInvitations?: InvitationListRelationFilter
+    farmerPayments?: PaymentListRelationFilter
+    processedPayments?: PaymentListRelationFilter
+    products?: ProductsListRelationFilter
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     createdUsers?: UserListRelationFilter
     lastModifiedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     modifiedUsers?: UserListRelationFilter
-    products?: ProductsListRelationFilter
-    farmerPayments?: PaymentListRelationFilter
-    processedPayments?: PaymentListRelationFilter
-    sentInvitations?: InvitationListRelationFilter
-    receivedInvitations?: InvitationListRelationFilter
-    activityLogs?: ActivityLogListRelationFilter
-    performedActions?: ActivityLogListRelationFilter
+    warehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
+    managedWarehouse?: XOR<WarehouseNullableScalarRelationFilter, WarehouseWhereInput> | null
     inventoryRecords?: WarehouseInventoryListRelationFilter
-  }, "id" | "email" | "googleId" | "emailConfirmationToken" | "resetToken">
+  }, "id" | "email" | "emailConfirmationToken" | "googleId" | "resetToken">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrderInput | SortOrder
     Fname?: SortOrder
-    Mname?: SortOrderInput | SortOrder
     Lname?: SortOrder
-    photo?: SortOrderInput | SortOrder
-    phone?: SortOrderInput | SortOrder
-    address?: SortOrder
-    role?: SortOrder
-    status?: SortOrder
-    isGoogleUser?: SortOrderInput | SortOrder
-    googleId?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
+    Mname?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    createdById?: SortOrderInput | SortOrder
     emailConfirmationToken?: SortOrderInput | SortOrder
     emailConfirmationTokenExpiry?: SortOrderInput | SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    googleId?: SortOrderInput | SortOrder
+    isGoogleUser?: SortOrderInput | SortOrder
+    lastModifiedById?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    photo?: SortOrderInput | SortOrder
     resetToken?: SortOrderInput | SortOrder
     resetTokenExpiry?: SortOrderInput | SortOrder
-    warehouseId?: SortOrderInput | SortOrder
-    createdById?: SortOrderInput | SortOrder
-    lastModifiedById?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrderInput | SortOrder
     paymentDetails?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
@@ -11555,25 +11555,25 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     Fname?: StringWithAggregatesFilter<"User"> | string
-    Mname?: StringNullableWithAggregatesFilter<"User"> | string | null
     Lname?: StringWithAggregatesFilter<"User"> | string
-    photo?: StringNullableWithAggregatesFilter<"User"> | string | null
-    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
-    address?: StringWithAggregatesFilter<"User"> | string
-    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
-    status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
-    isGoogleUser?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
-    googleId?: StringNullableWithAggregatesFilter<"User"> | string | null
-    emailVerified?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    Mname?: StringNullableWithAggregatesFilter<"User"> | string | null
+    address?: StringNullableWithAggregatesFilter<"User"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    createdById?: IntNullableWithAggregatesFilter<"User"> | number | null
     emailConfirmationToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailConfirmationTokenExpiry?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    emailVerified?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    googleId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    isGoogleUser?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    lastModifiedById?: IntNullableWithAggregatesFilter<"User"> | number | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+    photo?: StringNullableWithAggregatesFilter<"User"> | string | null
     resetToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     resetTokenExpiry?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-    warehouseId?: IntNullableWithAggregatesFilter<"User"> | number | null
-    createdById?: IntNullableWithAggregatesFilter<"User"> | number | null
-    lastModifiedById?: IntNullableWithAggregatesFilter<"User"> | number | null
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+    status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    warehouseId?: IntNullableWithAggregatesFilter<"User"> | number | null
     paymentDetails?: JsonNullableWithAggregatesFilter<"User">
   }
 
@@ -11591,11 +11591,11 @@ export namespace Prisma {
     managerId?: IntFilter<"Warehouse"> | number
     createdAt?: DateTimeFilter<"Warehouse"> | Date | string
     updatedAt?: DateTimeFilter<"Warehouse"> | Date | string
-    manager?: XOR<UserScalarRelationFilter, UserWhereInput>
-    farmers?: UserListRelationFilter
-    inventory?: WarehouseInventoryListRelationFilter
-    products?: ProductsListRelationFilter
     invitations?: InvitationListRelationFilter
+    products?: ProductsListRelationFilter
+    farmers?: UserListRelationFilter
+    manager?: XOR<UserScalarRelationFilter, UserWhereInput>
+    inventory?: WarehouseInventoryListRelationFilter
   }
 
   export type WarehouseOrderByWithRelationInput = {
@@ -11609,11 +11609,11 @@ export namespace Prisma {
     managerId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    manager?: UserOrderByWithRelationInput
-    farmers?: UserOrderByRelationAggregateInput
-    inventory?: WarehouseInventoryOrderByRelationAggregateInput
-    products?: ProductsOrderByRelationAggregateInput
     invitations?: InvitationOrderByRelationAggregateInput
+    products?: ProductsOrderByRelationAggregateInput
+    farmers?: UserOrderByRelationAggregateInput
+    manager?: UserOrderByWithRelationInput
+    inventory?: WarehouseInventoryOrderByRelationAggregateInput
   }
 
   export type WarehouseWhereUniqueInput = Prisma.AtLeast<{
@@ -11630,11 +11630,11 @@ export namespace Prisma {
     email?: StringNullableFilter<"Warehouse"> | string | null
     createdAt?: DateTimeFilter<"Warehouse"> | Date | string
     updatedAt?: DateTimeFilter<"Warehouse"> | Date | string
-    manager?: XOR<UserScalarRelationFilter, UserWhereInput>
-    farmers?: UserListRelationFilter
-    inventory?: WarehouseInventoryListRelationFilter
-    products?: ProductsListRelationFilter
     invitations?: InvitationListRelationFilter
+    products?: ProductsListRelationFilter
+    farmers?: UserListRelationFilter
+    manager?: XOR<UserScalarRelationFilter, UserWhereInput>
+    inventory?: WarehouseInventoryListRelationFilter
   }, "id" | "managerId">
 
   export type WarehouseOrderByWithAggregationInput = {
@@ -11683,15 +11683,15 @@ export namespace Prisma {
     variety?: StringFilter<"Products"> | string
     location?: StringFilter<"Products"> | string
     image?: StringNullableFilter<"Products"> | string | null
+    createdAt?: DateTimeFilter<"Products"> | Date | string
     description?: StringNullableFilter<"Products"> | string | null
     farmerId?: IntFilter<"Products"> | number
-    warehouseId?: IntFilter<"Products"> | number
-    createdAt?: DateTimeFilter<"Products"> | Date | string
     updatedAt?: DateTimeFilter<"Products"> | Date | string
+    warehouseId?: IntFilter<"Products"> | number
+    payments?: PaymentListRelationFilter
     farmer?: XOR<UserScalarRelationFilter, UserWhereInput>
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
     inventoryMovements?: WarehouseInventoryListRelationFilter
-    payments?: PaymentListRelationFilter
   }
 
   export type ProductsOrderByWithRelationInput = {
@@ -11703,15 +11703,15 @@ export namespace Prisma {
     variety?: SortOrder
     location?: SortOrder
     image?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     description?: SortOrderInput | SortOrder
     farmerId?: SortOrder
-    warehouseId?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
+    payments?: PaymentOrderByRelationAggregateInput
     farmer?: UserOrderByWithRelationInput
     warehouse?: WarehouseOrderByWithRelationInput
     inventoryMovements?: WarehouseInventoryOrderByRelationAggregateInput
-    payments?: PaymentOrderByRelationAggregateInput
   }
 
   export type ProductsWhereUniqueInput = Prisma.AtLeast<{
@@ -11726,15 +11726,15 @@ export namespace Prisma {
     variety?: StringFilter<"Products"> | string
     location?: StringFilter<"Products"> | string
     image?: StringNullableFilter<"Products"> | string | null
+    createdAt?: DateTimeFilter<"Products"> | Date | string
     description?: StringNullableFilter<"Products"> | string | null
     farmerId?: IntFilter<"Products"> | number
-    warehouseId?: IntFilter<"Products"> | number
-    createdAt?: DateTimeFilter<"Products"> | Date | string
     updatedAt?: DateTimeFilter<"Products"> | Date | string
+    warehouseId?: IntFilter<"Products"> | number
+    payments?: PaymentListRelationFilter
     farmer?: XOR<UserScalarRelationFilter, UserWhereInput>
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
     inventoryMovements?: WarehouseInventoryListRelationFilter
-    payments?: PaymentListRelationFilter
   }, "id">
 
   export type ProductsOrderByWithAggregationInput = {
@@ -11746,11 +11746,11 @@ export namespace Prisma {
     variety?: SortOrder
     location?: SortOrder
     image?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     description?: SortOrderInput | SortOrder
     farmerId?: SortOrder
-    warehouseId?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
     _count?: ProductsCountOrderByAggregateInput
     _avg?: ProductsAvgOrderByAggregateInput
     _max?: ProductsMaxOrderByAggregateInput
@@ -11770,11 +11770,11 @@ export namespace Prisma {
     variety?: StringWithAggregatesFilter<"Products"> | string
     location?: StringWithAggregatesFilter<"Products"> | string
     image?: StringNullableWithAggregatesFilter<"Products"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Products"> | Date | string
     description?: StringNullableWithAggregatesFilter<"Products"> | string | null
     farmerId?: IntWithAggregatesFilter<"Products"> | number
-    warehouseId?: IntWithAggregatesFilter<"Products"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Products"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Products"> | Date | string
+    warehouseId?: IntWithAggregatesFilter<"Products"> | number
   }
 
   export type WarehouseInventoryWhereInput = {
@@ -11792,8 +11792,8 @@ export namespace Prisma {
     recordedById?: IntNullableFilter<"WarehouseInventory"> | number | null
     createdAt?: DateTimeFilter<"WarehouseInventory"> | Date | string
     product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
-    warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
     recordedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
   }
 
   export type WarehouseInventoryOrderByWithRelationInput = {
@@ -11808,8 +11808,8 @@ export namespace Prisma {
     recordedById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     product?: ProductsOrderByWithRelationInput
-    warehouse?: WarehouseOrderByWithRelationInput
     recordedBy?: UserOrderByWithRelationInput
+    warehouse?: WarehouseOrderByWithRelationInput
   }
 
   export type WarehouseInventoryWhereUniqueInput = Prisma.AtLeast<{
@@ -11828,8 +11828,8 @@ export namespace Prisma {
     recordedById?: IntNullableFilter<"WarehouseInventory"> | number | null
     createdAt?: DateTimeFilter<"WarehouseInventory"> | Date | string
     product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
-    warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
     recordedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
   }, "id" | "productId_warehouseId">
 
   export type WarehouseInventoryOrderByWithAggregationInput = {
@@ -11886,8 +11886,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Payment"> | Date | string
     updatedAt?: DateTimeFilter<"Payment"> | Date | string
     farmer?: XOR<UserScalarRelationFilter, UserWhereInput>
-    product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
     processedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
   }
 
   export type PaymentOrderByWithRelationInput = {
@@ -11907,8 +11907,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     farmer?: UserOrderByWithRelationInput
-    product?: ProductsOrderByWithRelationInput
     processedBy?: UserOrderByWithRelationInput
+    product?: ProductsOrderByWithRelationInput
   }
 
   export type PaymentWhereUniqueInput = Prisma.AtLeast<{
@@ -11931,8 +11931,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Payment"> | Date | string
     updatedAt?: DateTimeFilter<"Payment"> | Date | string
     farmer?: XOR<UserScalarRelationFilter, UserWhereInput>
-    product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
     processedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
   }, "id" | "referenceNumber">
 
   export type PaymentOrderByWithAggregationInput = {
@@ -11996,8 +11996,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
     token?: StringNullableFilter<"Invitation"> | string | null
     tokenUsed?: BoolFilter<"Invitation"> | boolean
-    sender?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     receiver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    sender?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
   }
 
@@ -12015,8 +12015,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     token?: SortOrderInput | SortOrder
     tokenUsed?: SortOrder
-    sender?: UserOrderByWithRelationInput
     receiver?: UserOrderByWithRelationInput
+    sender?: UserOrderByWithRelationInput
     warehouse?: WarehouseOrderByWithRelationInput
   }
 
@@ -12037,8 +12037,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Invitation"> | Date | string
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
     tokenUsed?: BoolFilter<"Invitation"> | boolean
-    sender?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     receiver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    sender?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
   }, "id" | "token">
 
@@ -12166,36 +12166,36 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
     lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
     modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
   }
 
@@ -12204,36 +12204,36 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
+    warehouseId?: number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
     farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
     processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
@@ -12241,36 +12241,36 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -12279,36 +12279,36 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
     farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
     processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -12317,25 +12317,25 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
+    warehouseId?: number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -12343,21 +12343,21 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -12367,25 +12367,25 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -12398,11 +12398,11 @@ export namespace Prisma {
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    manager: UserCreateNestedOneWithoutManagedWarehouseInput
-    farmers?: UserCreateNestedManyWithoutWarehouseInput
-    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
-    products?: ProductsCreateNestedManyWithoutWarehouseInput
     invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+    products?: ProductsCreateNestedManyWithoutWarehouseInput
+    farmers?: UserCreateNestedManyWithoutWarehouseInput
+    manager: UserCreateNestedOneWithoutManagedWarehouseInput
+    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
   }
 
   export type WarehouseUncheckedCreateInput = {
@@ -12416,10 +12416,10 @@ export namespace Prisma {
     managerId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
+    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
     farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
     inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
-    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
   }
 
   export type WarehouseUpdateInput = {
@@ -12431,11 +12431,11 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
-    farmers?: UserUpdateManyWithoutWarehouseNestedInput
-    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUpdateManyWithoutWarehouseNestedInput
     invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUpdateManyWithoutWarehouseNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
+    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
   }
 
   export type WarehouseUncheckedUpdateInput = {
@@ -12449,10 +12449,10 @@ export namespace Prisma {
     managerId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
     farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
     inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
-    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
   }
 
   export type WarehouseCreateManyInput = {
@@ -12500,13 +12500,13 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
-    description?: string | null
     createdAt?: Date | string
+    description?: string | null
     updatedAt?: Date | string
+    payments?: PaymentCreateNestedManyWithoutProductInput
     farmer: UserCreateNestedOneWithoutProductsInput
     warehouse: WarehouseCreateNestedOneWithoutProductsInput
     inventoryMovements?: WarehouseInventoryCreateNestedManyWithoutProductInput
-    payments?: PaymentCreateNestedManyWithoutProductInput
   }
 
   export type ProductsUncheckedCreateInput = {
@@ -12518,13 +12518,13 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
+    createdAt?: Date | string
     description?: string | null
     farmerId: number
-    warehouseId: number
-    createdAt?: Date | string
     updatedAt?: Date | string
-    inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
+    warehouseId: number
     payments?: PaymentUncheckedCreateNestedManyWithoutProductInput
+    inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductsUpdateInput = {
@@ -12535,13 +12535,13 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: PaymentUpdateManyWithoutProductNestedInput
     farmer?: UserUpdateOneRequiredWithoutProductsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutProductsNestedInput
     inventoryMovements?: WarehouseInventoryUpdateManyWithoutProductNestedInput
-    payments?: PaymentUpdateManyWithoutProductNestedInput
   }
 
   export type ProductsUncheckedUpdateInput = {
@@ -12553,13 +12553,13 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     farmerId?: IntFieldUpdateOperationsInput | number
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
+    warehouseId?: IntFieldUpdateOperationsInput | number
     payments?: PaymentUncheckedUpdateManyWithoutProductNestedInput
+    inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductsCreateManyInput = {
@@ -12571,11 +12571,11 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
+    createdAt?: Date | string
     description?: string | null
     farmerId: number
-    warehouseId: number
-    createdAt?: Date | string
     updatedAt?: Date | string
+    warehouseId: number
   }
 
   export type ProductsUpdateManyMutationInput = {
@@ -12586,8 +12586,8 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12600,11 +12600,11 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     farmerId?: IntFieldUpdateOperationsInput | number
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: IntFieldUpdateOperationsInput | number
   }
 
   export type WarehouseInventoryCreateInput = {
@@ -12615,8 +12615,8 @@ export namespace Prisma {
     reason?: string | null
     createdAt?: Date | string
     product: ProductsCreateNestedOneWithoutInventoryMovementsInput
-    warehouse: WarehouseCreateNestedOneWithoutInventoryInput
     recordedBy?: UserCreateNestedOneWithoutInventoryRecordsInput
+    warehouse: WarehouseCreateNestedOneWithoutInventoryInput
   }
 
   export type WarehouseInventoryUncheckedCreateInput = {
@@ -12640,8 +12640,8 @@ export namespace Prisma {
     reason?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductsUpdateOneRequiredWithoutInventoryMovementsNestedInput
-    warehouse?: WarehouseUpdateOneRequiredWithoutInventoryNestedInput
     recordedBy?: UserUpdateOneWithoutInventoryRecordsNestedInput
+    warehouse?: WarehouseUpdateOneRequiredWithoutInventoryNestedInput
   }
 
   export type WarehouseInventoryUncheckedUpdateInput = {
@@ -12705,8 +12705,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     farmer: UserCreateNestedOneWithoutFarmerPaymentsInput
-    product: ProductsCreateNestedOneWithoutPaymentsInput
     processedBy?: UserCreateNestedOneWithoutProcessedPaymentsInput
+    product: ProductsCreateNestedOneWithoutPaymentsInput
   }
 
   export type PaymentUncheckedCreateInput = {
@@ -12740,8 +12740,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     farmer?: UserUpdateOneRequiredWithoutFarmerPaymentsNestedInput
-    product?: ProductsUpdateOneRequiredWithoutPaymentsNestedInput
     processedBy?: UserUpdateOneWithoutProcessedPaymentsNestedInput
+    product?: ProductsUpdateOneRequiredWithoutPaymentsNestedInput
   }
 
   export type PaymentUncheckedUpdateInput = {
@@ -12822,8 +12822,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     token?: string | null
     tokenUsed?: boolean
-    sender?: UserCreateNestedOneWithoutSentInvitationsInput
     receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
+    sender?: UserCreateNestedOneWithoutSentInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
 
@@ -12853,8 +12853,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: NullableStringFieldUpdateOperationsInput | string | null
     tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
     receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
+    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
 
@@ -13038,34 +13038,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type EnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
-  export type EnumUserStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
-  }
-
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -13079,15 +13060,34 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type EnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
+  export type EnumUserStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
   }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13113,9 +13113,28 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type WarehouseNullableScalarRelationFilter = {
-    is?: WarehouseWhereInput | null
-    isNot?: WarehouseWhereInput | null
+  export type ActivityLogListRelationFilter = {
+    every?: ActivityLogWhereInput
+    some?: ActivityLogWhereInput
+    none?: ActivityLogWhereInput
+  }
+
+  export type InvitationListRelationFilter = {
+    every?: InvitationWhereInput
+    some?: InvitationWhereInput
+    none?: InvitationWhereInput
+  }
+
+  export type PaymentListRelationFilter = {
+    every?: PaymentWhereInput
+    some?: PaymentWhereInput
+    none?: PaymentWhereInput
+  }
+
+  export type ProductsListRelationFilter = {
+    every?: ProductsWhereInput
+    some?: ProductsWhereInput
+    none?: ProductsWhereInput
   }
 
   export type UserNullableScalarRelationFilter = {
@@ -13129,28 +13148,9 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
-  export type ProductsListRelationFilter = {
-    every?: ProductsWhereInput
-    some?: ProductsWhereInput
-    none?: ProductsWhereInput
-  }
-
-  export type PaymentListRelationFilter = {
-    every?: PaymentWhereInput
-    some?: PaymentWhereInput
-    none?: PaymentWhereInput
-  }
-
-  export type InvitationListRelationFilter = {
-    every?: InvitationWhereInput
-    some?: InvitationWhereInput
-    none?: InvitationWhereInput
-  }
-
-  export type ActivityLogListRelationFilter = {
-    every?: ActivityLogWhereInput
-    some?: ActivityLogWhereInput
-    none?: ActivityLogWhereInput
+  export type WarehouseNullableScalarRelationFilter = {
+    is?: WarehouseWhereInput | null
+    isNot?: WarehouseWhereInput | null
   }
 
   export type WarehouseInventoryListRelationFilter = {
@@ -13164,15 +13164,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type UserOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ProductsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PaymentOrderByRelationAggregateInput = {
+  export type ActivityLogOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13180,7 +13172,15 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ActivityLogOrderByRelationAggregateInput = {
+  export type PaymentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProductsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13193,33 +13193,33 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     Fname?: SortOrder
-    Mname?: SortOrder
     Lname?: SortOrder
-    photo?: SortOrder
-    phone?: SortOrder
+    Mname?: SortOrder
     address?: SortOrder
-    role?: SortOrder
-    status?: SortOrder
-    isGoogleUser?: SortOrder
-    googleId?: SortOrder
-    emailVerified?: SortOrder
+    createdAt?: SortOrder
+    createdById?: SortOrder
     emailConfirmationToken?: SortOrder
     emailConfirmationTokenExpiry?: SortOrder
+    emailVerified?: SortOrder
+    googleId?: SortOrder
+    isGoogleUser?: SortOrder
+    lastModifiedById?: SortOrder
+    phone?: SortOrder
+    photo?: SortOrder
     resetToken?: SortOrder
     resetTokenExpiry?: SortOrder
-    warehouseId?: SortOrder
-    createdById?: SortOrder
-    lastModifiedById?: SortOrder
-    createdAt?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
     paymentDetails?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
-    warehouseId?: SortOrder
     createdById?: SortOrder
     lastModifiedById?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -13227,25 +13227,25 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     Fname?: SortOrder
-    Mname?: SortOrder
     Lname?: SortOrder
-    photo?: SortOrder
-    phone?: SortOrder
+    Mname?: SortOrder
     address?: SortOrder
-    role?: SortOrder
-    status?: SortOrder
-    isGoogleUser?: SortOrder
-    googleId?: SortOrder
-    emailVerified?: SortOrder
+    createdAt?: SortOrder
+    createdById?: SortOrder
     emailConfirmationToken?: SortOrder
     emailConfirmationTokenExpiry?: SortOrder
+    emailVerified?: SortOrder
+    googleId?: SortOrder
+    isGoogleUser?: SortOrder
+    lastModifiedById?: SortOrder
+    phone?: SortOrder
+    photo?: SortOrder
     resetToken?: SortOrder
     resetTokenExpiry?: SortOrder
-    warehouseId?: SortOrder
-    createdById?: SortOrder
-    lastModifiedById?: SortOrder
-    createdAt?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -13253,32 +13253,32 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     Fname?: SortOrder
-    Mname?: SortOrder
     Lname?: SortOrder
-    photo?: SortOrder
-    phone?: SortOrder
+    Mname?: SortOrder
     address?: SortOrder
-    role?: SortOrder
-    status?: SortOrder
-    isGoogleUser?: SortOrder
-    googleId?: SortOrder
-    emailVerified?: SortOrder
+    createdAt?: SortOrder
+    createdById?: SortOrder
     emailConfirmationToken?: SortOrder
     emailConfirmationTokenExpiry?: SortOrder
+    emailVerified?: SortOrder
+    googleId?: SortOrder
+    isGoogleUser?: SortOrder
+    lastModifiedById?: SortOrder
+    phone?: SortOrder
+    photo?: SortOrder
     resetToken?: SortOrder
     resetTokenExpiry?: SortOrder
-    warehouseId?: SortOrder
-    createdById?: SortOrder
-    lastModifiedById?: SortOrder
-    createdAt?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
-    warehouseId?: SortOrder
     createdById?: SortOrder
     lastModifiedById?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -13333,46 +13333,18 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
-  }
-
-  export type EnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserStatusFilter<$PrismaModel>
-    _max?: NestedEnumUserStatusFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13391,18 +13363,46 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type EnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserStatusFilter<$PrismaModel>
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13512,11 +13512,11 @@ export namespace Prisma {
     variety?: SortOrder
     location?: SortOrder
     image?: SortOrder
+    createdAt?: SortOrder
     description?: SortOrder
     farmerId?: SortOrder
-    warehouseId?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type ProductsAvgOrderByAggregateInput = {
@@ -13536,11 +13536,11 @@ export namespace Prisma {
     variety?: SortOrder
     location?: SortOrder
     image?: SortOrder
+    createdAt?: SortOrder
     description?: SortOrder
     farmerId?: SortOrder
-    warehouseId?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type ProductsMinOrderByAggregateInput = {
@@ -13552,11 +13552,11 @@ export namespace Prisma {
     variety?: SortOrder
     location?: SortOrder
     image?: SortOrder
+    createdAt?: SortOrder
     description?: SortOrder
     farmerId?: SortOrder
-    warehouseId?: SortOrder
-    createdAt?: SortOrder
     updatedAt?: SortOrder
+    warehouseId?: SortOrder
   }
 
   export type ProductsSumOrderByAggregateInput = {
@@ -13951,16 +13951,53 @@ export namespace Prisma {
     _max?: NestedEnumEntityTypeFilter<$PrismaModel>
   }
 
-  export type WarehouseCreateNestedOneWithoutFarmersInput = {
-    create?: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutFarmersInput
-    connect?: WarehouseWhereUniqueInput
+  export type ActivityLogCreateNestedManyWithoutPerformedByInput = {
+    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
+    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
   }
 
-  export type WarehouseCreateNestedOneWithoutManagerInput = {
-    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
-    connect?: WarehouseWhereUniqueInput
+  export type ActivityLogCreateNestedManyWithoutTargetUserInput = {
+    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
+    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+  }
+
+  export type InvitationCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
+    createMany?: InvitationCreateManyReceiverInputEnvelope
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+  }
+
+  export type InvitationCreateNestedManyWithoutSenderInput = {
+    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
+    createMany?: InvitationCreateManySenderInputEnvelope
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+  }
+
+  export type PaymentCreateNestedManyWithoutFarmerInput = {
+    create?: XOR<PaymentCreateWithoutFarmerInput, PaymentUncheckedCreateWithoutFarmerInput> | PaymentCreateWithoutFarmerInput[] | PaymentUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutFarmerInput | PaymentCreateOrConnectWithoutFarmerInput[]
+    createMany?: PaymentCreateManyFarmerInputEnvelope
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+  }
+
+  export type PaymentCreateNestedManyWithoutProcessedByInput = {
+    create?: XOR<PaymentCreateWithoutProcessedByInput, PaymentUncheckedCreateWithoutProcessedByInput> | PaymentCreateWithoutProcessedByInput[] | PaymentUncheckedCreateWithoutProcessedByInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutProcessedByInput | PaymentCreateOrConnectWithoutProcessedByInput[]
+    createMany?: PaymentCreateManyProcessedByInputEnvelope
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+  }
+
+  export type ProductsCreateNestedManyWithoutFarmerInput = {
+    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
+    createMany?: ProductsCreateManyFarmerInputEnvelope
+    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
   }
 
   export type UserCreateNestedOneWithoutCreatedUsersInput = {
@@ -13989,53 +14026,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type ProductsCreateNestedManyWithoutFarmerInput = {
-    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
-    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
-    createMany?: ProductsCreateManyFarmerInputEnvelope
-    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+  export type WarehouseCreateNestedOneWithoutFarmersInput = {
+    create?: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutFarmersInput
+    connect?: WarehouseWhereUniqueInput
   }
 
-  export type PaymentCreateNestedManyWithoutFarmerInput = {
-    create?: XOR<PaymentCreateWithoutFarmerInput, PaymentUncheckedCreateWithoutFarmerInput> | PaymentCreateWithoutFarmerInput[] | PaymentUncheckedCreateWithoutFarmerInput[]
-    connectOrCreate?: PaymentCreateOrConnectWithoutFarmerInput | PaymentCreateOrConnectWithoutFarmerInput[]
-    createMany?: PaymentCreateManyFarmerInputEnvelope
-    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-  }
-
-  export type PaymentCreateNestedManyWithoutProcessedByInput = {
-    create?: XOR<PaymentCreateWithoutProcessedByInput, PaymentUncheckedCreateWithoutProcessedByInput> | PaymentCreateWithoutProcessedByInput[] | PaymentUncheckedCreateWithoutProcessedByInput[]
-    connectOrCreate?: PaymentCreateOrConnectWithoutProcessedByInput | PaymentCreateOrConnectWithoutProcessedByInput[]
-    createMany?: PaymentCreateManyProcessedByInputEnvelope
-    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-  }
-
-  export type InvitationCreateNestedManyWithoutSenderInput = {
-    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
-    createMany?: InvitationCreateManySenderInputEnvelope
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-  }
-
-  export type InvitationCreateNestedManyWithoutReceiverInput = {
-    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
-    createMany?: InvitationCreateManyReceiverInputEnvelope
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-  }
-
-  export type ActivityLogCreateNestedManyWithoutTargetUserInput = {
-    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
-    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-  }
-
-  export type ActivityLogCreateNestedManyWithoutPerformedByInput = {
-    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
-    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+  export type WarehouseCreateNestedOneWithoutManagerInput = {
+    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
+    connect?: WarehouseWhereUniqueInput
   }
 
   export type WarehouseInventoryCreateNestedManyWithoutRecordedByInput = {
@@ -14045,31 +14045,32 @@ export namespace Prisma {
     connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
   }
 
-  export type WarehouseUncheckedCreateNestedOneWithoutManagerInput = {
-    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
-    connect?: WarehouseWhereUniqueInput
+  export type ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput = {
+    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
+    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput> | UserCreateWithoutCreatedByInput[] | UserUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCreatedByInput | UserCreateOrConnectWithoutCreatedByInput[]
-    createMany?: UserCreateManyCreatedByInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  export type ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput = {
+    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
+    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutLastModifiedByInput = {
-    create?: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput> | UserCreateWithoutLastModifiedByInput[] | UserUncheckedCreateWithoutLastModifiedByInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutLastModifiedByInput | UserCreateOrConnectWithoutLastModifiedByInput[]
-    createMany?: UserCreateManyLastModifiedByInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  export type InvitationUncheckedCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
+    createMany?: InvitationCreateManyReceiverInputEnvelope
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
   }
 
-  export type ProductsUncheckedCreateNestedManyWithoutFarmerInput = {
-    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
-    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
-    createMany?: ProductsCreateManyFarmerInputEnvelope
-    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+  export type InvitationUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
+    createMany?: InvitationCreateManySenderInputEnvelope
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
   }
 
   export type PaymentUncheckedCreateNestedManyWithoutFarmerInput = {
@@ -14086,32 +14087,31 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
-  export type InvitationUncheckedCreateNestedManyWithoutSenderInput = {
-    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
-    createMany?: InvitationCreateManySenderInputEnvelope
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+  export type ProductsUncheckedCreateNestedManyWithoutFarmerInput = {
+    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
+    createMany?: ProductsCreateManyFarmerInputEnvelope
+    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
   }
 
-  export type InvitationUncheckedCreateNestedManyWithoutReceiverInput = {
-    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
-    createMany?: InvitationCreateManyReceiverInputEnvelope
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+  export type UserUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput> | UserCreateWithoutCreatedByInput[] | UserUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedByInput | UserCreateOrConnectWithoutCreatedByInput[]
+    createMany?: UserCreateManyCreatedByInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput = {
-    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
-    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+  export type UserUncheckedCreateNestedManyWithoutLastModifiedByInput = {
+    create?: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput> | UserCreateWithoutLastModifiedByInput[] | UserUncheckedCreateWithoutLastModifiedByInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutLastModifiedByInput | UserCreateOrConnectWithoutLastModifiedByInput[]
+    createMany?: UserCreateManyLastModifiedByInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput = {
-    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
-    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+  export type WarehouseUncheckedCreateNestedOneWithoutManagerInput = {
+    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
+    connect?: WarehouseWhereUniqueInput
   }
 
   export type WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput = {
@@ -14129,6 +14129,18 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
   }
@@ -14137,36 +14149,102 @@ export namespace Prisma {
     set?: $Enums.UserStatus
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
+  export type ActivityLogUpdateManyWithoutPerformedByNestedInput = {
+    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
+    upsert?: ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput | ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput[]
+    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
+    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    update?: ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput | ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput[]
+    updateMany?: ActivityLogUpdateManyWithWhereWithoutPerformedByInput | ActivityLogUpdateManyWithWhereWithoutPerformedByInput[]
+    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type ActivityLogUpdateManyWithoutTargetUserNestedInput = {
+    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
+    upsert?: ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput | ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput[]
+    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
+    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    update?: ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput | ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput[]
+    updateMany?: ActivityLogUpdateManyWithWhereWithoutTargetUserInput | ActivityLogUpdateManyWithWhereWithoutTargetUserInput[]
+    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type InvitationUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
+    upsert?: InvitationUpsertWithWhereUniqueWithoutReceiverInput | InvitationUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: InvitationCreateManyReceiverInputEnvelope
+    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    update?: InvitationUpdateWithWhereUniqueWithoutReceiverInput | InvitationUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: InvitationUpdateManyWithWhereWithoutReceiverInput | InvitationUpdateManyWithWhereWithoutReceiverInput[]
+    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
   }
 
-  export type WarehouseUpdateOneWithoutFarmersNestedInput = {
-    create?: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutFarmersInput
-    upsert?: WarehouseUpsertWithoutFarmersInput
-    disconnect?: WarehouseWhereInput | boolean
-    delete?: WarehouseWhereInput | boolean
-    connect?: WarehouseWhereUniqueInput
-    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutFarmersInput, WarehouseUpdateWithoutFarmersInput>, WarehouseUncheckedUpdateWithoutFarmersInput>
+  export type InvitationUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
+    upsert?: InvitationUpsertWithWhereUniqueWithoutSenderInput | InvitationUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: InvitationCreateManySenderInputEnvelope
+    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    update?: InvitationUpdateWithWhereUniqueWithoutSenderInput | InvitationUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: InvitationUpdateManyWithWhereWithoutSenderInput | InvitationUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
   }
 
-  export type WarehouseUpdateOneWithoutManagerNestedInput = {
-    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
-    upsert?: WarehouseUpsertWithoutManagerInput
-    disconnect?: WarehouseWhereInput | boolean
-    delete?: WarehouseWhereInput | boolean
-    connect?: WarehouseWhereUniqueInput
-    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutManagerInput, WarehouseUpdateWithoutManagerInput>, WarehouseUncheckedUpdateWithoutManagerInput>
+  export type PaymentUpdateManyWithoutFarmerNestedInput = {
+    create?: XOR<PaymentCreateWithoutFarmerInput, PaymentUncheckedCreateWithoutFarmerInput> | PaymentCreateWithoutFarmerInput[] | PaymentUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutFarmerInput | PaymentCreateOrConnectWithoutFarmerInput[]
+    upsert?: PaymentUpsertWithWhereUniqueWithoutFarmerInput | PaymentUpsertWithWhereUniqueWithoutFarmerInput[]
+    createMany?: PaymentCreateManyFarmerInputEnvelope
+    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    update?: PaymentUpdateWithWhereUniqueWithoutFarmerInput | PaymentUpdateWithWhereUniqueWithoutFarmerInput[]
+    updateMany?: PaymentUpdateManyWithWhereWithoutFarmerInput | PaymentUpdateManyWithWhereWithoutFarmerInput[]
+    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
+  }
+
+  export type PaymentUpdateManyWithoutProcessedByNestedInput = {
+    create?: XOR<PaymentCreateWithoutProcessedByInput, PaymentUncheckedCreateWithoutProcessedByInput> | PaymentCreateWithoutProcessedByInput[] | PaymentUncheckedCreateWithoutProcessedByInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutProcessedByInput | PaymentCreateOrConnectWithoutProcessedByInput[]
+    upsert?: PaymentUpsertWithWhereUniqueWithoutProcessedByInput | PaymentUpsertWithWhereUniqueWithoutProcessedByInput[]
+    createMany?: PaymentCreateManyProcessedByInputEnvelope
+    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    update?: PaymentUpdateWithWhereUniqueWithoutProcessedByInput | PaymentUpdateWithWhereUniqueWithoutProcessedByInput[]
+    updateMany?: PaymentUpdateManyWithWhereWithoutProcessedByInput | PaymentUpdateManyWithWhereWithoutProcessedByInput[]
+    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
+  }
+
+  export type ProductsUpdateManyWithoutFarmerNestedInput = {
+    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
+    upsert?: ProductsUpsertWithWhereUniqueWithoutFarmerInput | ProductsUpsertWithWhereUniqueWithoutFarmerInput[]
+    createMany?: ProductsCreateManyFarmerInputEnvelope
+    set?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    disconnect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    delete?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    update?: ProductsUpdateWithWhereUniqueWithoutFarmerInput | ProductsUpdateWithWhereUniqueWithoutFarmerInput[]
+    updateMany?: ProductsUpdateManyWithWhereWithoutFarmerInput | ProductsUpdateManyWithWhereWithoutFarmerInput[]
+    deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
   }
 
   export type UserUpdateOneWithoutCreatedUsersNestedInput = {
@@ -14217,102 +14295,24 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type ProductsUpdateManyWithoutFarmerNestedInput = {
-    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
-    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
-    upsert?: ProductsUpsertWithWhereUniqueWithoutFarmerInput | ProductsUpsertWithWhereUniqueWithoutFarmerInput[]
-    createMany?: ProductsCreateManyFarmerInputEnvelope
-    set?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    disconnect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    delete?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    update?: ProductsUpdateWithWhereUniqueWithoutFarmerInput | ProductsUpdateWithWhereUniqueWithoutFarmerInput[]
-    updateMany?: ProductsUpdateManyWithWhereWithoutFarmerInput | ProductsUpdateManyWithWhereWithoutFarmerInput[]
-    deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
+  export type WarehouseUpdateOneWithoutFarmersNestedInput = {
+    create?: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutFarmersInput
+    upsert?: WarehouseUpsertWithoutFarmersInput
+    disconnect?: WarehouseWhereInput | boolean
+    delete?: WarehouseWhereInput | boolean
+    connect?: WarehouseWhereUniqueInput
+    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutFarmersInput, WarehouseUpdateWithoutFarmersInput>, WarehouseUncheckedUpdateWithoutFarmersInput>
   }
 
-  export type PaymentUpdateManyWithoutFarmerNestedInput = {
-    create?: XOR<PaymentCreateWithoutFarmerInput, PaymentUncheckedCreateWithoutFarmerInput> | PaymentCreateWithoutFarmerInput[] | PaymentUncheckedCreateWithoutFarmerInput[]
-    connectOrCreate?: PaymentCreateOrConnectWithoutFarmerInput | PaymentCreateOrConnectWithoutFarmerInput[]
-    upsert?: PaymentUpsertWithWhereUniqueWithoutFarmerInput | PaymentUpsertWithWhereUniqueWithoutFarmerInput[]
-    createMany?: PaymentCreateManyFarmerInputEnvelope
-    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    update?: PaymentUpdateWithWhereUniqueWithoutFarmerInput | PaymentUpdateWithWhereUniqueWithoutFarmerInput[]
-    updateMany?: PaymentUpdateManyWithWhereWithoutFarmerInput | PaymentUpdateManyWithWhereWithoutFarmerInput[]
-    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
-  }
-
-  export type PaymentUpdateManyWithoutProcessedByNestedInput = {
-    create?: XOR<PaymentCreateWithoutProcessedByInput, PaymentUncheckedCreateWithoutProcessedByInput> | PaymentCreateWithoutProcessedByInput[] | PaymentUncheckedCreateWithoutProcessedByInput[]
-    connectOrCreate?: PaymentCreateOrConnectWithoutProcessedByInput | PaymentCreateOrConnectWithoutProcessedByInput[]
-    upsert?: PaymentUpsertWithWhereUniqueWithoutProcessedByInput | PaymentUpsertWithWhereUniqueWithoutProcessedByInput[]
-    createMany?: PaymentCreateManyProcessedByInputEnvelope
-    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    update?: PaymentUpdateWithWhereUniqueWithoutProcessedByInput | PaymentUpdateWithWhereUniqueWithoutProcessedByInput[]
-    updateMany?: PaymentUpdateManyWithWhereWithoutProcessedByInput | PaymentUpdateManyWithWhereWithoutProcessedByInput[]
-    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
-  }
-
-  export type InvitationUpdateManyWithoutSenderNestedInput = {
-    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
-    upsert?: InvitationUpsertWithWhereUniqueWithoutSenderInput | InvitationUpsertWithWhereUniqueWithoutSenderInput[]
-    createMany?: InvitationCreateManySenderInputEnvelope
-    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    update?: InvitationUpdateWithWhereUniqueWithoutSenderInput | InvitationUpdateWithWhereUniqueWithoutSenderInput[]
-    updateMany?: InvitationUpdateManyWithWhereWithoutSenderInput | InvitationUpdateManyWithWhereWithoutSenderInput[]
-    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
-  }
-
-  export type InvitationUpdateManyWithoutReceiverNestedInput = {
-    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
-    upsert?: InvitationUpsertWithWhereUniqueWithoutReceiverInput | InvitationUpsertWithWhereUniqueWithoutReceiverInput[]
-    createMany?: InvitationCreateManyReceiverInputEnvelope
-    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    update?: InvitationUpdateWithWhereUniqueWithoutReceiverInput | InvitationUpdateWithWhereUniqueWithoutReceiverInput[]
-    updateMany?: InvitationUpdateManyWithWhereWithoutReceiverInput | InvitationUpdateManyWithWhereWithoutReceiverInput[]
-    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
-  }
-
-  export type ActivityLogUpdateManyWithoutTargetUserNestedInput = {
-    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
-    upsert?: ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput | ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput[]
-    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
-    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    update?: ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput | ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput[]
-    updateMany?: ActivityLogUpdateManyWithWhereWithoutTargetUserInput | ActivityLogUpdateManyWithWhereWithoutTargetUserInput[]
-    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
-  }
-
-  export type ActivityLogUpdateManyWithoutPerformedByNestedInput = {
-    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
-    upsert?: ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput | ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput[]
-    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
-    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    update?: ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput | ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput[]
-    updateMany?: ActivityLogUpdateManyWithWhereWithoutPerformedByInput | ActivityLogUpdateManyWithWhereWithoutPerformedByInput[]
-    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
+  export type WarehouseUpdateOneWithoutManagerNestedInput = {
+    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
+    upsert?: WarehouseUpsertWithoutManagerInput
+    disconnect?: WarehouseWhereInput | boolean
+    delete?: WarehouseWhereInput | boolean
+    connect?: WarehouseWhereUniqueInput
+    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutManagerInput, WarehouseUpdateWithoutManagerInput>, WarehouseUncheckedUpdateWithoutManagerInput>
   }
 
   export type WarehouseInventoryUpdateManyWithoutRecordedByNestedInput = {
@@ -14345,56 +14345,60 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type WarehouseUncheckedUpdateOneWithoutManagerNestedInput = {
-    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
-    upsert?: WarehouseUpsertWithoutManagerInput
-    disconnect?: WarehouseWhereInput | boolean
-    delete?: WarehouseWhereInput | boolean
-    connect?: WarehouseWhereUniqueInput
-    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutManagerInput, WarehouseUpdateWithoutManagerInput>, WarehouseUncheckedUpdateWithoutManagerInput>
+  export type ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput = {
+    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
+    upsert?: ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput | ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput[]
+    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
+    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    update?: ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput | ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput[]
+    updateMany?: ActivityLogUpdateManyWithWhereWithoutPerformedByInput | ActivityLogUpdateManyWithWhereWithoutPerformedByInput[]
+    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput> | UserCreateWithoutCreatedByInput[] | UserUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCreatedByInput | UserCreateOrConnectWithoutCreatedByInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutCreatedByInput | UserUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: UserCreateManyCreatedByInputEnvelope
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutCreatedByInput | UserUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutCreatedByInput | UserUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput = {
+    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
+    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
+    upsert?: ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput | ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput[]
+    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
+    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
+    update?: ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput | ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput[]
+    updateMany?: ActivityLogUpdateManyWithWhereWithoutTargetUserInput | ActivityLogUpdateManyWithWhereWithoutTargetUserInput[]
+    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutLastModifiedByNestedInput = {
-    create?: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput> | UserCreateWithoutLastModifiedByInput[] | UserUncheckedCreateWithoutLastModifiedByInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutLastModifiedByInput | UserCreateOrConnectWithoutLastModifiedByInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutLastModifiedByInput | UserUpsertWithWhereUniqueWithoutLastModifiedByInput[]
-    createMany?: UserCreateManyLastModifiedByInputEnvelope
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutLastModifiedByInput | UserUpdateWithWhereUniqueWithoutLastModifiedByInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutLastModifiedByInput | UserUpdateManyWithWhereWithoutLastModifiedByInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type InvitationUncheckedUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
+    upsert?: InvitationUpsertWithWhereUniqueWithoutReceiverInput | InvitationUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: InvitationCreateManyReceiverInputEnvelope
+    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    update?: InvitationUpdateWithWhereUniqueWithoutReceiverInput | InvitationUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: InvitationUpdateManyWithWhereWithoutReceiverInput | InvitationUpdateManyWithWhereWithoutReceiverInput[]
+    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
   }
 
-  export type ProductsUncheckedUpdateManyWithoutFarmerNestedInput = {
-    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
-    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
-    upsert?: ProductsUpsertWithWhereUniqueWithoutFarmerInput | ProductsUpsertWithWhereUniqueWithoutFarmerInput[]
-    createMany?: ProductsCreateManyFarmerInputEnvelope
-    set?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    disconnect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    delete?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    update?: ProductsUpdateWithWhereUniqueWithoutFarmerInput | ProductsUpdateWithWhereUniqueWithoutFarmerInput[]
-    updateMany?: ProductsUpdateManyWithWhereWithoutFarmerInput | ProductsUpdateManyWithWhereWithoutFarmerInput[]
-    deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
+  export type InvitationUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
+    upsert?: InvitationUpsertWithWhereUniqueWithoutSenderInput | InvitationUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: InvitationCreateManySenderInputEnvelope
+    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    update?: InvitationUpdateWithWhereUniqueWithoutSenderInput | InvitationUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: InvitationUpdateManyWithWhereWithoutSenderInput | InvitationUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
   }
 
   export type PaymentUncheckedUpdateManyWithoutFarmerNestedInput = {
@@ -14425,60 +14429,56 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
   }
 
-  export type InvitationUncheckedUpdateManyWithoutSenderNestedInput = {
-    create?: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput> | InvitationCreateWithoutSenderInput[] | InvitationUncheckedCreateWithoutSenderInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutSenderInput | InvitationCreateOrConnectWithoutSenderInput[]
-    upsert?: InvitationUpsertWithWhereUniqueWithoutSenderInput | InvitationUpsertWithWhereUniqueWithoutSenderInput[]
-    createMany?: InvitationCreateManySenderInputEnvelope
-    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    update?: InvitationUpdateWithWhereUniqueWithoutSenderInput | InvitationUpdateWithWhereUniqueWithoutSenderInput[]
-    updateMany?: InvitationUpdateManyWithWhereWithoutSenderInput | InvitationUpdateManyWithWhereWithoutSenderInput[]
-    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+  export type ProductsUncheckedUpdateManyWithoutFarmerNestedInput = {
+    create?: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput> | ProductsCreateWithoutFarmerInput[] | ProductsUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: ProductsCreateOrConnectWithoutFarmerInput | ProductsCreateOrConnectWithoutFarmerInput[]
+    upsert?: ProductsUpsertWithWhereUniqueWithoutFarmerInput | ProductsUpsertWithWhereUniqueWithoutFarmerInput[]
+    createMany?: ProductsCreateManyFarmerInputEnvelope
+    set?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    disconnect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    delete?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    update?: ProductsUpdateWithWhereUniqueWithoutFarmerInput | ProductsUpdateWithWhereUniqueWithoutFarmerInput[]
+    updateMany?: ProductsUpdateManyWithWhereWithoutFarmerInput | ProductsUpdateManyWithWhereWithoutFarmerInput[]
+    deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
   }
 
-  export type InvitationUncheckedUpdateManyWithoutReceiverNestedInput = {
-    create?: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput> | InvitationCreateWithoutReceiverInput[] | InvitationUncheckedCreateWithoutReceiverInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutReceiverInput | InvitationCreateOrConnectWithoutReceiverInput[]
-    upsert?: InvitationUpsertWithWhereUniqueWithoutReceiverInput | InvitationUpsertWithWhereUniqueWithoutReceiverInput[]
-    createMany?: InvitationCreateManyReceiverInputEnvelope
-    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    update?: InvitationUpdateWithWhereUniqueWithoutReceiverInput | InvitationUpdateWithWhereUniqueWithoutReceiverInput[]
-    updateMany?: InvitationUpdateManyWithWhereWithoutReceiverInput | InvitationUpdateManyWithWhereWithoutReceiverInput[]
-    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+  export type UserUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput> | UserCreateWithoutCreatedByInput[] | UserUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedByInput | UserCreateOrConnectWithoutCreatedByInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutCreatedByInput | UserUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: UserCreateManyCreatedByInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutCreatedByInput | UserUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutCreatedByInput | UserUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput = {
-    create?: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput> | ActivityLogCreateWithoutTargetUserInput[] | ActivityLogUncheckedCreateWithoutTargetUserInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutTargetUserInput | ActivityLogCreateOrConnectWithoutTargetUserInput[]
-    upsert?: ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput | ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput[]
-    createMany?: ActivityLogCreateManyTargetUserInputEnvelope
-    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    update?: ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput | ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput[]
-    updateMany?: ActivityLogUpdateManyWithWhereWithoutTargetUserInput | ActivityLogUpdateManyWithWhereWithoutTargetUserInput[]
-    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
+  export type UserUncheckedUpdateManyWithoutLastModifiedByNestedInput = {
+    create?: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput> | UserCreateWithoutLastModifiedByInput[] | UserUncheckedCreateWithoutLastModifiedByInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutLastModifiedByInput | UserCreateOrConnectWithoutLastModifiedByInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutLastModifiedByInput | UserUpsertWithWhereUniqueWithoutLastModifiedByInput[]
+    createMany?: UserCreateManyLastModifiedByInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutLastModifiedByInput | UserUpdateWithWhereUniqueWithoutLastModifiedByInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutLastModifiedByInput | UserUpdateManyWithWhereWithoutLastModifiedByInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput = {
-    create?: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput> | ActivityLogCreateWithoutPerformedByInput[] | ActivityLogUncheckedCreateWithoutPerformedByInput[]
-    connectOrCreate?: ActivityLogCreateOrConnectWithoutPerformedByInput | ActivityLogCreateOrConnectWithoutPerformedByInput[]
-    upsert?: ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput | ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput[]
-    createMany?: ActivityLogCreateManyPerformedByInputEnvelope
-    set?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    disconnect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    delete?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    connect?: ActivityLogWhereUniqueInput | ActivityLogWhereUniqueInput[]
-    update?: ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput | ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput[]
-    updateMany?: ActivityLogUpdateManyWithWhereWithoutPerformedByInput | ActivityLogUpdateManyWithWhereWithoutPerformedByInput[]
-    deleteMany?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
+  export type WarehouseUncheckedUpdateOneWithoutManagerNestedInput = {
+    create?: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutManagerInput
+    upsert?: WarehouseUpsertWithoutManagerInput
+    disconnect?: WarehouseWhereInput | boolean
+    delete?: WarehouseWhereInput | boolean
+    connect?: WarehouseWhereUniqueInput
+    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutManagerInput, WarehouseUpdateWithoutManagerInput>, WarehouseUncheckedUpdateWithoutManagerInput>
   }
 
   export type WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput = {
@@ -14495,24 +14495,11 @@ export namespace Prisma {
     deleteMany?: WarehouseInventoryScalarWhereInput | WarehouseInventoryScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutManagedWarehouseInput = {
-    create?: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
-    connectOrCreate?: UserCreateOrConnectWithoutManagedWarehouseInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedManyWithoutWarehouseInput = {
-    create?: XOR<UserCreateWithoutWarehouseInput, UserUncheckedCreateWithoutWarehouseInput> | UserCreateWithoutWarehouseInput[] | UserUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutWarehouseInput | UserCreateOrConnectWithoutWarehouseInput[]
-    createMany?: UserCreateManyWarehouseInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type WarehouseInventoryCreateNestedManyWithoutWarehouseInput = {
-    create?: XOR<WarehouseInventoryCreateWithoutWarehouseInput, WarehouseInventoryUncheckedCreateWithoutWarehouseInput> | WarehouseInventoryCreateWithoutWarehouseInput[] | WarehouseInventoryUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: WarehouseInventoryCreateOrConnectWithoutWarehouseInput | WarehouseInventoryCreateOrConnectWithoutWarehouseInput[]
-    createMany?: WarehouseInventoryCreateManyWarehouseInputEnvelope
-    connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
+  export type InvitationCreateNestedManyWithoutWarehouseInput = {
+    create?: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput> | InvitationCreateWithoutWarehouseInput[] | InvitationUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: InvitationCreateOrConnectWithoutWarehouseInput | InvitationCreateOrConnectWithoutWarehouseInput[]
+    createMany?: InvitationCreateManyWarehouseInputEnvelope
+    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
   }
 
   export type ProductsCreateNestedManyWithoutWarehouseInput = {
@@ -14522,11 +14509,38 @@ export namespace Prisma {
     connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
   }
 
-  export type InvitationCreateNestedManyWithoutWarehouseInput = {
+  export type UserCreateNestedManyWithoutWarehouseInput = {
+    create?: XOR<UserCreateWithoutWarehouseInput, UserUncheckedCreateWithoutWarehouseInput> | UserCreateWithoutWarehouseInput[] | UserUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutWarehouseInput | UserCreateOrConnectWithoutWarehouseInput[]
+    createMany?: UserCreateManyWarehouseInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutManagedWarehouseInput = {
+    create?: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
+    connectOrCreate?: UserCreateOrConnectWithoutManagedWarehouseInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type WarehouseInventoryCreateNestedManyWithoutWarehouseInput = {
+    create?: XOR<WarehouseInventoryCreateWithoutWarehouseInput, WarehouseInventoryUncheckedCreateWithoutWarehouseInput> | WarehouseInventoryCreateWithoutWarehouseInput[] | WarehouseInventoryUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: WarehouseInventoryCreateOrConnectWithoutWarehouseInput | WarehouseInventoryCreateOrConnectWithoutWarehouseInput[]
+    createMany?: WarehouseInventoryCreateManyWarehouseInputEnvelope
+    connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
+  }
+
+  export type InvitationUncheckedCreateNestedManyWithoutWarehouseInput = {
     create?: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput> | InvitationCreateWithoutWarehouseInput[] | InvitationUncheckedCreateWithoutWarehouseInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutWarehouseInput | InvitationCreateOrConnectWithoutWarehouseInput[]
     createMany?: InvitationCreateManyWarehouseInputEnvelope
     connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+  }
+
+  export type ProductsUncheckedCreateNestedManyWithoutWarehouseInput = {
+    create?: XOR<ProductsCreateWithoutWarehouseInput, ProductsUncheckedCreateWithoutWarehouseInput> | ProductsCreateWithoutWarehouseInput[] | ProductsUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: ProductsCreateOrConnectWithoutWarehouseInput | ProductsCreateOrConnectWithoutWarehouseInput[]
+    createMany?: ProductsCreateManyWarehouseInputEnvelope
+    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutWarehouseInput = {
@@ -14543,54 +14557,18 @@ export namespace Prisma {
     connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
   }
 
-  export type ProductsUncheckedCreateNestedManyWithoutWarehouseInput = {
-    create?: XOR<ProductsCreateWithoutWarehouseInput, ProductsUncheckedCreateWithoutWarehouseInput> | ProductsCreateWithoutWarehouseInput[] | ProductsUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: ProductsCreateOrConnectWithoutWarehouseInput | ProductsCreateOrConnectWithoutWarehouseInput[]
-    createMany?: ProductsCreateManyWarehouseInputEnvelope
-    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-  }
-
-  export type InvitationUncheckedCreateNestedManyWithoutWarehouseInput = {
+  export type InvitationUpdateManyWithoutWarehouseNestedInput = {
     create?: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput> | InvitationCreateWithoutWarehouseInput[] | InvitationUncheckedCreateWithoutWarehouseInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutWarehouseInput | InvitationCreateOrConnectWithoutWarehouseInput[]
+    upsert?: InvitationUpsertWithWhereUniqueWithoutWarehouseInput | InvitationUpsertWithWhereUniqueWithoutWarehouseInput[]
     createMany?: InvitationCreateManyWarehouseInputEnvelope
+    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
+    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
     connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-  }
-
-  export type UserUpdateOneRequiredWithoutManagedWarehouseNestedInput = {
-    create?: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
-    connectOrCreate?: UserCreateOrConnectWithoutManagedWarehouseInput
-    upsert?: UserUpsertWithoutManagedWarehouseInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutManagedWarehouseInput, UserUpdateWithoutManagedWarehouseInput>, UserUncheckedUpdateWithoutManagedWarehouseInput>
-  }
-
-  export type UserUpdateManyWithoutWarehouseNestedInput = {
-    create?: XOR<UserCreateWithoutWarehouseInput, UserUncheckedCreateWithoutWarehouseInput> | UserCreateWithoutWarehouseInput[] | UserUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutWarehouseInput | UserCreateOrConnectWithoutWarehouseInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutWarehouseInput | UserUpsertWithWhereUniqueWithoutWarehouseInput[]
-    createMany?: UserCreateManyWarehouseInputEnvelope
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutWarehouseInput | UserUpdateWithWhereUniqueWithoutWarehouseInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutWarehouseInput | UserUpdateManyWithWhereWithoutWarehouseInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type WarehouseInventoryUpdateManyWithoutWarehouseNestedInput = {
-    create?: XOR<WarehouseInventoryCreateWithoutWarehouseInput, WarehouseInventoryUncheckedCreateWithoutWarehouseInput> | WarehouseInventoryCreateWithoutWarehouseInput[] | WarehouseInventoryUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: WarehouseInventoryCreateOrConnectWithoutWarehouseInput | WarehouseInventoryCreateOrConnectWithoutWarehouseInput[]
-    upsert?: WarehouseInventoryUpsertWithWhereUniqueWithoutWarehouseInput | WarehouseInventoryUpsertWithWhereUniqueWithoutWarehouseInput[]
-    createMany?: WarehouseInventoryCreateManyWarehouseInputEnvelope
-    set?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
-    disconnect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
-    delete?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
-    connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
-    update?: WarehouseInventoryUpdateWithWhereUniqueWithoutWarehouseInput | WarehouseInventoryUpdateWithWhereUniqueWithoutWarehouseInput[]
-    updateMany?: WarehouseInventoryUpdateManyWithWhereWithoutWarehouseInput | WarehouseInventoryUpdateManyWithWhereWithoutWarehouseInput[]
-    deleteMany?: WarehouseInventoryScalarWhereInput | WarehouseInventoryScalarWhereInput[]
+    update?: InvitationUpdateWithWhereUniqueWithoutWarehouseInput | InvitationUpdateWithWhereUniqueWithoutWarehouseInput[]
+    updateMany?: InvitationUpdateManyWithWhereWithoutWarehouseInput | InvitationUpdateManyWithWhereWithoutWarehouseInput[]
+    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
   }
 
   export type ProductsUpdateManyWithoutWarehouseNestedInput = {
@@ -14607,7 +14585,43 @@ export namespace Prisma {
     deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
   }
 
-  export type InvitationUpdateManyWithoutWarehouseNestedInput = {
+  export type UserUpdateManyWithoutWarehouseNestedInput = {
+    create?: XOR<UserCreateWithoutWarehouseInput, UserUncheckedCreateWithoutWarehouseInput> | UserCreateWithoutWarehouseInput[] | UserUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutWarehouseInput | UserCreateOrConnectWithoutWarehouseInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutWarehouseInput | UserUpsertWithWhereUniqueWithoutWarehouseInput[]
+    createMany?: UserCreateManyWarehouseInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutWarehouseInput | UserUpdateWithWhereUniqueWithoutWarehouseInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutWarehouseInput | UserUpdateManyWithWhereWithoutWarehouseInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutManagedWarehouseNestedInput = {
+    create?: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
+    connectOrCreate?: UserCreateOrConnectWithoutManagedWarehouseInput
+    upsert?: UserUpsertWithoutManagedWarehouseInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutManagedWarehouseInput, UserUpdateWithoutManagedWarehouseInput>, UserUncheckedUpdateWithoutManagedWarehouseInput>
+  }
+
+  export type WarehouseInventoryUpdateManyWithoutWarehouseNestedInput = {
+    create?: XOR<WarehouseInventoryCreateWithoutWarehouseInput, WarehouseInventoryUncheckedCreateWithoutWarehouseInput> | WarehouseInventoryCreateWithoutWarehouseInput[] | WarehouseInventoryUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: WarehouseInventoryCreateOrConnectWithoutWarehouseInput | WarehouseInventoryCreateOrConnectWithoutWarehouseInput[]
+    upsert?: WarehouseInventoryUpsertWithWhereUniqueWithoutWarehouseInput | WarehouseInventoryUpsertWithWhereUniqueWithoutWarehouseInput[]
+    createMany?: WarehouseInventoryCreateManyWarehouseInputEnvelope
+    set?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
+    disconnect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
+    delete?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
+    connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
+    update?: WarehouseInventoryUpdateWithWhereUniqueWithoutWarehouseInput | WarehouseInventoryUpdateWithWhereUniqueWithoutWarehouseInput[]
+    updateMany?: WarehouseInventoryUpdateManyWithWhereWithoutWarehouseInput | WarehouseInventoryUpdateManyWithWhereWithoutWarehouseInput[]
+    deleteMany?: WarehouseInventoryScalarWhereInput | WarehouseInventoryScalarWhereInput[]
+  }
+
+  export type InvitationUncheckedUpdateManyWithoutWarehouseNestedInput = {
     create?: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput> | InvitationCreateWithoutWarehouseInput[] | InvitationUncheckedCreateWithoutWarehouseInput[]
     connectOrCreate?: InvitationCreateOrConnectWithoutWarehouseInput | InvitationCreateOrConnectWithoutWarehouseInput[]
     upsert?: InvitationUpsertWithWhereUniqueWithoutWarehouseInput | InvitationUpsertWithWhereUniqueWithoutWarehouseInput[]
@@ -14619,6 +14633,20 @@ export namespace Prisma {
     update?: InvitationUpdateWithWhereUniqueWithoutWarehouseInput | InvitationUpdateWithWhereUniqueWithoutWarehouseInput[]
     updateMany?: InvitationUpdateManyWithWhereWithoutWarehouseInput | InvitationUpdateManyWithWhereWithoutWarehouseInput[]
     deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+  }
+
+  export type ProductsUncheckedUpdateManyWithoutWarehouseNestedInput = {
+    create?: XOR<ProductsCreateWithoutWarehouseInput, ProductsUncheckedCreateWithoutWarehouseInput> | ProductsCreateWithoutWarehouseInput[] | ProductsUncheckedCreateWithoutWarehouseInput[]
+    connectOrCreate?: ProductsCreateOrConnectWithoutWarehouseInput | ProductsCreateOrConnectWithoutWarehouseInput[]
+    upsert?: ProductsUpsertWithWhereUniqueWithoutWarehouseInput | ProductsUpsertWithWhereUniqueWithoutWarehouseInput[]
+    createMany?: ProductsCreateManyWarehouseInputEnvelope
+    set?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    disconnect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    delete?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
+    update?: ProductsUpdateWithWhereUniqueWithoutWarehouseInput | ProductsUpdateWithWhereUniqueWithoutWarehouseInput[]
+    updateMany?: ProductsUpdateManyWithWhereWithoutWarehouseInput | ProductsUpdateManyWithWhereWithoutWarehouseInput[]
+    deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutWarehouseNestedInput = {
@@ -14649,32 +14677,11 @@ export namespace Prisma {
     deleteMany?: WarehouseInventoryScalarWhereInput | WarehouseInventoryScalarWhereInput[]
   }
 
-  export type ProductsUncheckedUpdateManyWithoutWarehouseNestedInput = {
-    create?: XOR<ProductsCreateWithoutWarehouseInput, ProductsUncheckedCreateWithoutWarehouseInput> | ProductsCreateWithoutWarehouseInput[] | ProductsUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: ProductsCreateOrConnectWithoutWarehouseInput | ProductsCreateOrConnectWithoutWarehouseInput[]
-    upsert?: ProductsUpsertWithWhereUniqueWithoutWarehouseInput | ProductsUpsertWithWhereUniqueWithoutWarehouseInput[]
-    createMany?: ProductsCreateManyWarehouseInputEnvelope
-    set?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    disconnect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    delete?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    connect?: ProductsWhereUniqueInput | ProductsWhereUniqueInput[]
-    update?: ProductsUpdateWithWhereUniqueWithoutWarehouseInput | ProductsUpdateWithWhereUniqueWithoutWarehouseInput[]
-    updateMany?: ProductsUpdateManyWithWhereWithoutWarehouseInput | ProductsUpdateManyWithWhereWithoutWarehouseInput[]
-    deleteMany?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
-  }
-
-  export type InvitationUncheckedUpdateManyWithoutWarehouseNestedInput = {
-    create?: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput> | InvitationCreateWithoutWarehouseInput[] | InvitationUncheckedCreateWithoutWarehouseInput[]
-    connectOrCreate?: InvitationCreateOrConnectWithoutWarehouseInput | InvitationCreateOrConnectWithoutWarehouseInput[]
-    upsert?: InvitationUpsertWithWhereUniqueWithoutWarehouseInput | InvitationUpsertWithWhereUniqueWithoutWarehouseInput[]
-    createMany?: InvitationCreateManyWarehouseInputEnvelope
-    set?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    disconnect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    delete?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    connect?: InvitationWhereUniqueInput | InvitationWhereUniqueInput[]
-    update?: InvitationUpdateWithWhereUniqueWithoutWarehouseInput | InvitationUpdateWithWhereUniqueWithoutWarehouseInput[]
-    updateMany?: InvitationUpdateManyWithWhereWithoutWarehouseInput | InvitationUpdateManyWithWhereWithoutWarehouseInput[]
-    deleteMany?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+  export type PaymentCreateNestedManyWithoutProductInput = {
+    create?: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput> | PaymentCreateWithoutProductInput[] | PaymentUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutProductInput | PaymentCreateOrConnectWithoutProductInput[]
+    createMany?: PaymentCreateManyProductInputEnvelope
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
   export type UserCreateNestedOneWithoutProductsInput = {
@@ -14696,7 +14703,7 @@ export namespace Prisma {
     connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
   }
 
-  export type PaymentCreateNestedManyWithoutProductInput = {
+  export type PaymentUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput> | PaymentCreateWithoutProductInput[] | PaymentUncheckedCreateWithoutProductInput[]
     connectOrCreate?: PaymentCreateOrConnectWithoutProductInput | PaymentCreateOrConnectWithoutProductInput[]
     createMany?: PaymentCreateManyProductInputEnvelope
@@ -14710,19 +14717,26 @@ export namespace Prisma {
     connect?: WarehouseInventoryWhereUniqueInput | WarehouseInventoryWhereUniqueInput[]
   }
 
-  export type PaymentUncheckedCreateNestedManyWithoutProductInput = {
-    create?: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput> | PaymentCreateWithoutProductInput[] | PaymentUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: PaymentCreateOrConnectWithoutProductInput | PaymentCreateOrConnectWithoutProductInput[]
-    createMany?: PaymentCreateManyProductInputEnvelope
-    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-  }
-
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type PaymentUpdateManyWithoutProductNestedInput = {
+    create?: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput> | PaymentCreateWithoutProductInput[] | PaymentUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: PaymentCreateOrConnectWithoutProductInput | PaymentCreateOrConnectWithoutProductInput[]
+    upsert?: PaymentUpsertWithWhereUniqueWithoutProductInput | PaymentUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: PaymentCreateManyProductInputEnvelope
+    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
+    update?: PaymentUpdateWithWhereUniqueWithoutProductInput | PaymentUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: PaymentUpdateManyWithWhereWithoutProductInput | PaymentUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
   }
 
   export type UserUpdateOneRequiredWithoutProductsNestedInput = {
@@ -14755,7 +14769,7 @@ export namespace Prisma {
     deleteMany?: WarehouseInventoryScalarWhereInput | WarehouseInventoryScalarWhereInput[]
   }
 
-  export type PaymentUpdateManyWithoutProductNestedInput = {
+  export type PaymentUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput> | PaymentCreateWithoutProductInput[] | PaymentUncheckedCreateWithoutProductInput[]
     connectOrCreate?: PaymentCreateOrConnectWithoutProductInput | PaymentCreateOrConnectWithoutProductInput[]
     upsert?: PaymentUpsertWithWhereUniqueWithoutProductInput | PaymentUpsertWithWhereUniqueWithoutProductInput[]
@@ -14783,36 +14797,22 @@ export namespace Prisma {
     deleteMany?: WarehouseInventoryScalarWhereInput | WarehouseInventoryScalarWhereInput[]
   }
 
-  export type PaymentUncheckedUpdateManyWithoutProductNestedInput = {
-    create?: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput> | PaymentCreateWithoutProductInput[] | PaymentUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: PaymentCreateOrConnectWithoutProductInput | PaymentCreateOrConnectWithoutProductInput[]
-    upsert?: PaymentUpsertWithWhereUniqueWithoutProductInput | PaymentUpsertWithWhereUniqueWithoutProductInput[]
-    createMany?: PaymentCreateManyProductInputEnvelope
-    set?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    disconnect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    delete?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
-    update?: PaymentUpdateWithWhereUniqueWithoutProductInput | PaymentUpdateWithWhereUniqueWithoutProductInput[]
-    updateMany?: PaymentUpdateManyWithWhereWithoutProductInput | PaymentUpdateManyWithWhereWithoutProductInput[]
-    deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[]
-  }
-
   export type ProductsCreateNestedOneWithoutInventoryMovementsInput = {
     create?: XOR<ProductsCreateWithoutInventoryMovementsInput, ProductsUncheckedCreateWithoutInventoryMovementsInput>
     connectOrCreate?: ProductsCreateOrConnectWithoutInventoryMovementsInput
     connect?: ProductsWhereUniqueInput
   }
 
-  export type WarehouseCreateNestedOneWithoutInventoryInput = {
-    create?: XOR<WarehouseCreateWithoutInventoryInput, WarehouseUncheckedCreateWithoutInventoryInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutInventoryInput
-    connect?: WarehouseWhereUniqueInput
-  }
-
   export type UserCreateNestedOneWithoutInventoryRecordsInput = {
     create?: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
     connectOrCreate?: UserCreateOrConnectWithoutInventoryRecordsInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type WarehouseCreateNestedOneWithoutInventoryInput = {
+    create?: XOR<WarehouseCreateWithoutInventoryInput, WarehouseUncheckedCreateWithoutInventoryInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutInventoryInput
+    connect?: WarehouseWhereUniqueInput
   }
 
   export type EnumMovementTypeFieldUpdateOperationsInput = {
@@ -14827,14 +14827,6 @@ export namespace Prisma {
     update?: XOR<XOR<ProductsUpdateToOneWithWhereWithoutInventoryMovementsInput, ProductsUpdateWithoutInventoryMovementsInput>, ProductsUncheckedUpdateWithoutInventoryMovementsInput>
   }
 
-  export type WarehouseUpdateOneRequiredWithoutInventoryNestedInput = {
-    create?: XOR<WarehouseCreateWithoutInventoryInput, WarehouseUncheckedCreateWithoutInventoryInput>
-    connectOrCreate?: WarehouseCreateOrConnectWithoutInventoryInput
-    upsert?: WarehouseUpsertWithoutInventoryInput
-    connect?: WarehouseWhereUniqueInput
-    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutInventoryInput, WarehouseUpdateWithoutInventoryInput>, WarehouseUncheckedUpdateWithoutInventoryInput>
-  }
-
   export type UserUpdateOneWithoutInventoryRecordsNestedInput = {
     create?: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
     connectOrCreate?: UserCreateOrConnectWithoutInventoryRecordsInput
@@ -14845,9 +14837,23 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInventoryRecordsInput, UserUpdateWithoutInventoryRecordsInput>, UserUncheckedUpdateWithoutInventoryRecordsInput>
   }
 
+  export type WarehouseUpdateOneRequiredWithoutInventoryNestedInput = {
+    create?: XOR<WarehouseCreateWithoutInventoryInput, WarehouseUncheckedCreateWithoutInventoryInput>
+    connectOrCreate?: WarehouseCreateOrConnectWithoutInventoryInput
+    upsert?: WarehouseUpsertWithoutInventoryInput
+    connect?: WarehouseWhereUniqueInput
+    update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutInventoryInput, WarehouseUpdateWithoutInventoryInput>, WarehouseUncheckedUpdateWithoutInventoryInput>
+  }
+
   export type UserCreateNestedOneWithoutFarmerPaymentsInput = {
     create?: XOR<UserCreateWithoutFarmerPaymentsInput, UserUncheckedCreateWithoutFarmerPaymentsInput>
     connectOrCreate?: UserCreateOrConnectWithoutFarmerPaymentsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutProcessedPaymentsInput = {
+    create?: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProcessedPaymentsInput
     connect?: UserWhereUniqueInput
   }
 
@@ -14855,12 +14861,6 @@ export namespace Prisma {
     create?: XOR<ProductsCreateWithoutPaymentsInput, ProductsUncheckedCreateWithoutPaymentsInput>
     connectOrCreate?: ProductsCreateOrConnectWithoutPaymentsInput
     connect?: ProductsWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutProcessedPaymentsInput = {
-    create?: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProcessedPaymentsInput
-    connect?: UserWhereUniqueInput
   }
 
   export type EnumPaymentStatusFieldUpdateOperationsInput = {
@@ -14879,14 +14879,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFarmerPaymentsInput, UserUpdateWithoutFarmerPaymentsInput>, UserUncheckedUpdateWithoutFarmerPaymentsInput>
   }
 
-  export type ProductsUpdateOneRequiredWithoutPaymentsNestedInput = {
-    create?: XOR<ProductsCreateWithoutPaymentsInput, ProductsUncheckedCreateWithoutPaymentsInput>
-    connectOrCreate?: ProductsCreateOrConnectWithoutPaymentsInput
-    upsert?: ProductsUpsertWithoutPaymentsInput
-    connect?: ProductsWhereUniqueInput
-    update?: XOR<XOR<ProductsUpdateToOneWithWhereWithoutPaymentsInput, ProductsUpdateWithoutPaymentsInput>, ProductsUncheckedUpdateWithoutPaymentsInput>
-  }
-
   export type UserUpdateOneWithoutProcessedPaymentsNestedInput = {
     create?: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
     connectOrCreate?: UserCreateOrConnectWithoutProcessedPaymentsInput
@@ -14897,15 +14889,23 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProcessedPaymentsInput, UserUpdateWithoutProcessedPaymentsInput>, UserUncheckedUpdateWithoutProcessedPaymentsInput>
   }
 
-  export type UserCreateNestedOneWithoutSentInvitationsInput = {
-    create?: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSentInvitationsInput
-    connect?: UserWhereUniqueInput
+  export type ProductsUpdateOneRequiredWithoutPaymentsNestedInput = {
+    create?: XOR<ProductsCreateWithoutPaymentsInput, ProductsUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: ProductsCreateOrConnectWithoutPaymentsInput
+    upsert?: ProductsUpsertWithoutPaymentsInput
+    connect?: ProductsWhereUniqueInput
+    update?: XOR<XOR<ProductsUpdateToOneWithWhereWithoutPaymentsInput, ProductsUpdateWithoutPaymentsInput>, ProductsUncheckedUpdateWithoutPaymentsInput>
   }
 
   export type UserCreateNestedOneWithoutReceivedInvitationsInput = {
     create?: XOR<UserCreateWithoutReceivedInvitationsInput, UserUncheckedCreateWithoutReceivedInvitationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReceivedInvitationsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutSentInvitationsInput = {
+    create?: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentInvitationsInput
     connect?: UserWhereUniqueInput
   }
 
@@ -14923,16 +14923,6 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type UserUpdateOneWithoutSentInvitationsNestedInput = {
-    create?: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSentInvitationsInput
-    upsert?: UserUpsertWithoutSentInvitationsInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentInvitationsInput, UserUpdateWithoutSentInvitationsInput>, UserUncheckedUpdateWithoutSentInvitationsInput>
-  }
-
   export type UserUpdateOneWithoutReceivedInvitationsNestedInput = {
     create?: XOR<UserCreateWithoutReceivedInvitationsInput, UserUncheckedCreateWithoutReceivedInvitationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReceivedInvitationsInput
@@ -14941,6 +14931,16 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReceivedInvitationsInput, UserUpdateWithoutReceivedInvitationsInput>, UserUncheckedUpdateWithoutReceivedInvitationsInput>
+  }
+
+  export type UserUpdateOneWithoutSentInvitationsNestedInput = {
+    create?: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentInvitationsInput
+    upsert?: UserUpsertWithoutSentInvitationsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentInvitationsInput, UserUpdateWithoutSentInvitationsInput>, UserUncheckedUpdateWithoutSentInvitationsInput>
   }
 
   export type WarehouseUpdateOneRequiredWithoutInvitationsNestedInput = {
@@ -15030,34 +15030,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
-  export type NestedEnumUserStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
-  }
-
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -15071,15 +15052,34 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
+  export type NestedEnumUserStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -15143,46 +15143,18 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRoleFilter<$PrismaModel>
-    _max?: NestedEnumRoleFilter<$PrismaModel>
-  }
-
-  export type NestedEnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserStatusFilter<$PrismaModel>
-    _max?: NestedEnumUserStatusFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15212,18 +15184,46 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type NestedEnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserStatusFilter<$PrismaModel>
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -15380,440 +15380,143 @@ export namespace Prisma {
     _max?: NestedEnumEntityTypeFilter<$PrismaModel>
   }
 
-  export type WarehouseCreateWithoutFarmersInput = {
-    name: string
-    location: string
-    address?: string | null
-    capacity?: number | null
-    phone?: string | null
-    email?: string | null
+  export type ActivityLogCreateWithoutPerformedByInput = {
+    action: $Enums.ActionType
+    entityType: $Enums.EntityType
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    updatedAt?: Date | string
-    manager: UserCreateNestedOneWithoutManagedWarehouseInput
-    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
-    products?: ProductsCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+    targetUser?: UserCreateNestedOneWithoutActivityLogsInput
   }
 
-  export type WarehouseUncheckedCreateWithoutFarmersInput = {
+  export type ActivityLogUncheckedCreateWithoutPerformedByInput = {
     id?: number
-    name: string
-    location: string
-    address?: string | null
-    capacity?: number | null
-    phone?: string | null
-    email?: string | null
-    managerId: number
+    targetUserId?: number | null
+    action: $Enums.ActionType
+    entityType: $Enums.EntityType
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    updatedAt?: Date | string
-    inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
-    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
   }
 
-  export type WarehouseCreateOrConnectWithoutFarmersInput = {
-    where: WarehouseWhereUniqueInput
-    create: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
+  export type ActivityLogCreateOrConnectWithoutPerformedByInput = {
+    where: ActivityLogWhereUniqueInput
+    create: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput>
   }
 
-  export type WarehouseCreateWithoutManagerInput = {
-    name: string
-    location: string
-    address?: string | null
-    capacity?: number | null
-    phone?: string | null
-    email?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    farmers?: UserCreateNestedManyWithoutWarehouseInput
-    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
-    products?: ProductsCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationCreateNestedManyWithoutWarehouseInput
-  }
-
-  export type WarehouseUncheckedCreateWithoutManagerInput = {
-    id?: number
-    name: string
-    location: string
-    address?: string | null
-    capacity?: number | null
-    phone?: string | null
-    email?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
-    inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
-    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
-  }
-
-  export type WarehouseCreateOrConnectWithoutManagerInput = {
-    where: WarehouseWhereUniqueInput
-    create: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
-  }
-
-  export type UserCreateWithoutCreatedUsersInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatedUsersInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatedUsersInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatedUsersInput, UserUncheckedCreateWithoutCreatedUsersInput>
-  }
-
-  export type UserCreateWithoutCreatedByInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCreatedByInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCreatedByInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type UserCreateManyCreatedByInputEnvelope = {
-    data: UserCreateManyCreatedByInput | UserCreateManyCreatedByInput[]
+  export type ActivityLogCreateManyPerformedByInputEnvelope = {
+    data: ActivityLogCreateManyPerformedByInput | ActivityLogCreateManyPerformedByInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserCreateWithoutModifiedUsersInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
+  export type ActivityLogCreateWithoutTargetUserInput = {
+    action: $Enums.ActionType
+    entityType: $Enums.EntityType
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+    performedBy?: UserCreateNestedOneWithoutPerformedActionsInput
   }
 
-  export type UserUncheckedCreateWithoutModifiedUsersInput = {
+  export type ActivityLogUncheckedCreateWithoutTargetUserInput = {
     id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
+    performedById?: number | null
+    action: $Enums.ActionType
+    entityType: $Enums.EntityType
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
-  export type UserCreateOrConnectWithoutModifiedUsersInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutModifiedUsersInput, UserUncheckedCreateWithoutModifiedUsersInput>
+  export type ActivityLogCreateOrConnectWithoutTargetUserInput = {
+    where: ActivityLogWhereUniqueInput
+    create: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput>
   }
 
-  export type UserCreateWithoutLastModifiedByInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserUncheckedCreateWithoutLastModifiedByInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserCreateOrConnectWithoutLastModifiedByInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput>
-  }
-
-  export type UserCreateManyLastModifiedByInputEnvelope = {
-    data: UserCreateManyLastModifiedByInput | UserCreateManyLastModifiedByInput[]
+  export type ActivityLogCreateManyTargetUserInputEnvelope = {
+    data: ActivityLogCreateManyTargetUserInput | ActivityLogCreateManyTargetUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type ProductsCreateWithoutFarmerInput = {
-    name: string
-    grade: string
-    quantity: number
-    price: number
-    variety: string
-    location: string
-    image?: string | null
-    description?: string | null
+  export type InvitationCreateWithoutReceiverInput = {
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    warehouse: WarehouseCreateNestedOneWithoutProductsInput
-    inventoryMovements?: WarehouseInventoryCreateNestedManyWithoutProductInput
-    payments?: PaymentCreateNestedManyWithoutProductInput
+    token?: string | null
+    tokenUsed?: boolean
+    sender?: UserCreateNestedOneWithoutSentInvitationsInput
+    warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
 
-  export type ProductsUncheckedCreateWithoutFarmerInput = {
+  export type InvitationUncheckedCreateWithoutReceiverInput = {
     id?: number
-    name: string
-    grade: string
-    quantity: number
-    price: number
-    variety: string
-    location: string
-    image?: string | null
-    description?: string | null
+    senderId?: number | null
     warehouseId: number
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
-    payments?: PaymentUncheckedCreateNestedManyWithoutProductInput
+    token?: string | null
+    tokenUsed?: boolean
   }
 
-  export type ProductsCreateOrConnectWithoutFarmerInput = {
-    where: ProductsWhereUniqueInput
-    create: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput>
+  export type InvitationCreateOrConnectWithoutReceiverInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput>
   }
 
-  export type ProductsCreateManyFarmerInputEnvelope = {
-    data: ProductsCreateManyFarmerInput | ProductsCreateManyFarmerInput[]
+  export type InvitationCreateManyReceiverInputEnvelope = {
+    data: InvitationCreateManyReceiverInput | InvitationCreateManyReceiverInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InvitationCreateWithoutSenderInput = {
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
+    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
+    warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
+  }
+
+  export type InvitationUncheckedCreateWithoutSenderInput = {
+    id?: number
+    receiverId?: number | null
+    warehouseId: number
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
+  }
+
+  export type InvitationCreateOrConnectWithoutSenderInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput>
+  }
+
+  export type InvitationCreateManySenderInputEnvelope = {
+    data: InvitationCreateManySenderInput | InvitationCreateManySenderInput[]
     skipDuplicates?: boolean
   }
 
@@ -15829,8 +15532,8 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    product: ProductsCreateNestedOneWithoutPaymentsInput
     processedBy?: UserCreateNestedOneWithoutProcessedPaymentsInput
+    product: ProductsCreateNestedOneWithoutPaymentsInput
   }
 
   export type PaymentUncheckedCreateWithoutFarmerInput = {
@@ -15903,144 +15606,441 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type InvitationCreateWithoutSenderInput = {
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
+  export type ProductsCreateWithoutFarmerInput = {
+    name: string
+    grade: string
+    quantity: number
+    price: number
+    variety: string
+    location: string
+    image?: string | null
     createdAt?: Date | string
+    description?: string | null
     updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
-    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
-    warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
+    payments?: PaymentCreateNestedManyWithoutProductInput
+    warehouse: WarehouseCreateNestedOneWithoutProductsInput
+    inventoryMovements?: WarehouseInventoryCreateNestedManyWithoutProductInput
   }
 
-  export type InvitationUncheckedCreateWithoutSenderInput = {
+  export type ProductsUncheckedCreateWithoutFarmerInput = {
     id?: number
-    receiverId?: number | null
+    name: string
+    grade: string
+    quantity: number
+    price: number
+    variety: string
+    location: string
+    image?: string | null
+    createdAt?: Date | string
+    description?: string | null
+    updatedAt?: Date | string
     warehouseId: number
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
+    payments?: PaymentUncheckedCreateNestedManyWithoutProductInput
+    inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductsCreateOrConnectWithoutFarmerInput = {
+    where: ProductsWhereUniqueInput
+    create: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput>
+  }
+
+  export type ProductsCreateManyFarmerInputEnvelope = {
+    data: ProductsCreateManyFarmerInput | ProductsCreateManyFarmerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutCreatedUsersInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatedUsersInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatedUsersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatedUsersInput, UserUncheckedCreateWithoutCreatedUsersInput>
+  }
+
+  export type UserCreateWithoutCreatedByInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatedByInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatedByInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type UserCreateManyCreatedByInputEnvelope = {
+    data: UserCreateManyCreatedByInput | UserCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutModifiedUsersInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutModifiedUsersInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutModifiedUsersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutModifiedUsersInput, UserUncheckedCreateWithoutModifiedUsersInput>
+  }
+
+  export type UserCreateWithoutLastModifiedByInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutLastModifiedByInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutLastModifiedByInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput>
+  }
+
+  export type UserCreateManyLastModifiedByInputEnvelope = {
+    data: UserCreateManyLastModifiedByInput | UserCreateManyLastModifiedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WarehouseCreateWithoutFarmersInput = {
+    name: string
+    location: string
+    address?: string | null
+    capacity?: number | null
+    phone?: string | null
+    email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
+    invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+    products?: ProductsCreateNestedManyWithoutWarehouseInput
+    manager: UserCreateNestedOneWithoutManagedWarehouseInput
+    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
   }
 
-  export type InvitationCreateOrConnectWithoutSenderInput = {
-    where: InvitationWhereUniqueInput
-    create: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput>
-  }
-
-  export type InvitationCreateManySenderInputEnvelope = {
-    data: InvitationCreateManySenderInput | InvitationCreateManySenderInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type InvitationCreateWithoutReceiverInput = {
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
+  export type WarehouseUncheckedCreateWithoutFarmersInput = {
+    id?: number
+    name: string
+    location: string
+    address?: string | null
+    capacity?: number | null
+    phone?: string | null
+    email?: string | null
+    managerId: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
-    sender?: UserCreateNestedOneWithoutSentInvitationsInput
-    warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
+    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
+    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
+    inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
   }
 
-  export type InvitationUncheckedCreateWithoutReceiverInput = {
-    id?: number
-    senderId?: number | null
-    warehouseId: number
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
+  export type WarehouseCreateOrConnectWithoutFarmersInput = {
+    where: WarehouseWhereUniqueInput
+    create: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
+  }
+
+  export type WarehouseCreateWithoutManagerInput = {
+    name: string
+    location: string
+    address?: string | null
+    capacity?: number | null
+    phone?: string | null
+    email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
+    invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+    products?: ProductsCreateNestedManyWithoutWarehouseInput
+    farmers?: UserCreateNestedManyWithoutWarehouseInput
+    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
   }
 
-  export type InvitationCreateOrConnectWithoutReceiverInput = {
-    where: InvitationWhereUniqueInput
-    create: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput>
-  }
-
-  export type InvitationCreateManyReceiverInputEnvelope = {
-    data: InvitationCreateManyReceiverInput | InvitationCreateManyReceiverInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ActivityLogCreateWithoutTargetUserInput = {
-    action: $Enums.ActionType
-    entityType: $Enums.EntityType
-    entityId?: number | null
-    description: string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    performedBy?: UserCreateNestedOneWithoutPerformedActionsInput
-  }
-
-  export type ActivityLogUncheckedCreateWithoutTargetUserInput = {
+  export type WarehouseUncheckedCreateWithoutManagerInput = {
     id?: number
-    performedById?: number | null
-    action: $Enums.ActionType
-    entityType: $Enums.EntityType
-    entityId?: number | null
-    description: string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
+    name: string
+    location: string
+    address?: string | null
+    capacity?: number | null
+    phone?: string | null
+    email?: string | null
     createdAt?: Date | string
+    updatedAt?: Date | string
+    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
+    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
+    farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
+    inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
   }
 
-  export type ActivityLogCreateOrConnectWithoutTargetUserInput = {
-    where: ActivityLogWhereUniqueInput
-    create: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput>
-  }
-
-  export type ActivityLogCreateManyTargetUserInputEnvelope = {
-    data: ActivityLogCreateManyTargetUserInput | ActivityLogCreateManyTargetUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ActivityLogCreateWithoutPerformedByInput = {
-    action: $Enums.ActionType
-    entityType: $Enums.EntityType
-    entityId?: number | null
-    description: string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    targetUser?: UserCreateNestedOneWithoutActivityLogsInput
-  }
-
-  export type ActivityLogUncheckedCreateWithoutPerformedByInput = {
-    id?: number
-    targetUserId?: number | null
-    action: $Enums.ActionType
-    entityType: $Enums.EntityType
-    entityId?: number | null
-    description: string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-  }
-
-  export type ActivityLogCreateOrConnectWithoutPerformedByInput = {
-    where: ActivityLogWhereUniqueInput
-    create: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput>
-  }
-
-  export type ActivityLogCreateManyPerformedByInputEnvelope = {
-    data: ActivityLogCreateManyPerformedByInput | ActivityLogCreateManyPerformedByInput[]
-    skipDuplicates?: boolean
+  export type WarehouseCreateOrConnectWithoutManagerInput = {
+    where: WarehouseWhereUniqueInput
+    create: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
   }
 
   export type WarehouseInventoryCreateWithoutRecordedByInput = {
@@ -16076,353 +16076,102 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type WarehouseUpsertWithoutFarmersInput = {
-    update: XOR<WarehouseUpdateWithoutFarmersInput, WarehouseUncheckedUpdateWithoutFarmersInput>
-    create: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
-    where?: WarehouseWhereInput
+  export type ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput = {
+    where: ActivityLogWhereUniqueInput
+    update: XOR<ActivityLogUpdateWithoutPerformedByInput, ActivityLogUncheckedUpdateWithoutPerformedByInput>
+    create: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput>
   }
 
-  export type WarehouseUpdateToOneWithWhereWithoutFarmersInput = {
-    where?: WarehouseWhereInput
-    data: XOR<WarehouseUpdateWithoutFarmersInput, WarehouseUncheckedUpdateWithoutFarmersInput>
+  export type ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput = {
+    where: ActivityLogWhereUniqueInput
+    data: XOR<ActivityLogUpdateWithoutPerformedByInput, ActivityLogUncheckedUpdateWithoutPerformedByInput>
   }
 
-  export type WarehouseUpdateWithoutFarmersInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    capacity?: NullableIntFieldUpdateOperationsInput | number | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
-    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUpdateManyWithoutWarehouseNestedInput
-    invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+  export type ActivityLogUpdateManyWithWhereWithoutPerformedByInput = {
+    where: ActivityLogScalarWhereInput
+    data: XOR<ActivityLogUpdateManyMutationInput, ActivityLogUncheckedUpdateManyWithoutPerformedByInput>
   }
 
-  export type WarehouseUncheckedUpdateWithoutFarmersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    capacity?: NullableIntFieldUpdateOperationsInput | number | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    managerId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
-    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
+  export type ActivityLogScalarWhereInput = {
+    AND?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
+    OR?: ActivityLogScalarWhereInput[]
+    NOT?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
+    id?: IntFilter<"ActivityLog"> | number
+    performedById?: IntNullableFilter<"ActivityLog"> | number | null
+    targetUserId?: IntNullableFilter<"ActivityLog"> | number | null
+    action?: EnumActionTypeFilter<"ActivityLog"> | $Enums.ActionType
+    entityType?: EnumEntityTypeFilter<"ActivityLog"> | $Enums.EntityType
+    entityId?: IntNullableFilter<"ActivityLog"> | number | null
+    description?: StringFilter<"ActivityLog"> | string
+    metadata?: JsonNullableFilter<"ActivityLog">
+    createdAt?: DateTimeFilter<"ActivityLog"> | Date | string
   }
 
-  export type WarehouseUpsertWithoutManagerInput = {
-    update: XOR<WarehouseUpdateWithoutManagerInput, WarehouseUncheckedUpdateWithoutManagerInput>
-    create: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
-    where?: WarehouseWhereInput
+  export type ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput = {
+    where: ActivityLogWhereUniqueInput
+    update: XOR<ActivityLogUpdateWithoutTargetUserInput, ActivityLogUncheckedUpdateWithoutTargetUserInput>
+    create: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput>
   }
 
-  export type WarehouseUpdateToOneWithWhereWithoutManagerInput = {
-    where?: WarehouseWhereInput
-    data: XOR<WarehouseUpdateWithoutManagerInput, WarehouseUncheckedUpdateWithoutManagerInput>
+  export type ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput = {
+    where: ActivityLogWhereUniqueInput
+    data: XOR<ActivityLogUpdateWithoutTargetUserInput, ActivityLogUncheckedUpdateWithoutTargetUserInput>
   }
 
-  export type WarehouseUpdateWithoutManagerInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    capacity?: NullableIntFieldUpdateOperationsInput | number | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    farmers?: UserUpdateManyWithoutWarehouseNestedInput
-    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUpdateManyWithoutWarehouseNestedInput
-    invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+  export type ActivityLogUpdateManyWithWhereWithoutTargetUserInput = {
+    where: ActivityLogScalarWhereInput
+    data: XOR<ActivityLogUpdateManyMutationInput, ActivityLogUncheckedUpdateManyWithoutTargetUserInput>
   }
 
-  export type WarehouseUncheckedUpdateWithoutManagerInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    capacity?: NullableIntFieldUpdateOperationsInput | number | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
-    inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
-    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
+  export type InvitationUpsertWithWhereUniqueWithoutReceiverInput = {
+    where: InvitationWhereUniqueInput
+    update: XOR<InvitationUpdateWithoutReceiverInput, InvitationUncheckedUpdateWithoutReceiverInput>
+    create: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput>
   }
 
-  export type UserUpsertWithoutCreatedUsersInput = {
-    update: XOR<UserUpdateWithoutCreatedUsersInput, UserUncheckedUpdateWithoutCreatedUsersInput>
-    create: XOR<UserCreateWithoutCreatedUsersInput, UserUncheckedCreateWithoutCreatedUsersInput>
-    where?: UserWhereInput
+  export type InvitationUpdateWithWhereUniqueWithoutReceiverInput = {
+    where: InvitationWhereUniqueInput
+    data: XOR<InvitationUpdateWithoutReceiverInput, InvitationUncheckedUpdateWithoutReceiverInput>
   }
 
-  export type UserUpdateToOneWithWhereWithoutCreatedUsersInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCreatedUsersInput, UserUncheckedUpdateWithoutCreatedUsersInput>
+  export type InvitationUpdateManyWithWhereWithoutReceiverInput = {
+    where: InvitationScalarWhereInput
+    data: XOR<InvitationUpdateManyMutationInput, InvitationUncheckedUpdateManyWithoutReceiverInput>
   }
 
-  export type UserUpdateWithoutCreatedUsersInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
+  export type InvitationScalarWhereInput = {
+    AND?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+    OR?: InvitationScalarWhereInput[]
+    NOT?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
+    id?: IntFilter<"Invitation"> | number
+    senderId?: IntNullableFilter<"Invitation"> | number | null
+    receiverId?: IntNullableFilter<"Invitation"> | number | null
+    warehouseId?: IntFilter<"Invitation"> | number
+    status?: EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
+    message?: StringNullableFilter<"Invitation"> | string | null
+    sentAt?: DateTimeFilter<"Invitation"> | Date | string
+    respondedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
+    expiresAt?: DateTimeFilter<"Invitation"> | Date | string
+    createdAt?: DateTimeFilter<"Invitation"> | Date | string
+    updatedAt?: DateTimeFilter<"Invitation"> | Date | string
+    token?: StringNullableFilter<"Invitation"> | string | null
+    tokenUsed?: BoolFilter<"Invitation"> | boolean
   }
 
-  export type UserUncheckedUpdateWithoutCreatedUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
+  export type InvitationUpsertWithWhereUniqueWithoutSenderInput = {
+    where: InvitationWhereUniqueInput
+    update: XOR<InvitationUpdateWithoutSenderInput, InvitationUncheckedUpdateWithoutSenderInput>
+    create: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput>
   }
 
-  export type UserUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutCreatedByInput, UserUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput>
+  export type InvitationUpdateWithWhereUniqueWithoutSenderInput = {
+    where: InvitationWhereUniqueInput
+    data: XOR<InvitationUpdateWithoutSenderInput, InvitationUncheckedUpdateWithoutSenderInput>
   }
 
-  export type UserUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutCreatedByInput, UserUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutCreatedByInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type UserScalarWhereInput = {
-    AND?: UserScalarWhereInput | UserScalarWhereInput[]
-    OR?: UserScalarWhereInput[]
-    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    password?: StringNullableFilter<"User"> | string | null
-    Fname?: StringFilter<"User"> | string
-    Mname?: StringNullableFilter<"User"> | string | null
-    Lname?: StringFilter<"User"> | string
-    photo?: StringNullableFilter<"User"> | string | null
-    phone?: StringNullableFilter<"User"> | string | null
-    address?: StringFilter<"User"> | string
-    role?: EnumRoleFilter<"User"> | $Enums.Role
-    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
-    isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
-    googleId?: StringNullableFilter<"User"> | string | null
-    emailVerified?: BoolNullableFilter<"User"> | boolean | null
-    emailConfirmationToken?: StringNullableFilter<"User"> | string | null
-    emailConfirmationTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
-    resetToken?: StringNullableFilter<"User"> | string | null
-    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
-    warehouseId?: IntNullableFilter<"User"> | number | null
-    createdById?: IntNullableFilter<"User"> | number | null
-    lastModifiedById?: IntNullableFilter<"User"> | number | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
-    paymentDetails?: JsonNullableFilter<"User">
-  }
-
-  export type UserUpsertWithoutModifiedUsersInput = {
-    update: XOR<UserUpdateWithoutModifiedUsersInput, UserUncheckedUpdateWithoutModifiedUsersInput>
-    create: XOR<UserCreateWithoutModifiedUsersInput, UserUncheckedCreateWithoutModifiedUsersInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutModifiedUsersInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutModifiedUsersInput, UserUncheckedUpdateWithoutModifiedUsersInput>
-  }
-
-  export type UserUpdateWithoutModifiedUsersInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutModifiedUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutLastModifiedByInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutLastModifiedByInput, UserUncheckedUpdateWithoutLastModifiedByInput>
-    create: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutLastModifiedByInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutLastModifiedByInput, UserUncheckedUpdateWithoutLastModifiedByInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutLastModifiedByInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutLastModifiedByInput>
-  }
-
-  export type ProductsUpsertWithWhereUniqueWithoutFarmerInput = {
-    where: ProductsWhereUniqueInput
-    update: XOR<ProductsUpdateWithoutFarmerInput, ProductsUncheckedUpdateWithoutFarmerInput>
-    create: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput>
-  }
-
-  export type ProductsUpdateWithWhereUniqueWithoutFarmerInput = {
-    where: ProductsWhereUniqueInput
-    data: XOR<ProductsUpdateWithoutFarmerInput, ProductsUncheckedUpdateWithoutFarmerInput>
-  }
-
-  export type ProductsUpdateManyWithWhereWithoutFarmerInput = {
-    where: ProductsScalarWhereInput
-    data: XOR<ProductsUpdateManyMutationInput, ProductsUncheckedUpdateManyWithoutFarmerInput>
-  }
-
-  export type ProductsScalarWhereInput = {
-    AND?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
-    OR?: ProductsScalarWhereInput[]
-    NOT?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
-    id?: IntFilter<"Products"> | number
-    name?: StringFilter<"Products"> | string
-    grade?: StringFilter<"Products"> | string
-    quantity?: IntFilter<"Products"> | number
-    price?: FloatFilter<"Products"> | number
-    variety?: StringFilter<"Products"> | string
-    location?: StringFilter<"Products"> | string
-    image?: StringNullableFilter<"Products"> | string | null
-    description?: StringNullableFilter<"Products"> | string | null
-    farmerId?: IntFilter<"Products"> | number
-    warehouseId?: IntFilter<"Products"> | number
-    createdAt?: DateTimeFilter<"Products"> | Date | string
-    updatedAt?: DateTimeFilter<"Products"> | Date | string
+  export type InvitationUpdateManyWithWhereWithoutSenderInput = {
+    where: InvitationScalarWhereInput
+    data: XOR<InvitationUpdateManyMutationInput, InvitationUncheckedUpdateManyWithoutSenderInput>
   }
 
   export type PaymentUpsertWithWhereUniqueWithoutFarmerInput = {
@@ -16478,102 +16227,353 @@ export namespace Prisma {
     data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyWithoutProcessedByInput>
   }
 
-  export type InvitationUpsertWithWhereUniqueWithoutSenderInput = {
-    where: InvitationWhereUniqueInput
-    update: XOR<InvitationUpdateWithoutSenderInput, InvitationUncheckedUpdateWithoutSenderInput>
-    create: XOR<InvitationCreateWithoutSenderInput, InvitationUncheckedCreateWithoutSenderInput>
+  export type ProductsUpsertWithWhereUniqueWithoutFarmerInput = {
+    where: ProductsWhereUniqueInput
+    update: XOR<ProductsUpdateWithoutFarmerInput, ProductsUncheckedUpdateWithoutFarmerInput>
+    create: XOR<ProductsCreateWithoutFarmerInput, ProductsUncheckedCreateWithoutFarmerInput>
   }
 
-  export type InvitationUpdateWithWhereUniqueWithoutSenderInput = {
-    where: InvitationWhereUniqueInput
-    data: XOR<InvitationUpdateWithoutSenderInput, InvitationUncheckedUpdateWithoutSenderInput>
+  export type ProductsUpdateWithWhereUniqueWithoutFarmerInput = {
+    where: ProductsWhereUniqueInput
+    data: XOR<ProductsUpdateWithoutFarmerInput, ProductsUncheckedUpdateWithoutFarmerInput>
   }
 
-  export type InvitationUpdateManyWithWhereWithoutSenderInput = {
-    where: InvitationScalarWhereInput
-    data: XOR<InvitationUpdateManyMutationInput, InvitationUncheckedUpdateManyWithoutSenderInput>
+  export type ProductsUpdateManyWithWhereWithoutFarmerInput = {
+    where: ProductsScalarWhereInput
+    data: XOR<ProductsUpdateManyMutationInput, ProductsUncheckedUpdateManyWithoutFarmerInput>
   }
 
-  export type InvitationScalarWhereInput = {
-    AND?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
-    OR?: InvitationScalarWhereInput[]
-    NOT?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
-    id?: IntFilter<"Invitation"> | number
-    senderId?: IntNullableFilter<"Invitation"> | number | null
-    receiverId?: IntNullableFilter<"Invitation"> | number | null
-    warehouseId?: IntFilter<"Invitation"> | number
-    status?: EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
-    message?: StringNullableFilter<"Invitation"> | string | null
-    sentAt?: DateTimeFilter<"Invitation"> | Date | string
-    respondedAt?: DateTimeNullableFilter<"Invitation"> | Date | string | null
-    expiresAt?: DateTimeFilter<"Invitation"> | Date | string
-    createdAt?: DateTimeFilter<"Invitation"> | Date | string
-    updatedAt?: DateTimeFilter<"Invitation"> | Date | string
-    token?: StringNullableFilter<"Invitation"> | string | null
-    tokenUsed?: BoolFilter<"Invitation"> | boolean
+  export type ProductsScalarWhereInput = {
+    AND?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
+    OR?: ProductsScalarWhereInput[]
+    NOT?: ProductsScalarWhereInput | ProductsScalarWhereInput[]
+    id?: IntFilter<"Products"> | number
+    name?: StringFilter<"Products"> | string
+    grade?: StringFilter<"Products"> | string
+    quantity?: IntFilter<"Products"> | number
+    price?: FloatFilter<"Products"> | number
+    variety?: StringFilter<"Products"> | string
+    location?: StringFilter<"Products"> | string
+    image?: StringNullableFilter<"Products"> | string | null
+    createdAt?: DateTimeFilter<"Products"> | Date | string
+    description?: StringNullableFilter<"Products"> | string | null
+    farmerId?: IntFilter<"Products"> | number
+    updatedAt?: DateTimeFilter<"Products"> | Date | string
+    warehouseId?: IntFilter<"Products"> | number
   }
 
-  export type InvitationUpsertWithWhereUniqueWithoutReceiverInput = {
-    where: InvitationWhereUniqueInput
-    update: XOR<InvitationUpdateWithoutReceiverInput, InvitationUncheckedUpdateWithoutReceiverInput>
-    create: XOR<InvitationCreateWithoutReceiverInput, InvitationUncheckedCreateWithoutReceiverInput>
+  export type UserUpsertWithoutCreatedUsersInput = {
+    update: XOR<UserUpdateWithoutCreatedUsersInput, UserUncheckedUpdateWithoutCreatedUsersInput>
+    create: XOR<UserCreateWithoutCreatedUsersInput, UserUncheckedCreateWithoutCreatedUsersInput>
+    where?: UserWhereInput
   }
 
-  export type InvitationUpdateWithWhereUniqueWithoutReceiverInput = {
-    where: InvitationWhereUniqueInput
-    data: XOR<InvitationUpdateWithoutReceiverInput, InvitationUncheckedUpdateWithoutReceiverInput>
+  export type UserUpdateToOneWithWhereWithoutCreatedUsersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCreatedUsersInput, UserUncheckedUpdateWithoutCreatedUsersInput>
   }
 
-  export type InvitationUpdateManyWithWhereWithoutReceiverInput = {
-    where: InvitationScalarWhereInput
-    data: XOR<InvitationUpdateManyMutationInput, InvitationUncheckedUpdateManyWithoutReceiverInput>
+  export type UserUpdateWithoutCreatedUsersInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type ActivityLogUpsertWithWhereUniqueWithoutTargetUserInput = {
-    where: ActivityLogWhereUniqueInput
-    update: XOR<ActivityLogUpdateWithoutTargetUserInput, ActivityLogUncheckedUpdateWithoutTargetUserInput>
-    create: XOR<ActivityLogCreateWithoutTargetUserInput, ActivityLogUncheckedCreateWithoutTargetUserInput>
+  export type UserUncheckedUpdateWithoutCreatedUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type ActivityLogUpdateWithWhereUniqueWithoutTargetUserInput = {
-    where: ActivityLogWhereUniqueInput
-    data: XOR<ActivityLogUpdateWithoutTargetUserInput, ActivityLogUncheckedUpdateWithoutTargetUserInput>
+  export type UserUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutCreatedByInput, UserUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<UserCreateWithoutCreatedByInput, UserUncheckedCreateWithoutCreatedByInput>
   }
 
-  export type ActivityLogUpdateManyWithWhereWithoutTargetUserInput = {
-    where: ActivityLogScalarWhereInput
-    data: XOR<ActivityLogUpdateManyMutationInput, ActivityLogUncheckedUpdateManyWithoutTargetUserInput>
+  export type UserUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutCreatedByInput, UserUncheckedUpdateWithoutCreatedByInput>
   }
 
-  export type ActivityLogScalarWhereInput = {
-    AND?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
-    OR?: ActivityLogScalarWhereInput[]
-    NOT?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
-    id?: IntFilter<"ActivityLog"> | number
-    performedById?: IntNullableFilter<"ActivityLog"> | number | null
-    targetUserId?: IntNullableFilter<"ActivityLog"> | number | null
-    action?: EnumActionTypeFilter<"ActivityLog"> | $Enums.ActionType
-    entityType?: EnumEntityTypeFilter<"ActivityLog"> | $Enums.EntityType
-    entityId?: IntNullableFilter<"ActivityLog"> | number | null
-    description?: StringFilter<"ActivityLog"> | string
-    metadata?: JsonNullableFilter<"ActivityLog">
-    createdAt?: DateTimeFilter<"ActivityLog"> | Date | string
+  export type UserUpdateManyWithWhereWithoutCreatedByInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCreatedByInput>
   }
 
-  export type ActivityLogUpsertWithWhereUniqueWithoutPerformedByInput = {
-    where: ActivityLogWhereUniqueInput
-    update: XOR<ActivityLogUpdateWithoutPerformedByInput, ActivityLogUncheckedUpdateWithoutPerformedByInput>
-    create: XOR<ActivityLogCreateWithoutPerformedByInput, ActivityLogUncheckedCreateWithoutPerformedByInput>
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: IntFilter<"User"> | number
+    email?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
+    Fname?: StringFilter<"User"> | string
+    Lname?: StringFilter<"User"> | string
+    Mname?: StringNullableFilter<"User"> | string | null
+    address?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    createdById?: IntNullableFilter<"User"> | number | null
+    emailConfirmationToken?: StringNullableFilter<"User"> | string | null
+    emailConfirmationTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
+    emailVerified?: BoolNullableFilter<"User"> | boolean | null
+    googleId?: StringNullableFilter<"User"> | string | null
+    isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
+    lastModifiedById?: IntNullableFilter<"User"> | number | null
+    phone?: StringNullableFilter<"User"> | string | null
+    photo?: StringNullableFilter<"User"> | string | null
+    resetToken?: StringNullableFilter<"User"> | string | null
+    resetTokenExpiry?: DateTimeNullableFilter<"User"> | Date | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
+    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    warehouseId?: IntNullableFilter<"User"> | number | null
+    paymentDetails?: JsonNullableFilter<"User">
   }
 
-  export type ActivityLogUpdateWithWhereUniqueWithoutPerformedByInput = {
-    where: ActivityLogWhereUniqueInput
-    data: XOR<ActivityLogUpdateWithoutPerformedByInput, ActivityLogUncheckedUpdateWithoutPerformedByInput>
+  export type UserUpsertWithoutModifiedUsersInput = {
+    update: XOR<UserUpdateWithoutModifiedUsersInput, UserUncheckedUpdateWithoutModifiedUsersInput>
+    create: XOR<UserCreateWithoutModifiedUsersInput, UserUncheckedCreateWithoutModifiedUsersInput>
+    where?: UserWhereInput
   }
 
-  export type ActivityLogUpdateManyWithWhereWithoutPerformedByInput = {
-    where: ActivityLogScalarWhereInput
-    data: XOR<ActivityLogUpdateManyMutationInput, ActivityLogUncheckedUpdateManyWithoutPerformedByInput>
+  export type UserUpdateToOneWithWhereWithoutModifiedUsersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutModifiedUsersInput, UserUncheckedUpdateWithoutModifiedUsersInput>
+  }
+
+  export type UserUpdateWithoutModifiedUsersInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutModifiedUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutLastModifiedByInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutLastModifiedByInput, UserUncheckedUpdateWithoutLastModifiedByInput>
+    create: XOR<UserCreateWithoutLastModifiedByInput, UserUncheckedCreateWithoutLastModifiedByInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutLastModifiedByInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutLastModifiedByInput, UserUncheckedUpdateWithoutLastModifiedByInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutLastModifiedByInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutLastModifiedByInput>
+  }
+
+  export type WarehouseUpsertWithoutFarmersInput = {
+    update: XOR<WarehouseUpdateWithoutFarmersInput, WarehouseUncheckedUpdateWithoutFarmersInput>
+    create: XOR<WarehouseCreateWithoutFarmersInput, WarehouseUncheckedCreateWithoutFarmersInput>
+    where?: WarehouseWhereInput
+  }
+
+  export type WarehouseUpdateToOneWithWhereWithoutFarmersInput = {
+    where?: WarehouseWhereInput
+    data: XOR<WarehouseUpdateWithoutFarmersInput, WarehouseUncheckedUpdateWithoutFarmersInput>
+  }
+
+  export type WarehouseUpdateWithoutFarmersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUpdateManyWithoutWarehouseNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
+    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
+  }
+
+  export type WarehouseUncheckedUpdateWithoutFarmersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    managerId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
+    inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
+  }
+
+  export type WarehouseUpsertWithoutManagerInput = {
+    update: XOR<WarehouseUpdateWithoutManagerInput, WarehouseUncheckedUpdateWithoutManagerInput>
+    create: XOR<WarehouseCreateWithoutManagerInput, WarehouseUncheckedCreateWithoutManagerInput>
+    where?: WarehouseWhereInput
+  }
+
+  export type WarehouseUpdateToOneWithWhereWithoutManagerInput = {
+    where?: WarehouseWhereInput
+    data: XOR<WarehouseUpdateWithoutManagerInput, WarehouseUncheckedUpdateWithoutManagerInput>
+  }
+
+  export type WarehouseUpdateWithoutManagerInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUpdateManyWithoutWarehouseNestedInput
+    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
+  }
+
+  export type WarehouseUncheckedUpdateWithoutManagerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
+    inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
   }
 
   export type WarehouseInventoryUpsertWithWhereUniqueWithoutRecordedByInput = {
@@ -16608,117 +16608,121 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"WarehouseInventory"> | Date | string
   }
 
-  export type UserCreateWithoutManagedWarehouseInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
+  export type InvitationCreateWithoutWarehouseInput = {
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+    token?: string | null
+    tokenUsed?: boolean
+    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
+    sender?: UserCreateNestedOneWithoutSentInvitationsInput
   }
 
-  export type UserUncheckedCreateWithoutManagedWarehouseInput = {
+  export type InvitationUncheckedCreateWithoutWarehouseInput = {
     id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
+    senderId?: number | null
+    receiverId?: number | null
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+    token?: string | null
+    tokenUsed?: boolean
   }
 
-  export type UserCreateOrConnectWithoutManagedWarehouseInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
+  export type InvitationCreateOrConnectWithoutWarehouseInput = {
+    where: InvitationWhereUniqueInput
+    create: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput>
+  }
+
+  export type InvitationCreateManyWarehouseInputEnvelope = {
+    data: InvitationCreateManyWarehouseInput | InvitationCreateManyWarehouseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProductsCreateWithoutWarehouseInput = {
+    name: string
+    grade: string
+    quantity: number
+    price: number
+    variety: string
+    location: string
+    image?: string | null
+    createdAt?: Date | string
+    description?: string | null
+    updatedAt?: Date | string
+    payments?: PaymentCreateNestedManyWithoutProductInput
+    farmer: UserCreateNestedOneWithoutProductsInput
+    inventoryMovements?: WarehouseInventoryCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductsUncheckedCreateWithoutWarehouseInput = {
+    id?: number
+    name: string
+    grade: string
+    quantity: number
+    price: number
+    variety: string
+    location: string
+    image?: string | null
+    createdAt?: Date | string
+    description?: string | null
+    farmerId: number
+    updatedAt?: Date | string
+    payments?: PaymentUncheckedCreateNestedManyWithoutProductInput
+    inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductsCreateOrConnectWithoutWarehouseInput = {
+    where: ProductsWhereUniqueInput
+    create: XOR<ProductsCreateWithoutWarehouseInput, ProductsUncheckedCreateWithoutWarehouseInput>
+  }
+
+  export type ProductsCreateManyWarehouseInputEnvelope = {
+    data: ProductsCreateManyWarehouseInput | ProductsCreateManyWarehouseInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutWarehouseInput = {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
     lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
     modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
   }
 
@@ -16727,35 +16731,35 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
     farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
     processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
@@ -16767,6 +16771,84 @@ export namespace Prisma {
   export type UserCreateManyWarehouseInputEnvelope = {
     data: UserCreateManyWarehouseInput | UserCreateManyWarehouseInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutManagedWarehouseInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutManagedWarehouseInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutManagedWarehouseInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
   }
 
   export type WarehouseInventoryCreateWithoutWarehouseInput = {
@@ -16802,202 +16884,20 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ProductsCreateWithoutWarehouseInput = {
-    name: string
-    grade: string
-    quantity: number
-    price: number
-    variety: string
-    location: string
-    image?: string | null
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    farmer: UserCreateNestedOneWithoutProductsInput
-    inventoryMovements?: WarehouseInventoryCreateNestedManyWithoutProductInput
-    payments?: PaymentCreateNestedManyWithoutProductInput
-  }
-
-  export type ProductsUncheckedCreateWithoutWarehouseInput = {
-    id?: number
-    name: string
-    grade: string
-    quantity: number
-    price: number
-    variety: string
-    location: string
-    image?: string | null
-    description?: string | null
-    farmerId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
-    payments?: PaymentUncheckedCreateNestedManyWithoutProductInput
-  }
-
-  export type ProductsCreateOrConnectWithoutWarehouseInput = {
-    where: ProductsWhereUniqueInput
-    create: XOR<ProductsCreateWithoutWarehouseInput, ProductsUncheckedCreateWithoutWarehouseInput>
-  }
-
-  export type ProductsCreateManyWarehouseInputEnvelope = {
-    data: ProductsCreateManyWarehouseInput | ProductsCreateManyWarehouseInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type InvitationCreateWithoutWarehouseInput = {
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
-    sender?: UserCreateNestedOneWithoutSentInvitationsInput
-    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
-  }
-
-  export type InvitationUncheckedCreateWithoutWarehouseInput = {
-    id?: number
-    senderId?: number | null
-    receiverId?: number | null
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
-  }
-
-  export type InvitationCreateOrConnectWithoutWarehouseInput = {
+  export type InvitationUpsertWithWhereUniqueWithoutWarehouseInput = {
     where: InvitationWhereUniqueInput
+    update: XOR<InvitationUpdateWithoutWarehouseInput, InvitationUncheckedUpdateWithoutWarehouseInput>
     create: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput>
   }
 
-  export type InvitationCreateManyWarehouseInputEnvelope = {
-    data: InvitationCreateManyWarehouseInput | InvitationCreateManyWarehouseInput[]
-    skipDuplicates?: boolean
+  export type InvitationUpdateWithWhereUniqueWithoutWarehouseInput = {
+    where: InvitationWhereUniqueInput
+    data: XOR<InvitationUpdateWithoutWarehouseInput, InvitationUncheckedUpdateWithoutWarehouseInput>
   }
 
-  export type UserUpsertWithoutManagedWarehouseInput = {
-    update: XOR<UserUpdateWithoutManagedWarehouseInput, UserUncheckedUpdateWithoutManagedWarehouseInput>
-    create: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutManagedWarehouseInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutManagedWarehouseInput, UserUncheckedUpdateWithoutManagedWarehouseInput>
-  }
-
-  export type UserUpdateWithoutManagedWarehouseInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutManagedWarehouseInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutWarehouseInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutWarehouseInput, UserUncheckedUpdateWithoutWarehouseInput>
-    create: XOR<UserCreateWithoutWarehouseInput, UserUncheckedCreateWithoutWarehouseInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutWarehouseInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutWarehouseInput, UserUncheckedUpdateWithoutWarehouseInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutWarehouseInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutWarehouseInput>
-  }
-
-  export type WarehouseInventoryUpsertWithWhereUniqueWithoutWarehouseInput = {
-    where: WarehouseInventoryWhereUniqueInput
-    update: XOR<WarehouseInventoryUpdateWithoutWarehouseInput, WarehouseInventoryUncheckedUpdateWithoutWarehouseInput>
-    create: XOR<WarehouseInventoryCreateWithoutWarehouseInput, WarehouseInventoryUncheckedCreateWithoutWarehouseInput>
-  }
-
-  export type WarehouseInventoryUpdateWithWhereUniqueWithoutWarehouseInput = {
-    where: WarehouseInventoryWhereUniqueInput
-    data: XOR<WarehouseInventoryUpdateWithoutWarehouseInput, WarehouseInventoryUncheckedUpdateWithoutWarehouseInput>
-  }
-
-  export type WarehouseInventoryUpdateManyWithWhereWithoutWarehouseInput = {
-    where: WarehouseInventoryScalarWhereInput
-    data: XOR<WarehouseInventoryUpdateManyMutationInput, WarehouseInventoryUncheckedUpdateManyWithoutWarehouseInput>
+  export type InvitationUpdateManyWithWhereWithoutWarehouseInput = {
+    where: InvitationScalarWhereInput
+    data: XOR<InvitationUpdateManyMutationInput, InvitationUncheckedUpdateManyWithoutWarehouseInput>
   }
 
   export type ProductsUpsertWithWhereUniqueWithoutWarehouseInput = {
@@ -17016,167 +16916,120 @@ export namespace Prisma {
     data: XOR<ProductsUpdateManyMutationInput, ProductsUncheckedUpdateManyWithoutWarehouseInput>
   }
 
-  export type InvitationUpsertWithWhereUniqueWithoutWarehouseInput = {
-    where: InvitationWhereUniqueInput
-    update: XOR<InvitationUpdateWithoutWarehouseInput, InvitationUncheckedUpdateWithoutWarehouseInput>
-    create: XOR<InvitationCreateWithoutWarehouseInput, InvitationUncheckedCreateWithoutWarehouseInput>
-  }
-
-  export type InvitationUpdateWithWhereUniqueWithoutWarehouseInput = {
-    where: InvitationWhereUniqueInput
-    data: XOR<InvitationUpdateWithoutWarehouseInput, InvitationUncheckedUpdateWithoutWarehouseInput>
-  }
-
-  export type InvitationUpdateManyWithWhereWithoutWarehouseInput = {
-    where: InvitationScalarWhereInput
-    data: XOR<InvitationUpdateManyMutationInput, InvitationUncheckedUpdateManyWithoutWarehouseInput>
-  }
-
-  export type UserCreateWithoutProductsInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserUncheckedCreateWithoutProductsInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserCreateOrConnectWithoutProductsInput = {
+  export type UserUpsertWithWhereUniqueWithoutWarehouseInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutProductsInput, UserUncheckedCreateWithoutProductsInput>
+    update: XOR<UserUpdateWithoutWarehouseInput, UserUncheckedUpdateWithoutWarehouseInput>
+    create: XOR<UserCreateWithoutWarehouseInput, UserUncheckedCreateWithoutWarehouseInput>
   }
 
-  export type WarehouseCreateWithoutProductsInput = {
-    name: string
-    location: string
-    address?: string | null
-    capacity?: number | null
-    phone?: string | null
-    email?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    manager: UserCreateNestedOneWithoutManagedWarehouseInput
-    farmers?: UserCreateNestedManyWithoutWarehouseInput
-    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+  export type UserUpdateWithWhereUniqueWithoutWarehouseInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutWarehouseInput, UserUncheckedUpdateWithoutWarehouseInput>
   }
 
-  export type WarehouseUncheckedCreateWithoutProductsInput = {
-    id?: number
-    name: string
-    location: string
-    address?: string | null
-    capacity?: number | null
-    phone?: string | null
-    email?: string | null
-    managerId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
-    inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
-    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
+  export type UserUpdateManyWithWhereWithoutWarehouseInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutWarehouseInput>
   }
 
-  export type WarehouseCreateOrConnectWithoutProductsInput = {
-    where: WarehouseWhereUniqueInput
-    create: XOR<WarehouseCreateWithoutProductsInput, WarehouseUncheckedCreateWithoutProductsInput>
+  export type UserUpsertWithoutManagedWarehouseInput = {
+    update: XOR<UserUpdateWithoutManagedWarehouseInput, UserUncheckedUpdateWithoutManagedWarehouseInput>
+    create: XOR<UserCreateWithoutManagedWarehouseInput, UserUncheckedCreateWithoutManagedWarehouseInput>
+    where?: UserWhereInput
   }
 
-  export type WarehouseInventoryCreateWithoutProductInput = {
-    quantityIn?: number | null
-    quantityOut?: number | null
-    currentStock: number
-    movementType: $Enums.MovementType
-    reason?: string | null
-    createdAt?: Date | string
-    warehouse: WarehouseCreateNestedOneWithoutInventoryInput
-    recordedBy?: UserCreateNestedOneWithoutInventoryRecordsInput
+  export type UserUpdateToOneWithWhereWithoutManagedWarehouseInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutManagedWarehouseInput, UserUncheckedUpdateWithoutManagedWarehouseInput>
   }
 
-  export type WarehouseInventoryUncheckedCreateWithoutProductInput = {
-    id?: number
-    warehouseId: number
-    quantityIn?: number | null
-    quantityOut?: number | null
-    currentStock: number
-    movementType: $Enums.MovementType
-    reason?: string | null
-    recordedById?: number | null
-    createdAt?: Date | string
+  export type UserUpdateWithoutManagedWarehouseInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type WarehouseInventoryCreateOrConnectWithoutProductInput = {
+  export type UserUncheckedUpdateWithoutManagedWarehouseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type WarehouseInventoryUpsertWithWhereUniqueWithoutWarehouseInput = {
     where: WarehouseInventoryWhereUniqueInput
-    create: XOR<WarehouseInventoryCreateWithoutProductInput, WarehouseInventoryUncheckedCreateWithoutProductInput>
+    update: XOR<WarehouseInventoryUpdateWithoutWarehouseInput, WarehouseInventoryUncheckedUpdateWithoutWarehouseInput>
+    create: XOR<WarehouseInventoryCreateWithoutWarehouseInput, WarehouseInventoryUncheckedCreateWithoutWarehouseInput>
   }
 
-  export type WarehouseInventoryCreateManyProductInputEnvelope = {
-    data: WarehouseInventoryCreateManyProductInput | WarehouseInventoryCreateManyProductInput[]
-    skipDuplicates?: boolean
+  export type WarehouseInventoryUpdateWithWhereUniqueWithoutWarehouseInput = {
+    where: WarehouseInventoryWhereUniqueInput
+    data: XOR<WarehouseInventoryUpdateWithoutWarehouseInput, WarehouseInventoryUncheckedUpdateWithoutWarehouseInput>
+  }
+
+  export type WarehouseInventoryUpdateManyWithWhereWithoutWarehouseInput = {
+    where: WarehouseInventoryScalarWhereInput
+    data: XOR<WarehouseInventoryUpdateManyMutationInput, WarehouseInventoryUncheckedUpdateManyWithoutWarehouseInput>
   }
 
   export type PaymentCreateWithoutProductInput = {
@@ -17222,6 +17075,169 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCreateWithoutProductsInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutProductsInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutProductsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProductsInput, UserUncheckedCreateWithoutProductsInput>
+  }
+
+  export type WarehouseCreateWithoutProductsInput = {
+    name: string
+    location: string
+    address?: string | null
+    capacity?: number | null
+    phone?: string | null
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+    farmers?: UserCreateNestedManyWithoutWarehouseInput
+    manager: UserCreateNestedOneWithoutManagedWarehouseInput
+    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
+  }
+
+  export type WarehouseUncheckedCreateWithoutProductsInput = {
+    id?: number
+    name: string
+    location: string
+    address?: string | null
+    capacity?: number | null
+    phone?: string | null
+    email?: string | null
+    managerId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
+    farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
+    inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
+  }
+
+  export type WarehouseCreateOrConnectWithoutProductsInput = {
+    where: WarehouseWhereUniqueInput
+    create: XOR<WarehouseCreateWithoutProductsInput, WarehouseUncheckedCreateWithoutProductsInput>
+  }
+
+  export type WarehouseInventoryCreateWithoutProductInput = {
+    quantityIn?: number | null
+    quantityOut?: number | null
+    currentStock: number
+    movementType: $Enums.MovementType
+    reason?: string | null
+    createdAt?: Date | string
+    recordedBy?: UserCreateNestedOneWithoutInventoryRecordsInput
+    warehouse: WarehouseCreateNestedOneWithoutInventoryInput
+  }
+
+  export type WarehouseInventoryUncheckedCreateWithoutProductInput = {
+    id?: number
+    warehouseId: number
+    quantityIn?: number | null
+    quantityOut?: number | null
+    currentStock: number
+    movementType: $Enums.MovementType
+    reason?: string | null
+    recordedById?: number | null
+    createdAt?: Date | string
+  }
+
+  export type WarehouseInventoryCreateOrConnectWithoutProductInput = {
+    where: WarehouseInventoryWhereUniqueInput
+    create: XOR<WarehouseInventoryCreateWithoutProductInput, WarehouseInventoryUncheckedCreateWithoutProductInput>
+  }
+
+  export type WarehouseInventoryCreateManyProductInputEnvelope = {
+    data: WarehouseInventoryCreateManyProductInput | WarehouseInventoryCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PaymentUpsertWithWhereUniqueWithoutProductInput = {
+    where: PaymentWhereUniqueInput
+    update: XOR<PaymentUpdateWithoutProductInput, PaymentUncheckedUpdateWithoutProductInput>
+    create: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput>
+  }
+
+  export type PaymentUpdateWithWhereUniqueWithoutProductInput = {
+    where: PaymentWhereUniqueInput
+    data: XOR<PaymentUpdateWithoutProductInput, PaymentUncheckedUpdateWithoutProductInput>
+  }
+
+  export type PaymentUpdateManyWithWhereWithoutProductInput = {
+    where: PaymentScalarWhereInput
+    data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyWithoutProductInput>
+  }
+
   export type UserUpsertWithoutProductsInput = {
     update: XOR<UserUpdateWithoutProductsInput, UserUncheckedUpdateWithoutProductsInput>
     create: XOR<UserCreateWithoutProductsInput, UserUncheckedCreateWithoutProductsInput>
@@ -17237,35 +17253,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -17274,35 +17290,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
     farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
     processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -17326,10 +17342,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
-    farmers?: UserUpdateManyWithoutWarehouseNestedInput
-    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
     invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUpdateManyWithoutWarehouseNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
+    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
   }
 
   export type WarehouseUncheckedUpdateWithoutProductsInput = {
@@ -17343,9 +17359,9 @@ export namespace Prisma {
     managerId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
     farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
     inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
-    invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
   }
 
   export type WarehouseInventoryUpsertWithWhereUniqueWithoutProductInput = {
@@ -17364,22 +17380,6 @@ export namespace Prisma {
     data: XOR<WarehouseInventoryUpdateManyMutationInput, WarehouseInventoryUncheckedUpdateManyWithoutProductInput>
   }
 
-  export type PaymentUpsertWithWhereUniqueWithoutProductInput = {
-    where: PaymentWhereUniqueInput
-    update: XOR<PaymentUpdateWithoutProductInput, PaymentUncheckedUpdateWithoutProductInput>
-    create: XOR<PaymentCreateWithoutProductInput, PaymentUncheckedCreateWithoutProductInput>
-  }
-
-  export type PaymentUpdateWithWhereUniqueWithoutProductInput = {
-    where: PaymentWhereUniqueInput
-    data: XOR<PaymentUpdateWithoutProductInput, PaymentUncheckedUpdateWithoutProductInput>
-  }
-
-  export type PaymentUpdateManyWithWhereWithoutProductInput = {
-    where: PaymentScalarWhereInput
-    data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyWithoutProductInput>
-  }
-
   export type ProductsCreateWithoutInventoryMovementsInput = {
     name: string
     grade: string
@@ -17388,12 +17388,12 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
-    description?: string | null
     createdAt?: Date | string
+    description?: string | null
     updatedAt?: Date | string
+    payments?: PaymentCreateNestedManyWithoutProductInput
     farmer: UserCreateNestedOneWithoutProductsInput
     warehouse: WarehouseCreateNestedOneWithoutProductsInput
-    payments?: PaymentCreateNestedManyWithoutProductInput
   }
 
   export type ProductsUncheckedCreateWithoutInventoryMovementsInput = {
@@ -17405,17 +17405,95 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
+    createdAt?: Date | string
     description?: string | null
     farmerId: number
-    warehouseId: number
-    createdAt?: Date | string
     updatedAt?: Date | string
+    warehouseId: number
     payments?: PaymentUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductsCreateOrConnectWithoutInventoryMovementsInput = {
     where: ProductsWhereUniqueInput
     create: XOR<ProductsCreateWithoutInventoryMovementsInput, ProductsUncheckedCreateWithoutInventoryMovementsInput>
+  }
+
+  export type UserCreateWithoutInventoryRecordsInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+  }
+
+  export type UserUncheckedCreateWithoutInventoryRecordsInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+  }
+
+  export type UserCreateOrConnectWithoutInventoryRecordsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
   }
 
   export type WarehouseCreateWithoutInventoryInput = {
@@ -17427,10 +17505,10 @@ export namespace Prisma {
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    manager: UserCreateNestedOneWithoutManagedWarehouseInput
-    farmers?: UserCreateNestedManyWithoutWarehouseInput
-    products?: ProductsCreateNestedManyWithoutWarehouseInput
     invitations?: InvitationCreateNestedManyWithoutWarehouseInput
+    products?: ProductsCreateNestedManyWithoutWarehouseInput
+    farmers?: UserCreateNestedManyWithoutWarehouseInput
+    manager: UserCreateNestedOneWithoutManagedWarehouseInput
   }
 
   export type WarehouseUncheckedCreateWithoutInventoryInput = {
@@ -17444,92 +17522,14 @@ export namespace Prisma {
     managerId: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
-    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
     invitations?: InvitationUncheckedCreateNestedManyWithoutWarehouseInput
+    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
+    farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
   }
 
   export type WarehouseCreateOrConnectWithoutInventoryInput = {
     where: WarehouseWhereUniqueInput
     create: XOR<WarehouseCreateWithoutInventoryInput, WarehouseUncheckedCreateWithoutInventoryInput>
-  }
-
-  export type UserCreateWithoutInventoryRecordsInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-  }
-
-  export type UserUncheckedCreateWithoutInventoryRecordsInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-  }
-
-  export type UserCreateOrConnectWithoutInventoryRecordsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
   }
 
   export type ProductsUpsertWithoutInventoryMovementsInput = {
@@ -17551,12 +17551,12 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: PaymentUpdateManyWithoutProductNestedInput
     farmer?: UserUpdateOneRequiredWithoutProductsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutProductsNestedInput
-    payments?: PaymentUpdateManyWithoutProductNestedInput
   }
 
   export type ProductsUncheckedUpdateWithoutInventoryMovementsInput = {
@@ -17568,12 +17568,96 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     farmerId?: IntFieldUpdateOperationsInput | number
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: IntFieldUpdateOperationsInput | number
     payments?: PaymentUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type UserUpsertWithoutInventoryRecordsInput = {
+    update: XOR<UserUpdateWithoutInventoryRecordsInput, UserUncheckedUpdateWithoutInventoryRecordsInput>
+    create: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutInventoryRecordsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutInventoryRecordsInput, UserUncheckedUpdateWithoutInventoryRecordsInput>
+  }
+
+  export type UserUpdateWithoutInventoryRecordsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutInventoryRecordsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
   }
 
   export type WarehouseUpsertWithoutInventoryInput = {
@@ -17596,10 +17680,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
-    farmers?: UserUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUpdateManyWithoutWarehouseNestedInput
     invitations?: InvitationUpdateManyWithoutWarehouseNestedInput
+    products?: ProductsUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUpdateManyWithoutWarehouseNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
   }
 
   export type WarehouseUncheckedUpdateWithoutInventoryInput = {
@@ -17613,128 +17697,44 @@ export namespace Prisma {
     managerId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
     invitations?: InvitationUncheckedUpdateManyWithoutWarehouseNestedInput
-  }
-
-  export type UserUpsertWithoutInventoryRecordsInput = {
-    update: XOR<UserUpdateWithoutInventoryRecordsInput, UserUncheckedUpdateWithoutInventoryRecordsInput>
-    create: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutInventoryRecordsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutInventoryRecordsInput, UserUncheckedUpdateWithoutInventoryRecordsInput>
-  }
-
-  export type UserUpdateWithoutInventoryRecordsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutInventoryRecordsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
   }
 
   export type UserCreateWithoutFarmerPaymentsInput = {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
     lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
     modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
   }
 
@@ -17743,41 +17743,119 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
+    warehouseId?: number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
     createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
     modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
   export type UserCreateOrConnectWithoutFarmerPaymentsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutFarmerPaymentsInput, UserUncheckedCreateWithoutFarmerPaymentsInput>
+  }
+
+  export type UserCreateWithoutProcessedPaymentsInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutProcessedPaymentsInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutProcessedPaymentsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
   }
 
   export type ProductsCreateWithoutPaymentsInput = {
@@ -17788,8 +17866,8 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
-    description?: string | null
     createdAt?: Date | string
+    description?: string | null
     updatedAt?: Date | string
     farmer: UserCreateNestedOneWithoutProductsInput
     warehouse: WarehouseCreateNestedOneWithoutProductsInput
@@ -17805,95 +17883,17 @@ export namespace Prisma {
     variety: string
     location: string
     image?: string | null
+    createdAt?: Date | string
     description?: string | null
     farmerId: number
-    warehouseId: number
-    createdAt?: Date | string
     updatedAt?: Date | string
+    warehouseId: number
     inventoryMovements?: WarehouseInventoryUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductsCreateOrConnectWithoutPaymentsInput = {
     where: ProductsWhereUniqueInput
     create: XOR<ProductsCreateWithoutPaymentsInput, ProductsUncheckedCreateWithoutPaymentsInput>
-  }
-
-  export type UserCreateWithoutProcessedPaymentsInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserUncheckedCreateWithoutProcessedPaymentsInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserCreateOrConnectWithoutProcessedPaymentsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
   }
 
   export type UserUpsertWithoutFarmerPaymentsInput = {
@@ -17911,35 +17911,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -17948,35 +17948,119 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
     createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
     modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type UserUpsertWithoutProcessedPaymentsInput = {
+    update: XOR<UserUpdateWithoutProcessedPaymentsInput, UserUncheckedUpdateWithoutProcessedPaymentsInput>
+    create: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProcessedPaymentsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProcessedPaymentsInput, UserUncheckedUpdateWithoutProcessedPaymentsInput>
+  }
+
+  export type UserUpdateWithoutProcessedPaymentsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProcessedPaymentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -17999,8 +18083,8 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     farmer?: UserUpdateOneRequiredWithoutProductsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutProductsNestedInput
@@ -18016,209 +18100,47 @@ export namespace Prisma {
     variety?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     farmerId?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     warehouseId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
-  }
-
-  export type UserUpsertWithoutProcessedPaymentsInput = {
-    update: XOR<UserUpdateWithoutProcessedPaymentsInput, UserUncheckedUpdateWithoutProcessedPaymentsInput>
-    create: XOR<UserCreateWithoutProcessedPaymentsInput, UserUncheckedCreateWithoutProcessedPaymentsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutProcessedPaymentsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutProcessedPaymentsInput, UserUncheckedUpdateWithoutProcessedPaymentsInput>
-  }
-
-  export type UserUpdateWithoutProcessedPaymentsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutProcessedPaymentsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserCreateWithoutSentInvitationsInput = {
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
-    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
-    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
-    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
-    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserUncheckedCreateWithoutSentInvitationsInput = {
-    id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
-    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
-  }
-
-  export type UserCreateOrConnectWithoutSentInvitationsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
   }
 
   export type UserCreateWithoutReceivedInvitationsInput = {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
     lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
     modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
   }
 
@@ -18227,41 +18149,119 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
+    warehouseId?: number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
     farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
     processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
   export type UserCreateOrConnectWithoutReceivedInvitationsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutReceivedInvitationsInput, UserUncheckedCreateWithoutReceivedInvitationsInput>
+  }
+
+  export type UserCreateWithoutSentInvitationsInput = {
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
+    createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
+    createdUsers?: UserCreateNestedManyWithoutCreatedByInput
+    lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
+    modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserUncheckedCreateWithoutSentInvitationsInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
+    inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
+  }
+
+  export type UserCreateOrConnectWithoutSentInvitationsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
   }
 
   export type WarehouseCreateWithoutInvitationsInput = {
@@ -18273,10 +18273,10 @@ export namespace Prisma {
     email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    manager: UserCreateNestedOneWithoutManagedWarehouseInput
-    farmers?: UserCreateNestedManyWithoutWarehouseInput
-    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
     products?: ProductsCreateNestedManyWithoutWarehouseInput
+    farmers?: UserCreateNestedManyWithoutWarehouseInput
+    manager: UserCreateNestedOneWithoutManagedWarehouseInput
+    inventory?: WarehouseInventoryCreateNestedManyWithoutWarehouseInput
   }
 
   export type WarehouseUncheckedCreateWithoutInvitationsInput = {
@@ -18290,98 +18290,14 @@ export namespace Prisma {
     managerId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
     farmers?: UserUncheckedCreateNestedManyWithoutWarehouseInput
     inventory?: WarehouseInventoryUncheckedCreateNestedManyWithoutWarehouseInput
-    products?: ProductsUncheckedCreateNestedManyWithoutWarehouseInput
   }
 
   export type WarehouseCreateOrConnectWithoutInvitationsInput = {
     where: WarehouseWhereUniqueInput
     create: XOR<WarehouseCreateWithoutInvitationsInput, WarehouseUncheckedCreateWithoutInvitationsInput>
-  }
-
-  export type UserUpsertWithoutSentInvitationsInput = {
-    update: XOR<UserUpdateWithoutSentInvitationsInput, UserUncheckedUpdateWithoutSentInvitationsInput>
-    create: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutSentInvitationsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSentInvitationsInput, UserUncheckedUpdateWithoutSentInvitationsInput>
-  }
-
-  export type UserUpdateWithoutSentInvitationsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutSentInvitationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
   export type UserUpsertWithoutReceivedInvitationsInput = {
@@ -18399,35 +18315,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -18436,35 +18352,119 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
     farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
     processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type UserUpsertWithoutSentInvitationsInput = {
+    update: XOR<UserUpdateWithoutSentInvitationsInput, UserUncheckedUpdateWithoutSentInvitationsInput>
+    create: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSentInvitationsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSentInvitationsInput, UserUncheckedUpdateWithoutSentInvitationsInput>
+  }
+
+  export type UserUpdateWithoutSentInvitationsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSentInvitationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
     performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -18488,10 +18488,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
-    farmers?: UserUpdateManyWithoutWarehouseNestedInput
-    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
     products?: ProductsUpdateManyWithoutWarehouseNestedInput
+    farmers?: UserUpdateManyWithoutWarehouseNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedWarehouseNestedInput
+    inventory?: WarehouseInventoryUpdateManyWithoutWarehouseNestedInput
   }
 
   export type WarehouseUncheckedUpdateWithoutInvitationsInput = {
@@ -18505,44 +18505,44 @@ export namespace Prisma {
     managerId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
     farmers?: UserUncheckedUpdateManyWithoutWarehouseNestedInput
     inventory?: WarehouseInventoryUncheckedUpdateManyWithoutWarehouseNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutWarehouseNestedInput
   }
 
   export type UserCreateWithoutPerformedActionsInput = {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
     lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
     modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogCreateNestedManyWithoutTargetUserInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
   }
 
@@ -18551,35 +18551,35 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
+    warehouseId?: number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
     farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
     processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    activityLogs?: ActivityLogUncheckedCreateNestedManyWithoutTargetUserInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
@@ -18592,35 +18592,35 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
-    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
+    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
+    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
+    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
+    products?: ProductsCreateNestedManyWithoutFarmerInput
     createdBy?: UserCreateNestedOneWithoutCreatedUsersInput
     createdUsers?: UserCreateNestedManyWithoutCreatedByInput
     lastModifiedBy?: UserCreateNestedOneWithoutModifiedUsersInput
     modifiedUsers?: UserCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsCreateNestedManyWithoutFarmerInput
-    farmerPayments?: PaymentCreateNestedManyWithoutFarmerInput
-    processedPayments?: PaymentCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationCreateNestedManyWithoutReceiverInput
-    performedActions?: ActivityLogCreateNestedManyWithoutPerformedByInput
+    warehouse?: WarehouseCreateNestedOneWithoutFarmersInput
+    managedWarehouse?: WarehouseCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryCreateNestedManyWithoutRecordedByInput
   }
 
@@ -18629,35 +18629,35 @@ export namespace Prisma {
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
+    warehouseId?: number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
-    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
-    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
-    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
+    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
     farmerPayments?: PaymentUncheckedCreateNestedManyWithoutFarmerInput
     processedPayments?: PaymentUncheckedCreateNestedManyWithoutProcessedByInput
-    sentInvitations?: InvitationUncheckedCreateNestedManyWithoutSenderInput
-    receivedInvitations?: InvitationUncheckedCreateNestedManyWithoutReceiverInput
-    performedActions?: ActivityLogUncheckedCreateNestedManyWithoutPerformedByInput
+    products?: ProductsUncheckedCreateNestedManyWithoutFarmerInput
+    createdUsers?: UserUncheckedCreateNestedManyWithoutCreatedByInput
+    modifiedUsers?: UserUncheckedCreateNestedManyWithoutLastModifiedByInput
+    managedWarehouse?: WarehouseUncheckedCreateNestedOneWithoutManagerInput
     inventoryRecords?: WarehouseInventoryUncheckedCreateNestedManyWithoutRecordedByInput
   }
 
@@ -18681,35 +18681,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -18718,35 +18718,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
     farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
     processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -18765,35 +18765,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -18802,103 +18802,88 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
     farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
     processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type UserCreateManyCreatedByInput = {
+  export type ActivityLogCreateManyPerformedByInput = {
     id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    lastModifiedById?: number | null
+    targetUserId?: number | null
+    action: $Enums.ActionType
+    entityType: $Enums.EntityType
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type UserCreateManyLastModifiedByInput = {
+  export type ActivityLogCreateManyTargetUserInput = {
     id?: number
-    email: string
-    password?: string | null
-    Fname: string
-    Mname?: string | null
-    Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
-    emailConfirmationToken?: string | null
-    emailConfirmationTokenExpiry?: Date | string | null
-    resetToken?: string | null
-    resetTokenExpiry?: Date | string | null
-    warehouseId?: number | null
-    createdById?: number | null
+    performedById?: number | null
+    action: $Enums.ActionType
+    entityType: $Enums.EntityType
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    updatedAt?: Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type ProductsCreateManyFarmerInput = {
+  export type InvitationCreateManyReceiverInput = {
     id?: number
-    name: string
-    grade: string
-    quantity: number
-    price: number
-    variety: string
-    location: string
-    image?: string | null
-    description?: string | null
+    senderId?: number | null
     warehouseId: number
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
+  }
+
+  export type InvitationCreateManySenderInput = {
+    id?: number
+    receiverId?: number | null
+    warehouseId: number
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
   }
 
   export type PaymentCreateManyFarmerInput = {
@@ -18935,56 +18920,71 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type InvitationCreateManySenderInput = {
+  export type ProductsCreateManyFarmerInput = {
     id?: number
-    receiverId?: number | null
-    warehouseId: number
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
+    name: string
+    grade: string
+    quantity: number
+    price: number
+    variety: string
+    location: string
+    image?: string | null
     createdAt?: Date | string
+    description?: string | null
     updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
-  }
-
-  export type InvitationCreateManyReceiverInput = {
-    id?: number
-    senderId?: number | null
     warehouseId: number
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
+  }
+
+  export type UserCreateManyCreatedByInput = {
+    id?: number
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
     createdAt?: Date | string
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type ActivityLogCreateManyTargetUserInput = {
+  export type UserCreateManyLastModifiedByInput = {
     id?: number
-    performedById?: number | null
-    action: $Enums.ActionType
-    entityType: $Enums.EntityType
-    entityId?: number | null
-    description: string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
+    email: string
+    password?: string | null
+    Fname: string
+    Lname: string
+    Mname?: string | null
+    address?: string | null
     createdAt?: Date | string
-  }
-
-  export type ActivityLogCreateManyPerformedByInput = {
-    id?: number
-    targetUserId?: number | null
-    action: $Enums.ActionType
-    entityType: $Enums.EntityType
-    entityId?: number | null
-    description: string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
+    createdById?: number | null
+    emailConfirmationToken?: string | null
+    emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    phone?: string | null
+    photo?: string | null
+    resetToken?: string | null
+    resetTokenExpiry?: Date | string | null
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
+    updatedAt?: Date | string
+    warehouseId?: number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type WarehouseInventoryCreateManyRecordedByInput = {
@@ -18999,250 +18999,156 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type UserUpdateWithoutCreatedByInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type ActivityLogUpdateWithoutPerformedByInput = {
+    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
+    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
+    targetUser?: UserUpdateOneWithoutActivityLogsNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutCreatedByInput = {
+  export type ActivityLogUncheckedUpdateWithoutPerformedByInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
+    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type UserUncheckedUpdateManyWithoutCreatedByInput = {
+  export type ActivityLogUncheckedUpdateManyWithoutPerformedByInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
+    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type UserUpdateWithoutLastModifiedByInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type ActivityLogUpdateWithoutTargetUserInput = {
+    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
+    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
-    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
-    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
+    performedBy?: UserUpdateOneWithoutPerformedActionsNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutLastModifiedByInput = {
+  export type ActivityLogUncheckedUpdateWithoutTargetUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    performedById?: NullableIntFieldUpdateOperationsInput | number | null
+    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
+    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
-    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type UserUncheckedUpdateManyWithoutLastModifiedByInput = {
+  export type ActivityLogUncheckedUpdateManyWithoutTargetUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
-    Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
-    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
-    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    performedById?: NullableIntFieldUpdateOperationsInput | number | null
+    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
+    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type ProductsUpdateWithoutFarmerInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    variety?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+  export type InvitationUpdateWithoutReceiverInput = {
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    warehouse?: WarehouseUpdateOneRequiredWithoutProductsNestedInput
-    inventoryMovements?: WarehouseInventoryUpdateManyWithoutProductNestedInput
-    payments?: PaymentUpdateManyWithoutProductNestedInput
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
+    warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
 
-  export type ProductsUncheckedUpdateWithoutFarmerInput = {
+  export type InvitationUncheckedUpdateWithoutReceiverInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    variety?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
-    payments?: PaymentUncheckedUpdateManyWithoutProductNestedInput
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type ProductsUncheckedUpdateManyWithoutFarmerInput = {
+  export type InvitationUncheckedUpdateManyWithoutReceiverInput = {
     id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    variety?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type InvitationUpdateWithoutSenderInput = {
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
+    warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
+  }
+
+  export type InvitationUncheckedUpdateWithoutSenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
+    warehouseId?: IntFieldUpdateOperationsInput | number
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type InvitationUncheckedUpdateManyWithoutSenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
+    warehouseId?: IntFieldUpdateOperationsInput | number
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PaymentUpdateWithoutFarmerInput = {
@@ -19257,8 +19163,8 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    product?: ProductsUpdateOneRequiredWithoutPaymentsNestedInput
     processedBy?: UserUpdateOneWithoutProcessedPaymentsNestedInput
+    product?: ProductsUpdateOneRequiredWithoutPaymentsNestedInput
   }
 
   export type PaymentUncheckedUpdateWithoutFarmerInput = {
@@ -19345,156 +19251,250 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type InvitationUpdateWithoutSenderInput = {
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type ProductsUpdateWithoutFarmerInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    variety?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
-    warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
+    payments?: PaymentUpdateManyWithoutProductNestedInput
+    warehouse?: WarehouseUpdateOneRequiredWithoutProductsNestedInput
+    inventoryMovements?: WarehouseInventoryUpdateManyWithoutProductNestedInput
   }
 
-  export type InvitationUncheckedUpdateWithoutSenderInput = {
+  export type ProductsUncheckedUpdateWithoutFarmerInput = {
     id?: IntFieldUpdateOperationsInput | number
-    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
+    name?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    variety?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     warehouseId?: IntFieldUpdateOperationsInput | number
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    payments?: PaymentUncheckedUpdateManyWithoutProductNestedInput
+    inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
   }
 
-  export type InvitationUncheckedUpdateManyWithoutSenderInput = {
+  export type ProductsUncheckedUpdateManyWithoutFarmerInput = {
     id?: IntFieldUpdateOperationsInput | number
-    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
+    name?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    variety?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     warehouseId?: IntFieldUpdateOperationsInput | number
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpdateWithoutCreatedByInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type InvitationUpdateWithoutReceiverInput = {
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UserUncheckedUpdateWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
-    warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type InvitationUncheckedUpdateWithoutReceiverInput = {
+  export type UserUncheckedUpdateManyWithoutCreatedByInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: NullableIntFieldUpdateOperationsInput | number | null
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type InvitationUncheckedUpdateManyWithoutReceiverInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    senderId?: NullableIntFieldUpdateOperationsInput | number | null
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UserUpdateWithoutLastModifiedByInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
+    createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
+    warehouse?: WarehouseUpdateOneWithoutFarmersNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type ActivityLogUpdateWithoutTargetUserInput = {
-    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
-    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
-    entityId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    performedBy?: UserUpdateOneWithoutPerformedActionsNestedInput
-  }
-
-  export type ActivityLogUncheckedUpdateWithoutTargetUserInput = {
+  export type UserUncheckedUpdateWithoutLastModifiedByInput = {
     id?: IntFieldUpdateOperationsInput | number
-    performedById?: NullableIntFieldUpdateOperationsInput | number | null
-    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
-    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
-    entityId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
+    inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
-  export type ActivityLogUncheckedUpdateManyWithoutTargetUserInput = {
+  export type UserUncheckedUpdateManyWithoutLastModifiedByInput = {
     id?: IntFieldUpdateOperationsInput | number
-    performedById?: NullableIntFieldUpdateOperationsInput | number | null
-    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
-    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
-    entityId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    Fname?: StringFieldUpdateOperationsInput | string
+    Lname?: StringFieldUpdateOperationsInput | string
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ActivityLogUpdateWithoutPerformedByInput = {
-    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
-    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
-    entityId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    targetUser?: UserUpdateOneWithoutActivityLogsNestedInput
-  }
-
-  export type ActivityLogUncheckedUpdateWithoutPerformedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
-    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
-    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
-    entityId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ActivityLogUncheckedUpdateManyWithoutPerformedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
-    action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
-    entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
-    entityId?: NullableIntFieldUpdateOperationsInput | number | null
-    description?: StringFieldUpdateOperationsInput | string
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    warehouseId?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type WarehouseInventoryUpdateWithoutRecordedByInput = {
@@ -19532,28 +19532,58 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type InvitationCreateManyWarehouseInput = {
+    id?: number
+    senderId?: number | null
+    receiverId?: number | null
+    status?: $Enums.InvitationStatus
+    message?: string | null
+    sentAt?: Date | string
+    respondedAt?: Date | string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    token?: string | null
+    tokenUsed?: boolean
+  }
+
+  export type ProductsCreateManyWarehouseInput = {
+    id?: number
+    name: string
+    grade: string
+    quantity: number
+    price: number
+    variety: string
+    location: string
+    image?: string | null
+    createdAt?: Date | string
+    description?: string | null
+    farmerId: number
+    updatedAt?: Date | string
+  }
+
   export type UserCreateManyWarehouseInput = {
     id?: number
     email: string
     password?: string | null
     Fname: string
-    Mname?: string | null
     Lname: string
-    photo?: string | null
-    phone?: string | null
-    address: string
-    role?: $Enums.Role
-    status?: $Enums.UserStatus
-    isGoogleUser?: boolean | null
-    googleId?: string | null
-    emailVerified?: boolean | null
+    Mname?: string | null
+    address?: string | null
+    createdAt?: Date | string
+    createdById?: number | null
     emailConfirmationToken?: string | null
     emailConfirmationTokenExpiry?: Date | string | null
+    emailVerified?: boolean | null
+    googleId?: string | null
+    isGoogleUser?: boolean | null
+    lastModifiedById?: number | null
+    phone?: string | null
+    photo?: string | null
     resetToken?: string | null
     resetTokenExpiry?: Date | string | null
-    createdById?: number | null
-    lastModifiedById?: number | null
-    createdAt?: Date | string
+    role?: $Enums.Role
+    status?: $Enums.UserStatus
     updatedAt?: Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -19570,69 +19600,131 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type ProductsCreateManyWarehouseInput = {
-    id?: number
-    name: string
-    grade: string
-    quantity: number
-    price: number
-    variety: string
-    location: string
-    image?: string | null
-    description?: string | null
-    farmerId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type InvitationUpdateWithoutWarehouseInput = {
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
+    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
   }
 
-  export type InvitationCreateManyWarehouseInput = {
-    id?: number
-    senderId?: number | null
-    receiverId?: number | null
-    status?: $Enums.InvitationStatus
-    message?: string | null
-    sentAt?: Date | string
-    respondedAt?: Date | string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    token?: string | null
-    tokenUsed?: boolean
+  export type InvitationUncheckedUpdateWithoutWarehouseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type InvitationUncheckedUpdateManyWithoutWarehouseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ProductsUpdateWithoutWarehouseInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    variety?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: PaymentUpdateManyWithoutProductNestedInput
+    farmer?: UserUpdateOneRequiredWithoutProductsNestedInput
+    inventoryMovements?: WarehouseInventoryUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductsUncheckedUpdateWithoutWarehouseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    variety?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    farmerId?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: PaymentUncheckedUpdateManyWithoutProductNestedInput
+    inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductsUncheckedUpdateManyWithoutWarehouseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    variety?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    farmerId?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUpdateWithoutWarehouseInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
+    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
+    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
+    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
+    products?: ProductsUpdateManyWithoutFarmerNestedInput
     createdBy?: UserUpdateOneWithoutCreatedUsersNestedInput
     createdUsers?: UserUpdateManyWithoutCreatedByNestedInput
     lastModifiedBy?: UserUpdateOneWithoutModifiedUsersNestedInput
     modifiedUsers?: UserUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUpdateManyWithoutFarmerNestedInput
-    farmerPayments?: PaymentUpdateManyWithoutFarmerNestedInput
-    processedPayments?: PaymentUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUpdateManyWithoutPerformedByNestedInput
+    managedWarehouse?: WarehouseUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -19641,35 +19733,35 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
-    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
-    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
-    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
-    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
+    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
+    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
     farmerPayments?: PaymentUncheckedUpdateManyWithoutFarmerNestedInput
     processedPayments?: PaymentUncheckedUpdateManyWithoutProcessedByNestedInput
-    sentInvitations?: InvitationUncheckedUpdateManyWithoutSenderNestedInput
-    receivedInvitations?: InvitationUncheckedUpdateManyWithoutReceiverNestedInput
-    activityLogs?: ActivityLogUncheckedUpdateManyWithoutTargetUserNestedInput
-    performedActions?: ActivityLogUncheckedUpdateManyWithoutPerformedByNestedInput
+    products?: ProductsUncheckedUpdateManyWithoutFarmerNestedInput
+    createdUsers?: UserUncheckedUpdateManyWithoutCreatedByNestedInput
+    modifiedUsers?: UserUncheckedUpdateManyWithoutLastModifiedByNestedInput
+    managedWarehouse?: WarehouseUncheckedUpdateOneWithoutManagerNestedInput
     inventoryRecords?: WarehouseInventoryUncheckedUpdateManyWithoutRecordedByNestedInput
   }
 
@@ -19678,23 +19770,23 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
     Fname?: StringFieldUpdateOperationsInput | string
-    Mname?: NullableStringFieldUpdateOperationsInput | string | null
     Lname?: StringFieldUpdateOperationsInput | string
-    photo?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: StringFieldUpdateOperationsInput | string
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    googleId?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    Mname?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
     emailConfirmationToken?: NullableStringFieldUpdateOperationsInput | string | null
     emailConfirmationTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    photo?: NullableStringFieldUpdateOperationsInput | string | null
     resetToken?: NullableStringFieldUpdateOperationsInput | string | null
     resetTokenExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    lastModifiedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDetails?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -19734,110 +19826,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProductsUpdateWithoutWarehouseInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    variety?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    farmer?: UserUpdateOneRequiredWithoutProductsNestedInput
-    inventoryMovements?: WarehouseInventoryUpdateManyWithoutProductNestedInput
-    payments?: PaymentUpdateManyWithoutProductNestedInput
-  }
-
-  export type ProductsUncheckedUpdateWithoutWarehouseInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    variety?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    farmerId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    inventoryMovements?: WarehouseInventoryUncheckedUpdateManyWithoutProductNestedInput
-    payments?: PaymentUncheckedUpdateManyWithoutProductNestedInput
-  }
-
-  export type ProductsUncheckedUpdateManyWithoutWarehouseInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    variety?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    farmerId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type InvitationUpdateWithoutWarehouseInput = {
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
-    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
-  }
-
-  export type InvitationUncheckedUpdateWithoutWarehouseInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    senderId?: NullableIntFieldUpdateOperationsInput | number | null
-    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type InvitationUncheckedUpdateManyWithoutWarehouseInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    senderId?: NullableIntFieldUpdateOperationsInput | number | null
-    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
-    message?: NullableStringFieldUpdateOperationsInput | string | null
-    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type WarehouseInventoryCreateManyProductInput = {
-    id?: number
-    warehouseId: number
-    quantityIn?: number | null
-    quantityOut?: number | null
-    currentStock: number
-    movementType: $Enums.MovementType
-    reason?: string | null
-    recordedById?: number | null
-    createdAt?: Date | string
-  }
-
   export type PaymentCreateManyProductInput = {
     id?: number
     farmerId: number
@@ -19855,39 +19843,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type WarehouseInventoryUpdateWithoutProductInput = {
-    quantityIn?: NullableIntFieldUpdateOperationsInput | number | null
-    quantityOut?: NullableIntFieldUpdateOperationsInput | number | null
-    currentStock?: IntFieldUpdateOperationsInput | number
-    movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    warehouse?: WarehouseUpdateOneRequiredWithoutInventoryNestedInput
-    recordedBy?: UserUpdateOneWithoutInventoryRecordsNestedInput
-  }
-
-  export type WarehouseInventoryUncheckedUpdateWithoutProductInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    quantityIn?: NullableIntFieldUpdateOperationsInput | number | null
-    quantityOut?: NullableIntFieldUpdateOperationsInput | number | null
-    currentStock?: IntFieldUpdateOperationsInput | number
-    movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WarehouseInventoryUncheckedUpdateManyWithoutProductInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    warehouseId?: IntFieldUpdateOperationsInput | number
-    quantityIn?: NullableIntFieldUpdateOperationsInput | number | null
-    quantityOut?: NullableIntFieldUpdateOperationsInput | number | null
-    currentStock?: IntFieldUpdateOperationsInput | number
-    movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type WarehouseInventoryCreateManyProductInput = {
+    id?: number
+    warehouseId: number
+    quantityIn?: number | null
+    quantityOut?: number | null
+    currentStock: number
+    movementType: $Enums.MovementType
+    reason?: string | null
+    recordedById?: number | null
+    createdAt?: Date | string
   }
 
   export type PaymentUpdateWithoutProductInput = {
@@ -19938,6 +19903,41 @@ export namespace Prisma {
     processedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WarehouseInventoryUpdateWithoutProductInput = {
+    quantityIn?: NullableIntFieldUpdateOperationsInput | number | null
+    quantityOut?: NullableIntFieldUpdateOperationsInput | number | null
+    currentStock?: IntFieldUpdateOperationsInput | number
+    movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recordedBy?: UserUpdateOneWithoutInventoryRecordsNestedInput
+    warehouse?: WarehouseUpdateOneRequiredWithoutInventoryNestedInput
+  }
+
+  export type WarehouseInventoryUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    warehouseId?: IntFieldUpdateOperationsInput | number
+    quantityIn?: NullableIntFieldUpdateOperationsInput | number | null
+    quantityOut?: NullableIntFieldUpdateOperationsInput | number | null
+    currentStock?: IntFieldUpdateOperationsInput | number
+    movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WarehouseInventoryUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    warehouseId?: IntFieldUpdateOperationsInput | number
+    quantityIn?: NullableIntFieldUpdateOperationsInput | number | null
+    quantityOut?: NullableIntFieldUpdateOperationsInput | number | null
+    currentStock?: IntFieldUpdateOperationsInput | number
+    movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

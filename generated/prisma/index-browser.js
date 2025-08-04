@@ -125,25 +125,25 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   Fname: 'Fname',
-  Mname: 'Mname',
   Lname: 'Lname',
-  photo: 'photo',
-  phone: 'phone',
+  Mname: 'Mname',
   address: 'address',
-  role: 'role',
-  status: 'status',
-  isGoogleUser: 'isGoogleUser',
-  googleId: 'googleId',
-  emailVerified: 'emailVerified',
+  createdAt: 'createdAt',
+  createdById: 'createdById',
   emailConfirmationToken: 'emailConfirmationToken',
   emailConfirmationTokenExpiry: 'emailConfirmationTokenExpiry',
+  emailVerified: 'emailVerified',
+  googleId: 'googleId',
+  isGoogleUser: 'isGoogleUser',
+  lastModifiedById: 'lastModifiedById',
+  phone: 'phone',
+  photo: 'photo',
   resetToken: 'resetToken',
   resetTokenExpiry: 'resetTokenExpiry',
-  warehouseId: 'warehouseId',
-  createdById: 'createdById',
-  lastModifiedById: 'lastModifiedById',
-  createdAt: 'createdAt',
+  role: 'role',
+  status: 'status',
   updatedAt: 'updatedAt',
+  warehouseId: 'warehouseId',
   paymentDetails: 'paymentDetails'
 };
 
@@ -169,11 +169,11 @@ exports.Prisma.ProductsScalarFieldEnum = {
   variety: 'variety',
   location: 'location',
   image: 'image',
+  createdAt: 'createdAt',
   description: 'description',
   farmerId: 'farmerId',
-  warehouseId: 'warehouseId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  warehouseId: 'warehouseId'
 };
 
 exports.Prisma.WarehouseInventoryScalarFieldEnum = {
