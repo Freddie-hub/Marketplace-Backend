@@ -2055,7 +2055,7 @@ export namespace Prisma {
     Lname: string
     photo: string | null
     phone: string | null
-    address: string | null
+    address: string
     role: $Enums.Role
     status: $Enums.UserStatus
     isGoogleUser: boolean | null
@@ -2277,7 +2277,7 @@ export namespace Prisma {
       Lname: string
       photo: string | null
       phone: string | null
-      address: string | null
+      address: string
       role: $Enums.Role
       status: $Enums.UserStatus
       isGoogleUser: boolean | null
@@ -11398,7 +11398,7 @@ export namespace Prisma {
     Lname?: StringFilter<"User"> | string
     photo?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
-    address?: StringNullableFilter<"User"> | string | null
+    address?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
@@ -11439,7 +11439,7 @@ export namespace Prisma {
     Lname?: SortOrder
     photo?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
+    address?: SortOrder
     role?: SortOrder
     status?: SortOrder
     isGoogleUser?: SortOrderInput | SortOrder
@@ -11486,7 +11486,7 @@ export namespace Prisma {
     Lname?: StringFilter<"User"> | string
     photo?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
-    address?: StringNullableFilter<"User"> | string | null
+    address?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
@@ -11524,7 +11524,7 @@ export namespace Prisma {
     Lname?: SortOrder
     photo?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
+    address?: SortOrder
     role?: SortOrder
     status?: SortOrder
     isGoogleUser?: SortOrderInput | SortOrder
@@ -11559,7 +11559,7 @@ export namespace Prisma {
     Lname?: StringWithAggregatesFilter<"User"> | string
     photo?: StringNullableWithAggregatesFilter<"User"> | string | null
     phone?: StringNullableWithAggregatesFilter<"User"> | string | null
-    address?: StringNullableWithAggregatesFilter<"User"> | string | null
+    address?: StringWithAggregatesFilter<"User"> | string
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
     isGoogleUser?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
@@ -12170,7 +12170,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -12208,7 +12208,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -12245,7 +12245,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -12283,7 +12283,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -12321,7 +12321,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -12347,7 +12347,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -12371,7 +12371,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -15460,7 +15460,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15497,7 +15497,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15538,7 +15538,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15575,7 +15575,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15621,7 +15621,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15658,7 +15658,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15699,7 +15699,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -15736,7 +15736,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -16179,7 +16179,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -16216,7 +16216,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -16272,7 +16272,7 @@ export namespace Prisma {
     Lname?: StringFilter<"User"> | string
     photo?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
-    address?: StringNullableFilter<"User"> | string | null
+    address?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     isGoogleUser?: BoolNullableFilter<"User"> | boolean | null
@@ -16309,7 +16309,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -16346,7 +16346,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -16616,7 +16616,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -16653,7 +16653,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -16694,7 +16694,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -16731,7 +16731,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -16903,7 +16903,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -16940,7 +16940,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17040,7 +17040,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17077,7 +17077,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17241,7 +17241,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17278,7 +17278,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17462,7 +17462,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17499,7 +17499,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17637,7 +17637,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17674,7 +17674,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17710,7 +17710,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17747,7 +17747,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17826,7 +17826,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17863,7 +17863,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -17915,7 +17915,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -17952,7 +17952,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18043,7 +18043,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18080,7 +18080,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18116,7 +18116,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18153,7 +18153,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18194,7 +18194,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18231,7 +18231,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18319,7 +18319,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18356,7 +18356,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18403,7 +18403,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18440,7 +18440,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18518,7 +18518,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18555,7 +18555,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18596,7 +18596,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18633,7 +18633,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18685,7 +18685,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18722,7 +18722,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18769,7 +18769,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18806,7 +18806,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -18843,7 +18843,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -18869,7 +18869,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -19007,7 +19007,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19044,7 +19044,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19081,7 +19081,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19106,7 +19106,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19143,7 +19143,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19180,7 +19180,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19541,7 +19541,7 @@ export namespace Prisma {
     Lname: string
     photo?: string | null
     phone?: string | null
-    address?: string | null
+    address: string
     role?: $Enums.Role
     status?: $Enums.UserStatus
     isGoogleUser?: boolean | null
@@ -19608,7 +19608,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19645,7 +19645,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -19682,7 +19682,7 @@ export namespace Prisma {
     Lname?: StringFieldUpdateOperationsInput | string
     photo?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isGoogleUser?: NullableBoolFieldUpdateOperationsInput | boolean | null

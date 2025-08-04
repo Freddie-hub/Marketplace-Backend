@@ -92,7 +92,7 @@ model User {
   Lname                        String
   photo                        String?
   phone                        String?
-  address                      String?
+  address                      String
   role                         Role       @default(FARMER)
   status                       UserStatus @default(INACTIVE)
   isGoogleUser                 Boolean?   @default(false)
