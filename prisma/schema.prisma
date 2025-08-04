@@ -238,3 +238,11 @@ enum EntityType {
   INVENTORY
   SYSTEM
 }
+
+model TyType {
+  id          Int      @id @default(autoincrement())
+  entityId    Int?
+  description String
+  metadata    Json?
+  createdAt   DateTime @default(now())
+}

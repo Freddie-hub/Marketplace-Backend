@@ -21,6 +21,8 @@ const invitationResolvers = {
           };
         }
 
+        const { receiver, receiverId } = invitation;
+
         const result = await prisma.$transaction(async (tx) => {
           await tx.invitation.update({
             where: { id: invitation.id },
@@ -32,17 +34,17 @@ const invitationResolvers = {
           });
 
           await tx.user.update({
-            where: { id: invitation.receiverId! }, // safe now
+            where: { id: receiverId },
             data: { status: "ACTIVE" },
           });
 
           await tx.activityLog.create({
             data: {
-              performedById: invitation.receiverId!,
+              performedById: receiverId,
               action: "ACCEPTED_INVITATION",
               entityType: "INVITATION",
               entityId: invitation.id,
-              description: `User ${invitation.receiver.email} accepted invitation`,
+              description: `User ${receiver.email} accepted invitation`,
               metadata: { token },
             },
           });
@@ -82,6 +84,8 @@ const invitationResolvers = {
           };
         }
 
+        const { receiver, receiverId } = invitation;
+
         const result = await prisma.$transaction(async (tx) => {
           await tx.invitation.update({
             where: { id: invitation.id },
@@ -94,11 +98,11 @@ const invitationResolvers = {
 
           await tx.activityLog.create({
             data: {
-              performedById: invitation.receiverId!,
+              performedById: receiverId,
               action: "REJECTED_INVITATION",
               entityType: "INVITATION",
               entityId: invitation.id,
-              description: `User ${invitation.receiver.email} rejected invitation`,
+              description: `User ${receiver.email} rejected invitation`,
               metadata: { token },
             },
           });

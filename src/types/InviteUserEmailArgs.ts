@@ -1,3 +1,8 @@
+export interface CropInput {
+  name: string;
+  quantity: number;
+}
+
 export interface InviteUserEmailArgs {
   args: {
     email: string;
@@ -7,6 +12,8 @@ export interface InviteUserEmailArgs {
     password: string;
     warehouseName?: string;
     warehouseLocation?: string;
-    warehouseAddress: string; // ✅ Required and must be a string
+    warehouseAddress?: string | null;
+    crops: { name: string; quantity: number }[]; 
+    invitationToken: string;
   };
 }

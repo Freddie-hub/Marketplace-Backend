@@ -48,6 +48,11 @@ export type Invitation = $Result.DefaultSelection<Prisma.$InvitationPayload>
  * 
  */
 export type ActivityLog = $Result.DefaultSelection<Prisma.$ActivityLogPayload>
+/**
+ * Model TyType
+ * 
+ */
+export type TyType = $Result.DefaultSelection<Prisma.$TyTypePayload>
 
 /**
  * Enums
@@ -378,6 +383,16 @@ export class PrismaClient<
     * ```
     */
   get activityLog(): Prisma.ActivityLogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tyType`: Exposes CRUD operations for the **TyType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TyTypes
+    * const tyTypes = await prisma.tyType.findMany()
+    * ```
+    */
+  get tyType(): Prisma.TyTypeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -824,7 +839,8 @@ export namespace Prisma {
     WarehouseInventory: 'WarehouseInventory',
     Payment: 'Payment',
     Invitation: 'Invitation',
-    ActivityLog: 'ActivityLog'
+    ActivityLog: 'ActivityLog',
+    TyType: 'TyType'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -843,7 +859,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "warehouse" | "products" | "warehouseInventory" | "payment" | "invitation" | "activityLog"
+      modelProps: "user" | "warehouse" | "products" | "warehouseInventory" | "payment" | "invitation" | "activityLog" | "tyType"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1365,6 +1381,80 @@ export namespace Prisma {
           }
         }
       }
+      TyType: {
+        payload: Prisma.$TyTypePayload<ExtArgs>
+        fields: Prisma.TyTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TyTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TyTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>
+          }
+          findFirst: {
+            args: Prisma.TyTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TyTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>
+          }
+          findMany: {
+            args: Prisma.TyTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>[]
+          }
+          create: {
+            args: Prisma.TyTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>
+          }
+          createMany: {
+            args: Prisma.TyTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TyTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>[]
+          }
+          delete: {
+            args: Prisma.TyTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>
+          }
+          update: {
+            args: Prisma.TyTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.TyTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TyTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TyTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.TyTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TyTypePayload>
+          }
+          aggregate: {
+            args: Prisma.TyTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTyType>
+          }
+          groupBy: {
+            args: Prisma.TyTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TyTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TyTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<TyTypeCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1456,6 +1546,7 @@ export namespace Prisma {
     payment?: PaymentOmit
     invitation?: InvitationOmit
     activityLog?: ActivityLogOmit
+    tyType?: TyTypeOmit
   }
 
   /* Types for Logging */
@@ -10999,6 +11090,1035 @@ export namespace Prisma {
 
 
   /**
+   * Model TyType
+   */
+
+  export type AggregateTyType = {
+    _count: TyTypeCountAggregateOutputType | null
+    _avg: TyTypeAvgAggregateOutputType | null
+    _sum: TyTypeSumAggregateOutputType | null
+    _min: TyTypeMinAggregateOutputType | null
+    _max: TyTypeMaxAggregateOutputType | null
+  }
+
+  export type TyTypeAvgAggregateOutputType = {
+    id: number | null
+    entityId: number | null
+  }
+
+  export type TyTypeSumAggregateOutputType = {
+    id: number | null
+    entityId: number | null
+  }
+
+  export type TyTypeMinAggregateOutputType = {
+    id: number | null
+    entityId: number | null
+    description: string | null
+    createdAt: Date | null
+  }
+
+  export type TyTypeMaxAggregateOutputType = {
+    id: number | null
+    entityId: number | null
+    description: string | null
+    createdAt: Date | null
+  }
+
+  export type TyTypeCountAggregateOutputType = {
+    id: number
+    entityId: number
+    description: number
+    metadata: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TyTypeAvgAggregateInputType = {
+    id?: true
+    entityId?: true
+  }
+
+  export type TyTypeSumAggregateInputType = {
+    id?: true
+    entityId?: true
+  }
+
+  export type TyTypeMinAggregateInputType = {
+    id?: true
+    entityId?: true
+    description?: true
+    createdAt?: true
+  }
+
+  export type TyTypeMaxAggregateInputType = {
+    id?: true
+    entityId?: true
+    description?: true
+    createdAt?: true
+  }
+
+  export type TyTypeCountAggregateInputType = {
+    id?: true
+    entityId?: true
+    description?: true
+    metadata?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TyTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TyType to aggregate.
+     */
+    where?: TyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TyTypes to fetch.
+     */
+    orderBy?: TyTypeOrderByWithRelationInput | TyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TyTypes
+    **/
+    _count?: true | TyTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TyTypeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TyTypeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TyTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TyTypeMaxAggregateInputType
+  }
+
+  export type GetTyTypeAggregateType<T extends TyTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTyType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTyType[P]>
+      : GetScalarType<T[P], AggregateTyType[P]>
+  }
+
+
+
+
+  export type TyTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TyTypeWhereInput
+    orderBy?: TyTypeOrderByWithAggregationInput | TyTypeOrderByWithAggregationInput[]
+    by: TyTypeScalarFieldEnum[] | TyTypeScalarFieldEnum
+    having?: TyTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TyTypeCountAggregateInputType | true
+    _avg?: TyTypeAvgAggregateInputType
+    _sum?: TyTypeSumAggregateInputType
+    _min?: TyTypeMinAggregateInputType
+    _max?: TyTypeMaxAggregateInputType
+  }
+
+  export type TyTypeGroupByOutputType = {
+    id: number
+    entityId: number | null
+    description: string
+    metadata: JsonValue | null
+    createdAt: Date
+    _count: TyTypeCountAggregateOutputType | null
+    _avg: TyTypeAvgAggregateOutputType | null
+    _sum: TyTypeSumAggregateOutputType | null
+    _min: TyTypeMinAggregateOutputType | null
+    _max: TyTypeMaxAggregateOutputType | null
+  }
+
+  type GetTyTypeGroupByPayload<T extends TyTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TyTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TyTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TyTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], TyTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TyTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    entityId?: boolean
+    description?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["tyType"]>
+
+  export type TyTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    entityId?: boolean
+    description?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["tyType"]>
+
+  export type TyTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    entityId?: boolean
+    description?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["tyType"]>
+
+  export type TyTypeSelectScalar = {
+    id?: boolean
+    entityId?: boolean
+    description?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+  }
+
+  export type TyTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "entityId" | "description" | "metadata" | "createdAt", ExtArgs["result"]["tyType"]>
+
+  export type $TyTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TyType"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      entityId: number | null
+      description: string
+      metadata: Prisma.JsonValue | null
+      createdAt: Date
+    }, ExtArgs["result"]["tyType"]>
+    composites: {}
+  }
+
+  type TyTypeGetPayload<S extends boolean | null | undefined | TyTypeDefaultArgs> = $Result.GetResult<Prisma.$TyTypePayload, S>
+
+  type TyTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TyTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TyTypeCountAggregateInputType | true
+    }
+
+  export interface TyTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TyType'], meta: { name: 'TyType' } }
+    /**
+     * Find zero or one TyType that matches the filter.
+     * @param {TyTypeFindUniqueArgs} args - Arguments to find a TyType
+     * @example
+     * // Get one TyType
+     * const tyType = await prisma.tyType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TyTypeFindUniqueArgs>(args: SelectSubset<T, TyTypeFindUniqueArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TyType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TyTypeFindUniqueOrThrowArgs} args - Arguments to find a TyType
+     * @example
+     * // Get one TyType
+     * const tyType = await prisma.tyType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TyTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, TyTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TyType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeFindFirstArgs} args - Arguments to find a TyType
+     * @example
+     * // Get one TyType
+     * const tyType = await prisma.tyType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TyTypeFindFirstArgs>(args?: SelectSubset<T, TyTypeFindFirstArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TyType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeFindFirstOrThrowArgs} args - Arguments to find a TyType
+     * @example
+     * // Get one TyType
+     * const tyType = await prisma.tyType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TyTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, TyTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TyTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TyTypes
+     * const tyTypes = await prisma.tyType.findMany()
+     * 
+     * // Get first 10 TyTypes
+     * const tyTypes = await prisma.tyType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tyTypeWithIdOnly = await prisma.tyType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TyTypeFindManyArgs>(args?: SelectSubset<T, TyTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TyType.
+     * @param {TyTypeCreateArgs} args - Arguments to create a TyType.
+     * @example
+     * // Create one TyType
+     * const TyType = await prisma.tyType.create({
+     *   data: {
+     *     // ... data to create a TyType
+     *   }
+     * })
+     * 
+     */
+    create<T extends TyTypeCreateArgs>(args: SelectSubset<T, TyTypeCreateArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TyTypes.
+     * @param {TyTypeCreateManyArgs} args - Arguments to create many TyTypes.
+     * @example
+     * // Create many TyTypes
+     * const tyType = await prisma.tyType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TyTypeCreateManyArgs>(args?: SelectSubset<T, TyTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TyTypes and returns the data saved in the database.
+     * @param {TyTypeCreateManyAndReturnArgs} args - Arguments to create many TyTypes.
+     * @example
+     * // Create many TyTypes
+     * const tyType = await prisma.tyType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TyTypes and only return the `id`
+     * const tyTypeWithIdOnly = await prisma.tyType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TyTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, TyTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TyType.
+     * @param {TyTypeDeleteArgs} args - Arguments to delete one TyType.
+     * @example
+     * // Delete one TyType
+     * const TyType = await prisma.tyType.delete({
+     *   where: {
+     *     // ... filter to delete one TyType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TyTypeDeleteArgs>(args: SelectSubset<T, TyTypeDeleteArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TyType.
+     * @param {TyTypeUpdateArgs} args - Arguments to update one TyType.
+     * @example
+     * // Update one TyType
+     * const tyType = await prisma.tyType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TyTypeUpdateArgs>(args: SelectSubset<T, TyTypeUpdateArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TyTypes.
+     * @param {TyTypeDeleteManyArgs} args - Arguments to filter TyTypes to delete.
+     * @example
+     * // Delete a few TyTypes
+     * const { count } = await prisma.tyType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TyTypeDeleteManyArgs>(args?: SelectSubset<T, TyTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TyTypes
+     * const tyType = await prisma.tyType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TyTypeUpdateManyArgs>(args: SelectSubset<T, TyTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TyTypes and returns the data updated in the database.
+     * @param {TyTypeUpdateManyAndReturnArgs} args - Arguments to update many TyTypes.
+     * @example
+     * // Update many TyTypes
+     * const tyType = await prisma.tyType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TyTypes and only return the `id`
+     * const tyTypeWithIdOnly = await prisma.tyType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TyTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, TyTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TyType.
+     * @param {TyTypeUpsertArgs} args - Arguments to update or create a TyType.
+     * @example
+     * // Update or create a TyType
+     * const tyType = await prisma.tyType.upsert({
+     *   create: {
+     *     // ... data to create a TyType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TyType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TyTypeUpsertArgs>(args: SelectSubset<T, TyTypeUpsertArgs<ExtArgs>>): Prisma__TyTypeClient<$Result.GetResult<Prisma.$TyTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TyTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeCountArgs} args - Arguments to filter TyTypes to count.
+     * @example
+     * // Count the number of TyTypes
+     * const count = await prisma.tyType.count({
+     *   where: {
+     *     // ... the filter for the TyTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends TyTypeCountArgs>(
+      args?: Subset<T, TyTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TyTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TyTypeAggregateArgs>(args: Subset<T, TyTypeAggregateArgs>): Prisma.PrismaPromise<GetTyTypeAggregateType<T>>
+
+    /**
+     * Group by TyType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TyTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TyTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TyTypeGroupByArgs['orderBy'] }
+        : { orderBy?: TyTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TyTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTyTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TyType model
+   */
+  readonly fields: TyTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TyType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TyTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TyType model
+   */
+  interface TyTypeFieldRefs {
+    readonly id: FieldRef<"TyType", 'Int'>
+    readonly entityId: FieldRef<"TyType", 'Int'>
+    readonly description: FieldRef<"TyType", 'String'>
+    readonly metadata: FieldRef<"TyType", 'Json'>
+    readonly createdAt: FieldRef<"TyType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TyType findUnique
+   */
+  export type TyTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * Filter, which TyType to fetch.
+     */
+    where: TyTypeWhereUniqueInput
+  }
+
+  /**
+   * TyType findUniqueOrThrow
+   */
+  export type TyTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * Filter, which TyType to fetch.
+     */
+    where: TyTypeWhereUniqueInput
+  }
+
+  /**
+   * TyType findFirst
+   */
+  export type TyTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * Filter, which TyType to fetch.
+     */
+    where?: TyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TyTypes to fetch.
+     */
+    orderBy?: TyTypeOrderByWithRelationInput | TyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TyTypes.
+     */
+    cursor?: TyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TyTypes.
+     */
+    distinct?: TyTypeScalarFieldEnum | TyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * TyType findFirstOrThrow
+   */
+  export type TyTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * Filter, which TyType to fetch.
+     */
+    where?: TyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TyTypes to fetch.
+     */
+    orderBy?: TyTypeOrderByWithRelationInput | TyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TyTypes.
+     */
+    cursor?: TyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TyTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TyTypes.
+     */
+    distinct?: TyTypeScalarFieldEnum | TyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * TyType findMany
+   */
+  export type TyTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * Filter, which TyTypes to fetch.
+     */
+    where?: TyTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TyTypes to fetch.
+     */
+    orderBy?: TyTypeOrderByWithRelationInput | TyTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TyTypes.
+     */
+    cursor?: TyTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TyTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TyTypes.
+     */
+    skip?: number
+    distinct?: TyTypeScalarFieldEnum | TyTypeScalarFieldEnum[]
+  }
+
+  /**
+   * TyType create
+   */
+  export type TyTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TyType.
+     */
+    data: XOR<TyTypeCreateInput, TyTypeUncheckedCreateInput>
+  }
+
+  /**
+   * TyType createMany
+   */
+  export type TyTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TyTypes.
+     */
+    data: TyTypeCreateManyInput | TyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TyType createManyAndReturn
+   */
+  export type TyTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many TyTypes.
+     */
+    data: TyTypeCreateManyInput | TyTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TyType update
+   */
+  export type TyTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TyType.
+     */
+    data: XOR<TyTypeUpdateInput, TyTypeUncheckedUpdateInput>
+    /**
+     * Choose, which TyType to update.
+     */
+    where: TyTypeWhereUniqueInput
+  }
+
+  /**
+   * TyType updateMany
+   */
+  export type TyTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TyTypes.
+     */
+    data: XOR<TyTypeUpdateManyMutationInput, TyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which TyTypes to update
+     */
+    where?: TyTypeWhereInput
+    /**
+     * Limit how many TyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TyType updateManyAndReturn
+   */
+  export type TyTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update TyTypes.
+     */
+    data: XOR<TyTypeUpdateManyMutationInput, TyTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which TyTypes to update
+     */
+    where?: TyTypeWhereInput
+    /**
+     * Limit how many TyTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TyType upsert
+   */
+  export type TyTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TyType to update in case it exists.
+     */
+    where: TyTypeWhereUniqueInput
+    /**
+     * In case the TyType found by the `where` argument doesn't exist, create a new TyType with this data.
+     */
+    create: XOR<TyTypeCreateInput, TyTypeUncheckedCreateInput>
+    /**
+     * In case the TyType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TyTypeUpdateInput, TyTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * TyType delete
+   */
+  export type TyTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+    /**
+     * Filter which TyType to delete.
+     */
+    where: TyTypeWhereUniqueInput
+  }
+
+  /**
+   * TyType deleteMany
+   */
+  export type TyTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TyTypes to delete
+     */
+    where?: TyTypeWhereInput
+    /**
+     * Limit how many TyTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TyType without action
+   */
+  export type TyTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TyType
+     */
+    select?: TyTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TyType
+     */
+    omit?: TyTypeOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11146,6 +12266,17 @@ export namespace Prisma {
   };
 
   export type ActivityLogScalarFieldEnum = (typeof ActivityLogScalarFieldEnum)[keyof typeof ActivityLogScalarFieldEnum]
+
+
+  export const TyTypeScalarFieldEnum: {
+    id: 'id',
+    entityId: 'entityId',
+    description: 'description',
+    metadata: 'metadata',
+    createdAt: 'createdAt'
+  };
+
+  export type TyTypeScalarFieldEnum = (typeof TyTypeScalarFieldEnum)[keyof typeof TyTypeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12162,6 +13293,60 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"ActivityLog"> | Date | string
   }
 
+  export type TyTypeWhereInput = {
+    AND?: TyTypeWhereInput | TyTypeWhereInput[]
+    OR?: TyTypeWhereInput[]
+    NOT?: TyTypeWhereInput | TyTypeWhereInput[]
+    id?: IntFilter<"TyType"> | number
+    entityId?: IntNullableFilter<"TyType"> | number | null
+    description?: StringFilter<"TyType"> | string
+    metadata?: JsonNullableFilter<"TyType">
+    createdAt?: DateTimeFilter<"TyType"> | Date | string
+  }
+
+  export type TyTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    entityId?: SortOrderInput | SortOrder
+    description?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TyTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TyTypeWhereInput | TyTypeWhereInput[]
+    OR?: TyTypeWhereInput[]
+    NOT?: TyTypeWhereInput | TyTypeWhereInput[]
+    entityId?: IntNullableFilter<"TyType"> | number | null
+    description?: StringFilter<"TyType"> | string
+    metadata?: JsonNullableFilter<"TyType">
+    createdAt?: DateTimeFilter<"TyType"> | Date | string
+  }, "id">
+
+  export type TyTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    entityId?: SortOrderInput | SortOrder
+    description?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: TyTypeCountOrderByAggregateInput
+    _avg?: TyTypeAvgOrderByAggregateInput
+    _max?: TyTypeMaxOrderByAggregateInput
+    _min?: TyTypeMinOrderByAggregateInput
+    _sum?: TyTypeSumOrderByAggregateInput
+  }
+
+  export type TyTypeScalarWhereWithAggregatesInput = {
+    AND?: TyTypeScalarWhereWithAggregatesInput | TyTypeScalarWhereWithAggregatesInput[]
+    OR?: TyTypeScalarWhereWithAggregatesInput[]
+    NOT?: TyTypeScalarWhereWithAggregatesInput | TyTypeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TyType"> | number
+    entityId?: IntNullableWithAggregatesFilter<"TyType"> | number | null
+    description?: StringWithAggregatesFilter<"TyType"> | string
+    metadata?: JsonNullableWithAggregatesFilter<"TyType">
+    createdAt?: DateTimeWithAggregatesFilter<"TyType"> | Date | string
+  }
+
   export type UserCreateInput = {
     email: string
     password?: string | null
@@ -12991,6 +14176,59 @@ export namespace Prisma {
     targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
     action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
     entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TyTypeCreateInput = {
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TyTypeUncheckedCreateInput = {
+    id?: number
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TyTypeUpdateInput = {
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TyTypeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TyTypeCreateManyInput = {
+    id?: number
+    entityId?: number | null
+    description: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TyTypeUpdateManyMutationInput = {
+    entityId?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TyTypeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
     entityId?: NullableIntFieldUpdateOperationsInput | number | null
     description?: StringFieldUpdateOperationsInput | string
     metadata?: NullableJsonNullValueInput | InputJsonValue
@@ -13949,6 +15187,38 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEntityTypeFilter<$PrismaModel>
     _max?: NestedEnumEntityTypeFilter<$PrismaModel>
+  }
+
+  export type TyTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    entityId?: SortOrder
+    description?: SortOrder
+    metadata?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TyTypeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    entityId?: SortOrder
+  }
+
+  export type TyTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    entityId?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TyTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    entityId?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TyTypeSumOrderByAggregateInput = {
+    id?: SortOrder
+    entityId?: SortOrder
   }
 
   export type ActivityLogCreateNestedManyWithoutPerformedByInput = {

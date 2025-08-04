@@ -235,6 +235,14 @@ exports.Prisma.ActivityLogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TyTypeScalarFieldEnum = {
+  id: 'id',
+  entityId: 'entityId',
+  description: 'description',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -341,7 +349,8 @@ exports.Prisma.ModelName = {
   WarehouseInventory: 'WarehouseInventory',
   Payment: 'Payment',
   Invitation: 'Invitation',
-  ActivityLog: 'ActivityLog'
+  ActivityLog: 'ActivityLog',
+  TyType: 'TyType'
 };
 
 /**
