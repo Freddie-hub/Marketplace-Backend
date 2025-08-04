@@ -24,6 +24,7 @@ const typeDefs = gql`
     confirmEmail(token: String!): response!
     resendConfirmationEmail(email: String!): response!
     inviteFarmer(input: InviteFarmerInput!): InvitationResponse!
+    inviteFarmerToWarehouse(input: InviteFarmerToWarehouseInput!): InvitationResponse!
     acceptInvitation(token: String!): InvitationResponse!
     rejectInvitation(token: String!): InvitationResponse!
     updateFarmerPaymentDetails(mpesaNumber: String!): InvitationResponse!

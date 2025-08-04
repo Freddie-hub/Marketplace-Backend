@@ -9,15 +9,20 @@ const invitationResolvers = {
         acceptInvitation: async (_, { token }) => {
             try {
                 const invitation = await prisma_1.default.invitation.findFirst({
-                    where: { token, tokenUsed: false, expiresAt: { gt: new Date() } },
-                    include: { user: true },
+                    where: {
+                        token,
+                        tokenUsed: false,
+                        expiresAt: { gt: new Date() },
+                    },
+                    include: { receiver: true },
                 });
-                if (!invitation) {
+                if (!invitation || !invitation.receiver || invitation.receiverId === null) {
                     return {
                         success: false,
                         message: "Invalid, expired, or already used invitation token",
                     };
                 }
+                const { receiver, receiverId } = invitation;
                 const result = await prisma_1.default.$transaction(async (tx) => {
                     await tx.invitation.update({
                         where: { id: invitation.id },
@@ -28,16 +33,16 @@ const invitationResolvers = {
                         },
                     });
                     await tx.user.update({
-                        where: { id: invitation.userId },
+                        where: { id: receiverId },
                         data: { status: "ACTIVE" },
                     });
                     await tx.activityLog.create({
                         data: {
-                            performedById: invitation.userId,
+                            performedById: receiverId,
                             action: "ACCEPTED_INVITATION",
                             entityType: "INVITATION",
                             entityId: invitation.id,
-                            description: `User ${invitation.user.email} accepted invitation`,
+                            description: `User ${receiver.email} accepted invitation`,
                             metadata: { token },
                         },
                     });
@@ -60,15 +65,20 @@ const invitationResolvers = {
         rejectInvitation: async (_, { token }) => {
             try {
                 const invitation = await prisma_1.default.invitation.findFirst({
-                    where: { token, tokenUsed: false, expiresAt: { gt: new Date() } },
-                    include: { user: true },
+                    where: {
+                        token,
+                        tokenUsed: false,
+                        expiresAt: { gt: new Date() },
+                    },
+                    include: { receiver: true },
                 });
-                if (!invitation) {
+                if (!invitation || !invitation.receiver || invitation.receiverId === null) {
                     return {
                         success: false,
                         message: "Invalid, expired, or already used invitation token",
                     };
                 }
+                const { receiver, receiverId } = invitation;
                 const result = await prisma_1.default.$transaction(async (tx) => {
                     await tx.invitation.update({
                         where: { id: invitation.id },
@@ -80,11 +90,11 @@ const invitationResolvers = {
                     });
                     await tx.activityLog.create({
                         data: {
-                            performedById: invitation.userId,
+                            performedById: receiverId,
                             action: "REJECTED_INVITATION",
                             entityType: "INVITATION",
                             entityId: invitation.id,
-                            description: `User ${invitation.user.email} rejected invitation`,
+                            description: `User ${receiver.email} rejected invitation`,
                             metadata: { token },
                         },
                     });

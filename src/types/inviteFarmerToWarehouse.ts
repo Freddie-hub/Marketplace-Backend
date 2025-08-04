@@ -3,7 +3,7 @@ export interface CropInput {
   quantity: number;
 }
 
-export interface InviteFarmerInput {
+export interface InviteFarmerToWarehouseInput {
   firstName: string;
   lastName: string;
   email: string;

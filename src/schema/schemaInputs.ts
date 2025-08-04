@@ -96,9 +96,43 @@ export const inputs = gql`
   }
 
   input InviteFarmerInput {
-    name: String!
+    firstName: String!
+    lastName: String!
     email: String!
+    role: String!   # Example: "FARMER"
     crops: [CropInput!]!
     warehouseId: Int!
+    warehouseLocation: String!
+    warehouseAddress: String!
+    password: String
+  }
+
+   input CropInput {
+    name: String!
+    quantity: Int!
+  }
+
+  input InviteFarmerInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    role: String!
+    crops: [CropInput!]!
+    warehouseId: Int!
+    warehouseLocation: String!
+    warehouseAddress: String!
+    password: String
+  }
+
+  input InviteFarmerToWarehouseInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    role: String!
+    crops: [CropInput!]!
+    warehouseId: Int!
+    warehouseLocation: String!
+    warehouseAddress: String!
+    password: String
   }
 `;

@@ -317,7 +317,7 @@ const userResolvers = {
           throw new Error("Authentication required");
         }
 
-        const { name, email, crops, warehouseId } = input;
+        const { firstName, lastName, email, crops, warehouseId } = input;
 
         const warehouse = await prisma.warehouse.findUnique({
           where: { id: warehouseId },
@@ -347,8 +347,8 @@ const userResolvers = {
             data: {
               email,
               password: hashedPassword,
-              Fname: name,
-              Lname: "",
+              Fname: firstName,
+              Lname: lastName,
               phone: warehouse.phone,
               address: warehouse.address,
               role: "FARMER",
