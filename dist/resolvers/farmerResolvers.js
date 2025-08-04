@@ -36,15 +36,18 @@ const farmerResolvers = {
                             paymentDetails: { mpesaNumber },
                         },
                     });
+                    const activityLogData = {
+                        action: "PAYMENT_DETAILS_UPDATED",
+                        entityType: "USER",
+                        description: `Farmer ${updatedUser.email} updated payment details`,
+                        metadata: { mpesaNumber },
+                    };
+                    if (context.userId !== undefined) {
+                        activityLogData.performedById = context.userId;
+                        activityLogData.entityId = context.userId;
+                    }
                     await tx.activityLog.create({
-                        data: {
-                            performedById: context.userId,
-                            action: "PAYMENT_DETAILS_UPDATED",
-                            entityType: "USER",
-                            entityId: context.userId,
-                            description: `Farmer ${updatedUser.email} updated payment details`,
-                            metadata: { mpesaNumber },
-                        },
+                        data: activityLogData,
                     });
                     return {
                         success: true,

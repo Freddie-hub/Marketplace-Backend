@@ -6269,7 +6269,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason: string | null
-    recordedById: number
+    recordedById: number | null
     createdAt: Date
     _count: WarehouseInventoryCountAggregateOutputType | null
     _avg: WarehouseInventoryAvgAggregateOutputType | null
@@ -6305,7 +6305,7 @@ export namespace Prisma {
     createdAt?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
-    recordedBy?: boolean | UserDefaultArgs<ExtArgs>
+    recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
   }, ExtArgs["result"]["warehouseInventory"]>
 
   export type WarehouseInventorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6321,7 +6321,7 @@ export namespace Prisma {
     createdAt?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
-    recordedBy?: boolean | UserDefaultArgs<ExtArgs>
+    recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
   }, ExtArgs["result"]["warehouseInventory"]>
 
   export type WarehouseInventorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6337,7 +6337,7 @@ export namespace Prisma {
     createdAt?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
-    recordedBy?: boolean | UserDefaultArgs<ExtArgs>
+    recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
   }, ExtArgs["result"]["warehouseInventory"]>
 
   export type WarehouseInventorySelectScalar = {
@@ -6357,17 +6357,17 @@ export namespace Prisma {
   export type WarehouseInventoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
-    recordedBy?: boolean | UserDefaultArgs<ExtArgs>
+    recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
   }
   export type WarehouseInventoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
-    recordedBy?: boolean | UserDefaultArgs<ExtArgs>
+    recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
   }
   export type WarehouseInventoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
-    recordedBy?: boolean | UserDefaultArgs<ExtArgs>
+    recordedBy?: boolean | WarehouseInventory$recordedByArgs<ExtArgs>
   }
 
   export type $WarehouseInventoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6375,7 +6375,7 @@ export namespace Prisma {
     objects: {
       product: Prisma.$ProductsPayload<ExtArgs>
       warehouse: Prisma.$WarehousePayload<ExtArgs>
-      recordedBy: Prisma.$UserPayload<ExtArgs>
+      recordedBy: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6386,7 +6386,7 @@ export namespace Prisma {
       currentStock: number
       movementType: $Enums.MovementType
       reason: string | null
-      recordedById: number
+      recordedById: number | null
       createdAt: Date
     }, ExtArgs["result"]["warehouseInventory"]>
     composites: {}
@@ -6784,7 +6784,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     product<T extends ProductsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductsDefaultArgs<ExtArgs>>): Prisma__ProductsClient<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     warehouse<T extends WarehouseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseDefaultArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    recordedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    recordedBy<T extends WarehouseInventory$recordedByArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseInventory$recordedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7217,6 +7217,25 @@ export namespace Prisma {
      * Limit how many WarehouseInventories to delete.
      */
     limit?: number
+  }
+
+  /**
+   * WarehouseInventory.recordedBy
+   */
+  export type WarehouseInventory$recordedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -8746,8 +8765,8 @@ export namespace Prisma {
 
   export type InvitationGroupByOutputType = {
     id: number
-    senderId: number
-    receiverId: number
+    senderId: number | null
+    receiverId: number | null
     warehouseId: number
     status: $Enums.InvitationStatus
     message: string | null
@@ -8793,8 +8812,8 @@ export namespace Prisma {
     updatedAt?: boolean
     token?: boolean
     tokenUsed?: boolean
-    sender?: boolean | UserDefaultArgs<ExtArgs>
-    receiver?: boolean | UserDefaultArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
+    receiver?: boolean | Invitation$receiverArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -8812,8 +8831,8 @@ export namespace Prisma {
     updatedAt?: boolean
     token?: boolean
     tokenUsed?: boolean
-    sender?: boolean | UserDefaultArgs<ExtArgs>
-    receiver?: boolean | UserDefaultArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
+    receiver?: boolean | Invitation$receiverArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -8831,8 +8850,8 @@ export namespace Prisma {
     updatedAt?: boolean
     token?: boolean
     tokenUsed?: boolean
-    sender?: boolean | UserDefaultArgs<ExtArgs>
-    receiver?: boolean | UserDefaultArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
+    receiver?: boolean | Invitation$receiverArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invitation"]>
 
@@ -8854,32 +8873,32 @@ export namespace Prisma {
 
   export type InvitationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "receiverId" | "warehouseId" | "status" | "message" | "sentAt" | "respondedAt" | "expiresAt" | "createdAt" | "updatedAt" | "token" | "tokenUsed", ExtArgs["result"]["invitation"]>
   export type InvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sender?: boolean | UserDefaultArgs<ExtArgs>
-    receiver?: boolean | UserDefaultArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
+    receiver?: boolean | Invitation$receiverArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
   export type InvitationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sender?: boolean | UserDefaultArgs<ExtArgs>
-    receiver?: boolean | UserDefaultArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
+    receiver?: boolean | Invitation$receiverArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
   export type InvitationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    sender?: boolean | UserDefaultArgs<ExtArgs>
-    receiver?: boolean | UserDefaultArgs<ExtArgs>
+    sender?: boolean | Invitation$senderArgs<ExtArgs>
+    receiver?: boolean | Invitation$receiverArgs<ExtArgs>
     warehouse?: boolean | WarehouseDefaultArgs<ExtArgs>
   }
 
   export type $InvitationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Invitation"
     objects: {
-      sender: Prisma.$UserPayload<ExtArgs>
-      receiver: Prisma.$UserPayload<ExtArgs>
+      sender: Prisma.$UserPayload<ExtArgs> | null
+      receiver: Prisma.$UserPayload<ExtArgs> | null
       warehouse: Prisma.$WarehousePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      senderId: number
-      receiverId: number
+      senderId: number | null
+      receiverId: number | null
       warehouseId: number
       status: $Enums.InvitationStatus
       message: string | null
@@ -9284,8 +9303,8 @@ export namespace Prisma {
    */
   export interface Prisma__InvitationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    receiver<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sender<T extends Invitation$senderArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$senderArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    receiver<T extends Invitation$receiverArgs<ExtArgs> = {}>(args?: Subset<T, Invitation$receiverArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     warehouse<T extends WarehouseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WarehouseDefaultArgs<ExtArgs>>): Prisma__WarehouseClient<$Result.GetResult<Prisma.$WarehousePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9725,6 +9744,44 @@ export namespace Prisma {
   }
 
   /**
+   * Invitation.sender
+   */
+  export type Invitation$senderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Invitation.receiver
+   */
+  export type Invitation$receiverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
    * Invitation without action
    */
   export type InvitationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9942,7 +9999,7 @@ export namespace Prisma {
 
   export type ActivityLogGroupByOutputType = {
     id: number
-    performedById: number
+    performedById: number | null
     targetUserId: number | null
     action: $Enums.ActionType
     entityType: $Enums.EntityType
@@ -9981,7 +10038,7 @@ export namespace Prisma {
     description?: boolean
     metadata?: boolean
     createdAt?: boolean
-    performedBy?: boolean | UserDefaultArgs<ExtArgs>
+    performedBy?: boolean | ActivityLog$performedByArgs<ExtArgs>
     targetUser?: boolean | ActivityLog$targetUserArgs<ExtArgs>
   }, ExtArgs["result"]["activityLog"]>
 
@@ -9995,7 +10052,7 @@ export namespace Prisma {
     description?: boolean
     metadata?: boolean
     createdAt?: boolean
-    performedBy?: boolean | UserDefaultArgs<ExtArgs>
+    performedBy?: boolean | ActivityLog$performedByArgs<ExtArgs>
     targetUser?: boolean | ActivityLog$targetUserArgs<ExtArgs>
   }, ExtArgs["result"]["activityLog"]>
 
@@ -10009,7 +10066,7 @@ export namespace Prisma {
     description?: boolean
     metadata?: boolean
     createdAt?: boolean
-    performedBy?: boolean | UserDefaultArgs<ExtArgs>
+    performedBy?: boolean | ActivityLog$performedByArgs<ExtArgs>
     targetUser?: boolean | ActivityLog$targetUserArgs<ExtArgs>
   }, ExtArgs["result"]["activityLog"]>
 
@@ -10027,27 +10084,27 @@ export namespace Prisma {
 
   export type ActivityLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "performedById" | "targetUserId" | "action" | "entityType" | "entityId" | "description" | "metadata" | "createdAt", ExtArgs["result"]["activityLog"]>
   export type ActivityLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    performedBy?: boolean | UserDefaultArgs<ExtArgs>
+    performedBy?: boolean | ActivityLog$performedByArgs<ExtArgs>
     targetUser?: boolean | ActivityLog$targetUserArgs<ExtArgs>
   }
   export type ActivityLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    performedBy?: boolean | UserDefaultArgs<ExtArgs>
+    performedBy?: boolean | ActivityLog$performedByArgs<ExtArgs>
     targetUser?: boolean | ActivityLog$targetUserArgs<ExtArgs>
   }
   export type ActivityLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    performedBy?: boolean | UserDefaultArgs<ExtArgs>
+    performedBy?: boolean | ActivityLog$performedByArgs<ExtArgs>
     targetUser?: boolean | ActivityLog$targetUserArgs<ExtArgs>
   }
 
   export type $ActivityLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ActivityLog"
     objects: {
-      performedBy: Prisma.$UserPayload<ExtArgs>
+      performedBy: Prisma.$UserPayload<ExtArgs> | null
       targetUser: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      performedById: number
+      performedById: number | null
       targetUserId: number | null
       action: $Enums.ActionType
       entityType: $Enums.EntityType
@@ -10449,7 +10506,7 @@ export namespace Prisma {
    */
   export interface Prisma__ActivityLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    performedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    performedBy<T extends ActivityLog$performedByArgs<ExtArgs> = {}>(args?: Subset<T, ActivityLog$performedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     targetUser<T extends ActivityLog$targetUserArgs<ExtArgs> = {}>(args?: Subset<T, ActivityLog$targetUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10882,6 +10939,25 @@ export namespace Prisma {
      * Limit how many ActivityLogs to delete.
      */
     limit?: number
+  }
+
+  /**
+   * ActivityLog.performedBy
+   */
+  export type ActivityLog$performedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -11713,11 +11789,11 @@ export namespace Prisma {
     currentStock?: IntFilter<"WarehouseInventory"> | number
     movementType?: EnumMovementTypeFilter<"WarehouseInventory"> | $Enums.MovementType
     reason?: StringNullableFilter<"WarehouseInventory"> | string | null
-    recordedById?: IntFilter<"WarehouseInventory"> | number
+    recordedById?: IntNullableFilter<"WarehouseInventory"> | number | null
     createdAt?: DateTimeFilter<"WarehouseInventory"> | Date | string
     product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
-    recordedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recordedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type WarehouseInventoryOrderByWithRelationInput = {
@@ -11729,7 +11805,7 @@ export namespace Prisma {
     currentStock?: SortOrder
     movementType?: SortOrder
     reason?: SortOrderInput | SortOrder
-    recordedById?: SortOrder
+    recordedById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     product?: ProductsOrderByWithRelationInput
     warehouse?: WarehouseOrderByWithRelationInput
@@ -11749,11 +11825,11 @@ export namespace Prisma {
     currentStock?: IntFilter<"WarehouseInventory"> | number
     movementType?: EnumMovementTypeFilter<"WarehouseInventory"> | $Enums.MovementType
     reason?: StringNullableFilter<"WarehouseInventory"> | string | null
-    recordedById?: IntFilter<"WarehouseInventory"> | number
+    recordedById?: IntNullableFilter<"WarehouseInventory"> | number | null
     createdAt?: DateTimeFilter<"WarehouseInventory"> | Date | string
     product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
-    recordedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recordedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "productId_warehouseId">
 
   export type WarehouseInventoryOrderByWithAggregationInput = {
@@ -11765,7 +11841,7 @@ export namespace Prisma {
     currentStock?: SortOrder
     movementType?: SortOrder
     reason?: SortOrderInput | SortOrder
-    recordedById?: SortOrder
+    recordedById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: WarehouseInventoryCountOrderByAggregateInput
     _avg?: WarehouseInventoryAvgOrderByAggregateInput
@@ -11786,7 +11862,7 @@ export namespace Prisma {
     currentStock?: IntWithAggregatesFilter<"WarehouseInventory"> | number
     movementType?: EnumMovementTypeWithAggregatesFilter<"WarehouseInventory"> | $Enums.MovementType
     reason?: StringNullableWithAggregatesFilter<"WarehouseInventory"> | string | null
-    recordedById?: IntWithAggregatesFilter<"WarehouseInventory"> | number
+    recordedById?: IntNullableWithAggregatesFilter<"WarehouseInventory"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"WarehouseInventory"> | Date | string
   }
 
@@ -11908,8 +11984,8 @@ export namespace Prisma {
     OR?: InvitationWhereInput[]
     NOT?: InvitationWhereInput | InvitationWhereInput[]
     id?: IntFilter<"Invitation"> | number
-    senderId?: IntFilter<"Invitation"> | number
-    receiverId?: IntFilter<"Invitation"> | number
+    senderId?: IntNullableFilter<"Invitation"> | number | null
+    receiverId?: IntNullableFilter<"Invitation"> | number | null
     warehouseId?: IntFilter<"Invitation"> | number
     status?: EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
     message?: StringNullableFilter<"Invitation"> | string | null
@@ -11920,15 +11996,15 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
     token?: StringNullableFilter<"Invitation"> | string | null
     tokenUsed?: BoolFilter<"Invitation"> | boolean
-    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
-    receiver?: XOR<UserScalarRelationFilter, UserWhereInput>
+    sender?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    receiver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
   }
 
   export type InvitationOrderByWithRelationInput = {
     id?: SortOrder
-    senderId?: SortOrder
-    receiverId?: SortOrder
+    senderId?: SortOrderInput | SortOrder
+    receiverId?: SortOrderInput | SortOrder
     warehouseId?: SortOrder
     status?: SortOrder
     message?: SortOrderInput | SortOrder
@@ -11950,8 +12026,8 @@ export namespace Prisma {
     AND?: InvitationWhereInput | InvitationWhereInput[]
     OR?: InvitationWhereInput[]
     NOT?: InvitationWhereInput | InvitationWhereInput[]
-    senderId?: IntFilter<"Invitation"> | number
-    receiverId?: IntFilter<"Invitation"> | number
+    senderId?: IntNullableFilter<"Invitation"> | number | null
+    receiverId?: IntNullableFilter<"Invitation"> | number | null
     warehouseId?: IntFilter<"Invitation"> | number
     status?: EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
     message?: StringNullableFilter<"Invitation"> | string | null
@@ -11961,15 +12037,15 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Invitation"> | Date | string
     updatedAt?: DateTimeFilter<"Invitation"> | Date | string
     tokenUsed?: BoolFilter<"Invitation"> | boolean
-    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
-    receiver?: XOR<UserScalarRelationFilter, UserWhereInput>
+    sender?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    receiver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     warehouse?: XOR<WarehouseScalarRelationFilter, WarehouseWhereInput>
   }, "id" | "token">
 
   export type InvitationOrderByWithAggregationInput = {
     id?: SortOrder
-    senderId?: SortOrder
-    receiverId?: SortOrder
+    senderId?: SortOrderInput | SortOrder
+    receiverId?: SortOrderInput | SortOrder
     warehouseId?: SortOrder
     status?: SortOrder
     message?: SortOrderInput | SortOrder
@@ -11992,8 +12068,8 @@ export namespace Prisma {
     OR?: InvitationScalarWhereWithAggregatesInput[]
     NOT?: InvitationScalarWhereWithAggregatesInput | InvitationScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Invitation"> | number
-    senderId?: IntWithAggregatesFilter<"Invitation"> | number
-    receiverId?: IntWithAggregatesFilter<"Invitation"> | number
+    senderId?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
+    receiverId?: IntNullableWithAggregatesFilter<"Invitation"> | number | null
     warehouseId?: IntWithAggregatesFilter<"Invitation"> | number
     status?: EnumInvitationStatusWithAggregatesFilter<"Invitation"> | $Enums.InvitationStatus
     message?: StringNullableWithAggregatesFilter<"Invitation"> | string | null
@@ -12011,7 +12087,7 @@ export namespace Prisma {
     OR?: ActivityLogWhereInput[]
     NOT?: ActivityLogWhereInput | ActivityLogWhereInput[]
     id?: IntFilter<"ActivityLog"> | number
-    performedById?: IntFilter<"ActivityLog"> | number
+    performedById?: IntNullableFilter<"ActivityLog"> | number | null
     targetUserId?: IntNullableFilter<"ActivityLog"> | number | null
     action?: EnumActionTypeFilter<"ActivityLog"> | $Enums.ActionType
     entityType?: EnumEntityTypeFilter<"ActivityLog"> | $Enums.EntityType
@@ -12019,13 +12095,13 @@ export namespace Prisma {
     description?: StringFilter<"ActivityLog"> | string
     metadata?: JsonNullableFilter<"ActivityLog">
     createdAt?: DateTimeFilter<"ActivityLog"> | Date | string
-    performedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    performedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     targetUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type ActivityLogOrderByWithRelationInput = {
     id?: SortOrder
-    performedById?: SortOrder
+    performedById?: SortOrderInput | SortOrder
     targetUserId?: SortOrderInput | SortOrder
     action?: SortOrder
     entityType?: SortOrder
@@ -12042,7 +12118,7 @@ export namespace Prisma {
     AND?: ActivityLogWhereInput | ActivityLogWhereInput[]
     OR?: ActivityLogWhereInput[]
     NOT?: ActivityLogWhereInput | ActivityLogWhereInput[]
-    performedById?: IntFilter<"ActivityLog"> | number
+    performedById?: IntNullableFilter<"ActivityLog"> | number | null
     targetUserId?: IntNullableFilter<"ActivityLog"> | number | null
     action?: EnumActionTypeFilter<"ActivityLog"> | $Enums.ActionType
     entityType?: EnumEntityTypeFilter<"ActivityLog"> | $Enums.EntityType
@@ -12050,13 +12126,13 @@ export namespace Prisma {
     description?: StringFilter<"ActivityLog"> | string
     metadata?: JsonNullableFilter<"ActivityLog">
     createdAt?: DateTimeFilter<"ActivityLog"> | Date | string
-    performedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    performedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     targetUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type ActivityLogOrderByWithAggregationInput = {
     id?: SortOrder
-    performedById?: SortOrder
+    performedById?: SortOrderInput | SortOrder
     targetUserId?: SortOrderInput | SortOrder
     action?: SortOrder
     entityType?: SortOrder
@@ -12076,7 +12152,7 @@ export namespace Prisma {
     OR?: ActivityLogScalarWhereWithAggregatesInput[]
     NOT?: ActivityLogScalarWhereWithAggregatesInput | ActivityLogScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ActivityLog"> | number
-    performedById?: IntWithAggregatesFilter<"ActivityLog"> | number
+    performedById?: IntNullableWithAggregatesFilter<"ActivityLog"> | number | null
     targetUserId?: IntNullableWithAggregatesFilter<"ActivityLog"> | number | null
     action?: EnumActionTypeWithAggregatesFilter<"ActivityLog"> | $Enums.ActionType
     entityType?: EnumEntityTypeWithAggregatesFilter<"ActivityLog"> | $Enums.EntityType
@@ -12540,7 +12616,7 @@ export namespace Prisma {
     createdAt?: Date | string
     product: ProductsCreateNestedOneWithoutInventoryMovementsInput
     warehouse: WarehouseCreateNestedOneWithoutInventoryInput
-    recordedBy: UserCreateNestedOneWithoutInventoryRecordsInput
+    recordedBy?: UserCreateNestedOneWithoutInventoryRecordsInput
   }
 
   export type WarehouseInventoryUncheckedCreateInput = {
@@ -12552,7 +12628,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason?: string | null
-    recordedById: number
+    recordedById?: number | null
     createdAt?: Date | string
   }
 
@@ -12565,7 +12641,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductsUpdateOneRequiredWithoutInventoryMovementsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInventoryNestedInput
-    recordedBy?: UserUpdateOneRequiredWithoutInventoryRecordsNestedInput
+    recordedBy?: UserUpdateOneWithoutInventoryRecordsNestedInput
   }
 
   export type WarehouseInventoryUncheckedUpdateInput = {
@@ -12577,7 +12653,7 @@ export namespace Prisma {
     currentStock?: IntFieldUpdateOperationsInput | number
     movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
     reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: IntFieldUpdateOperationsInput | number
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12590,7 +12666,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason?: string | null
-    recordedById: number
+    recordedById?: number | null
     createdAt?: Date | string
   }
 
@@ -12612,7 +12688,7 @@ export namespace Prisma {
     currentStock?: IntFieldUpdateOperationsInput | number
     movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
     reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: IntFieldUpdateOperationsInput | number
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12746,15 +12822,15 @@ export namespace Prisma {
     updatedAt?: Date | string
     token?: string | null
     tokenUsed?: boolean
-    sender: UserCreateNestedOneWithoutSentInvitationsInput
-    receiver: UserCreateNestedOneWithoutReceivedInvitationsInput
+    sender?: UserCreateNestedOneWithoutSentInvitationsInput
+    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
 
   export type InvitationUncheckedCreateInput = {
     id?: number
-    senderId: number
-    receiverId: number
+    senderId?: number | null
+    receiverId?: number | null
     warehouseId: number
     status?: $Enums.InvitationStatus
     message?: string | null
@@ -12777,15 +12853,15 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: NullableStringFieldUpdateOperationsInput | string | null
     tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    sender?: UserUpdateOneRequiredWithoutSentInvitationsNestedInput
-    receiver?: UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput
+    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
+    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
 
   export type InvitationUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: IntFieldUpdateOperationsInput | number
-    receiverId?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12800,8 +12876,8 @@ export namespace Prisma {
 
   export type InvitationCreateManyInput = {
     id?: number
-    senderId: number
-    receiverId: number
+    senderId?: number | null
+    receiverId?: number | null
     warehouseId: number
     status?: $Enums.InvitationStatus
     message?: string | null
@@ -12828,8 +12904,8 @@ export namespace Prisma {
 
   export type InvitationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: IntFieldUpdateOperationsInput | number
-    receiverId?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12849,13 +12925,13 @@ export namespace Prisma {
     description: string
     metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    performedBy: UserCreateNestedOneWithoutPerformedActionsInput
+    performedBy?: UserCreateNestedOneWithoutPerformedActionsInput
     targetUser?: UserCreateNestedOneWithoutActivityLogsInput
   }
 
   export type ActivityLogUncheckedCreateInput = {
     id?: number
-    performedById: number
+    performedById?: number | null
     targetUserId?: number | null
     action: $Enums.ActionType
     entityType: $Enums.EntityType
@@ -12872,13 +12948,13 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    performedBy?: UserUpdateOneRequiredWithoutPerformedActionsNestedInput
+    performedBy?: UserUpdateOneWithoutPerformedActionsNestedInput
     targetUser?: UserUpdateOneWithoutActivityLogsNestedInput
   }
 
   export type ActivityLogUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    performedById?: IntFieldUpdateOperationsInput | number
+    performedById?: NullableIntFieldUpdateOperationsInput | number | null
     targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
     action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
     entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
@@ -12890,7 +12966,7 @@ export namespace Prisma {
 
   export type ActivityLogCreateManyInput = {
     id?: number
-    performedById: number
+    performedById?: number | null
     targetUserId?: number | null
     action: $Enums.ActionType
     entityType: $Enums.EntityType
@@ -12911,7 +12987,7 @@ export namespace Prisma {
 
   export type ActivityLogUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    performedById?: IntFieldUpdateOperationsInput | number
+    performedById?: NullableIntFieldUpdateOperationsInput | number | null
     targetUserId?: NullableIntFieldUpdateOperationsInput | number | null
     action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
     entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
@@ -14759,10 +14835,12 @@ export namespace Prisma {
     update?: XOR<XOR<WarehouseUpdateToOneWithWhereWithoutInventoryInput, WarehouseUpdateWithoutInventoryInput>, WarehouseUncheckedUpdateWithoutInventoryInput>
   }
 
-  export type UserUpdateOneRequiredWithoutInventoryRecordsNestedInput = {
+  export type UserUpdateOneWithoutInventoryRecordsNestedInput = {
     create?: XOR<UserCreateWithoutInventoryRecordsInput, UserUncheckedCreateWithoutInventoryRecordsInput>
     connectOrCreate?: UserCreateOrConnectWithoutInventoryRecordsInput
     upsert?: UserUpsertWithoutInventoryRecordsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInventoryRecordsInput, UserUpdateWithoutInventoryRecordsInput>, UserUncheckedUpdateWithoutInventoryRecordsInput>
   }
@@ -14845,18 +14923,22 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type UserUpdateOneRequiredWithoutSentInvitationsNestedInput = {
+  export type UserUpdateOneWithoutSentInvitationsNestedInput = {
     create?: XOR<UserCreateWithoutSentInvitationsInput, UserUncheckedCreateWithoutSentInvitationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutSentInvitationsInput
     upsert?: UserUpsertWithoutSentInvitationsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentInvitationsInput, UserUpdateWithoutSentInvitationsInput>, UserUncheckedUpdateWithoutSentInvitationsInput>
   }
 
-  export type UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput = {
+  export type UserUpdateOneWithoutReceivedInvitationsNestedInput = {
     create?: XOR<UserCreateWithoutReceivedInvitationsInput, UserUncheckedCreateWithoutReceivedInvitationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReceivedInvitationsInput
     upsert?: UserUpsertWithoutReceivedInvitationsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReceivedInvitationsInput, UserUpdateWithoutReceivedInvitationsInput>, UserUncheckedUpdateWithoutReceivedInvitationsInput>
   }
@@ -14889,10 +14971,12 @@ export namespace Prisma {
     set?: $Enums.EntityType
   }
 
-  export type UserUpdateOneRequiredWithoutPerformedActionsNestedInput = {
+  export type UserUpdateOneWithoutPerformedActionsNestedInput = {
     create?: XOR<UserCreateWithoutPerformedActionsInput, UserUncheckedCreateWithoutPerformedActionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPerformedActionsInput
     upsert?: UserUpsertWithoutPerformedActionsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPerformedActionsInput, UserUpdateWithoutPerformedActionsInput>, UserUncheckedUpdateWithoutPerformedActionsInput>
   }
@@ -15829,13 +15913,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     token?: string | null
     tokenUsed?: boolean
-    receiver: UserCreateNestedOneWithoutReceivedInvitationsInput
+    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
 
   export type InvitationUncheckedCreateWithoutSenderInput = {
     id?: number
-    receiverId: number
+    receiverId?: number | null
     warehouseId: number
     status?: $Enums.InvitationStatus
     message?: string | null
@@ -15868,13 +15952,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     token?: string | null
     tokenUsed?: boolean
-    sender: UserCreateNestedOneWithoutSentInvitationsInput
+    sender?: UserCreateNestedOneWithoutSentInvitationsInput
     warehouse: WarehouseCreateNestedOneWithoutInvitationsInput
   }
 
   export type InvitationUncheckedCreateWithoutReceiverInput = {
     id?: number
-    senderId: number
+    senderId?: number | null
     warehouseId: number
     status?: $Enums.InvitationStatus
     message?: string | null
@@ -15904,12 +15988,12 @@ export namespace Prisma {
     description: string
     metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    performedBy: UserCreateNestedOneWithoutPerformedActionsInput
+    performedBy?: UserCreateNestedOneWithoutPerformedActionsInput
   }
 
   export type ActivityLogUncheckedCreateWithoutTargetUserInput = {
     id?: number
-    performedById: number
+    performedById?: number | null
     action: $Enums.ActionType
     entityType: $Enums.EntityType
     entityId?: number | null
@@ -16415,8 +16499,8 @@ export namespace Prisma {
     OR?: InvitationScalarWhereInput[]
     NOT?: InvitationScalarWhereInput | InvitationScalarWhereInput[]
     id?: IntFilter<"Invitation"> | number
-    senderId?: IntFilter<"Invitation"> | number
-    receiverId?: IntFilter<"Invitation"> | number
+    senderId?: IntNullableFilter<"Invitation"> | number | null
+    receiverId?: IntNullableFilter<"Invitation"> | number | null
     warehouseId?: IntFilter<"Invitation"> | number
     status?: EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
     message?: StringNullableFilter<"Invitation"> | string | null
@@ -16466,7 +16550,7 @@ export namespace Prisma {
     OR?: ActivityLogScalarWhereInput[]
     NOT?: ActivityLogScalarWhereInput | ActivityLogScalarWhereInput[]
     id?: IntFilter<"ActivityLog"> | number
-    performedById?: IntFilter<"ActivityLog"> | number
+    performedById?: IntNullableFilter<"ActivityLog"> | number | null
     targetUserId?: IntNullableFilter<"ActivityLog"> | number | null
     action?: EnumActionTypeFilter<"ActivityLog"> | $Enums.ActionType
     entityType?: EnumEntityTypeFilter<"ActivityLog"> | $Enums.EntityType
@@ -16520,7 +16604,7 @@ export namespace Prisma {
     currentStock?: IntFilter<"WarehouseInventory"> | number
     movementType?: EnumMovementTypeFilter<"WarehouseInventory"> | $Enums.MovementType
     reason?: StringNullableFilter<"WarehouseInventory"> | string | null
-    recordedById?: IntFilter<"WarehouseInventory"> | number
+    recordedById?: IntNullableFilter<"WarehouseInventory"> | number | null
     createdAt?: DateTimeFilter<"WarehouseInventory"> | Date | string
   }
 
@@ -16693,7 +16777,7 @@ export namespace Prisma {
     reason?: string | null
     createdAt?: Date | string
     product: ProductsCreateNestedOneWithoutInventoryMovementsInput
-    recordedBy: UserCreateNestedOneWithoutInventoryRecordsInput
+    recordedBy?: UserCreateNestedOneWithoutInventoryRecordsInput
   }
 
   export type WarehouseInventoryUncheckedCreateWithoutWarehouseInput = {
@@ -16704,7 +16788,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason?: string | null
-    recordedById: number
+    recordedById?: number | null
     createdAt?: Date | string
   }
 
@@ -16771,14 +16855,14 @@ export namespace Prisma {
     updatedAt?: Date | string
     token?: string | null
     tokenUsed?: boolean
-    sender: UserCreateNestedOneWithoutSentInvitationsInput
-    receiver: UserCreateNestedOneWithoutReceivedInvitationsInput
+    sender?: UserCreateNestedOneWithoutSentInvitationsInput
+    receiver?: UserCreateNestedOneWithoutReceivedInvitationsInput
   }
 
   export type InvitationUncheckedCreateWithoutWarehouseInput = {
     id?: number
-    senderId: number
-    receiverId: number
+    senderId?: number | null
+    receiverId?: number | null
     status?: $Enums.InvitationStatus
     message?: string | null
     sentAt?: Date | string
@@ -17070,7 +17154,7 @@ export namespace Prisma {
     reason?: string | null
     createdAt?: Date | string
     warehouse: WarehouseCreateNestedOneWithoutInventoryInput
-    recordedBy: UserCreateNestedOneWithoutInventoryRecordsInput
+    recordedBy?: UserCreateNestedOneWithoutInventoryRecordsInput
   }
 
   export type WarehouseInventoryUncheckedCreateWithoutProductInput = {
@@ -17081,7 +17165,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason?: string | null
-    recordedById: number
+    recordedById?: number | null
     createdAt?: Date | string
   }
 
@@ -18853,7 +18937,7 @@ export namespace Prisma {
 
   export type InvitationCreateManySenderInput = {
     id?: number
-    receiverId: number
+    receiverId?: number | null
     warehouseId: number
     status?: $Enums.InvitationStatus
     message?: string | null
@@ -18868,7 +18952,7 @@ export namespace Prisma {
 
   export type InvitationCreateManyReceiverInput = {
     id?: number
-    senderId: number
+    senderId?: number | null
     warehouseId: number
     status?: $Enums.InvitationStatus
     message?: string | null
@@ -18883,7 +18967,7 @@ export namespace Prisma {
 
   export type ActivityLogCreateManyTargetUserInput = {
     id?: number
-    performedById: number
+    performedById?: number | null
     action: $Enums.ActionType
     entityType: $Enums.EntityType
     entityId?: number | null
@@ -19271,13 +19355,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: NullableStringFieldUpdateOperationsInput | string | null
     tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    receiver?: UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput
+    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutSenderInput = {
     id?: IntFieldUpdateOperationsInput | number
-    receiverId?: IntFieldUpdateOperationsInput | number
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19292,7 +19376,7 @@ export namespace Prisma {
 
   export type InvitationUncheckedUpdateManyWithoutSenderInput = {
     id?: IntFieldUpdateOperationsInput | number
-    receiverId?: IntFieldUpdateOperationsInput | number
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19315,13 +19399,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: NullableStringFieldUpdateOperationsInput | string | null
     tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    sender?: UserUpdateOneRequiredWithoutSentInvitationsNestedInput
+    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
     warehouse?: WarehouseUpdateOneRequiredWithoutInvitationsNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutReceiverInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19336,7 +19420,7 @@ export namespace Prisma {
 
   export type InvitationUncheckedUpdateManyWithoutReceiverInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
     warehouseId?: IntFieldUpdateOperationsInput | number
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19356,12 +19440,12 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    performedBy?: UserUpdateOneRequiredWithoutPerformedActionsNestedInput
+    performedBy?: UserUpdateOneWithoutPerformedActionsNestedInput
   }
 
   export type ActivityLogUncheckedUpdateWithoutTargetUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    performedById?: IntFieldUpdateOperationsInput | number
+    performedById?: NullableIntFieldUpdateOperationsInput | number | null
     action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
     entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
     entityId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19372,7 +19456,7 @@ export namespace Prisma {
 
   export type ActivityLogUncheckedUpdateManyWithoutTargetUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    performedById?: IntFieldUpdateOperationsInput | number
+    performedById?: NullableIntFieldUpdateOperationsInput | number | null
     action?: EnumActionTypeFieldUpdateOperationsInput | $Enums.ActionType
     entityType?: EnumEntityTypeFieldUpdateOperationsInput | $Enums.EntityType
     entityId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19482,7 +19566,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason?: string | null
-    recordedById: number
+    recordedById?: number | null
     createdAt?: Date | string
   }
 
@@ -19503,8 +19587,8 @@ export namespace Prisma {
 
   export type InvitationCreateManyWarehouseInput = {
     id?: number
-    senderId: number
-    receiverId: number
+    senderId?: number | null
+    receiverId?: number | null
     status?: $Enums.InvitationStatus
     message?: string | null
     sentAt?: Date | string
@@ -19623,7 +19707,7 @@ export namespace Prisma {
     reason?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductsUpdateOneRequiredWithoutInventoryMovementsNestedInput
-    recordedBy?: UserUpdateOneRequiredWithoutInventoryRecordsNestedInput
+    recordedBy?: UserUpdateOneWithoutInventoryRecordsNestedInput
   }
 
   export type WarehouseInventoryUncheckedUpdateWithoutWarehouseInput = {
@@ -19634,7 +19718,7 @@ export namespace Prisma {
     currentStock?: IntFieldUpdateOperationsInput | number
     movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
     reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: IntFieldUpdateOperationsInput | number
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19646,7 +19730,7 @@ export namespace Prisma {
     currentStock?: IntFieldUpdateOperationsInput | number
     movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
     reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: IntFieldUpdateOperationsInput | number
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19708,14 +19792,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     token?: NullableStringFieldUpdateOperationsInput | string | null
     tokenUsed?: BoolFieldUpdateOperationsInput | boolean
-    sender?: UserUpdateOneRequiredWithoutSentInvitationsNestedInput
-    receiver?: UserUpdateOneRequiredWithoutReceivedInvitationsNestedInput
+    sender?: UserUpdateOneWithoutSentInvitationsNestedInput
+    receiver?: UserUpdateOneWithoutReceivedInvitationsNestedInput
   }
 
   export type InvitationUncheckedUpdateWithoutWarehouseInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: IntFieldUpdateOperationsInput | number
-    receiverId?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19729,8 +19813,8 @@ export namespace Prisma {
 
   export type InvitationUncheckedUpdateManyWithoutWarehouseInput = {
     id?: IntFieldUpdateOperationsInput | number
-    senderId?: IntFieldUpdateOperationsInput | number
-    receiverId?: IntFieldUpdateOperationsInput | number
+    senderId?: NullableIntFieldUpdateOperationsInput | number | null
+    receiverId?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
     message?: NullableStringFieldUpdateOperationsInput | string | null
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19750,7 +19834,7 @@ export namespace Prisma {
     currentStock: number
     movementType: $Enums.MovementType
     reason?: string | null
-    recordedById: number
+    recordedById?: number | null
     createdAt?: Date | string
   }
 
@@ -19779,7 +19863,7 @@ export namespace Prisma {
     reason?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     warehouse?: WarehouseUpdateOneRequiredWithoutInventoryNestedInput
-    recordedBy?: UserUpdateOneRequiredWithoutInventoryRecordsNestedInput
+    recordedBy?: UserUpdateOneWithoutInventoryRecordsNestedInput
   }
 
   export type WarehouseInventoryUncheckedUpdateWithoutProductInput = {
@@ -19790,7 +19874,7 @@ export namespace Prisma {
     currentStock?: IntFieldUpdateOperationsInput | number
     movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
     reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: IntFieldUpdateOperationsInput | number
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19802,7 +19886,7 @@ export namespace Prisma {
     currentStock?: IntFieldUpdateOperationsInput | number
     movementType?: EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
     reason?: NullableStringFieldUpdateOperationsInput | string | null
-    recordedById?: IntFieldUpdateOperationsInput | number
+    recordedById?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

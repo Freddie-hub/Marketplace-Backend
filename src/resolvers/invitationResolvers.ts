@@ -6,11 +6,15 @@ const invitationResolvers = {
     acceptInvitation: async (_: any, { token }: { token: string }): Promise<InvitationResponse> => {
       try {
         const invitation = await prisma.invitation.findFirst({
-          where: { token, tokenUsed: false, expiresAt: { gt: new Date() } },
-          include: { user: true },
+          where: {
+            token,
+            tokenUsed: false,
+            expiresAt: { gt: new Date() },
+          },
+          include: { receiver: true },
         });
 
-        if (!invitation) {
+        if (!invitation || !invitation.receiver || invitation.receiverId === null) {
           return {
             success: false,
             message: "Invalid, expired, or already used invitation token",
@@ -28,17 +32,17 @@ const invitationResolvers = {
           });
 
           await tx.user.update({
-            where: { id: invitation.userId },
+            where: { id: invitation.receiverId! }, // safe now
             data: { status: "ACTIVE" },
           });
 
           await tx.activityLog.create({
             data: {
-              performedById: invitation.userId,
+              performedById: invitation.receiverId!,
               action: "ACCEPTED_INVITATION",
               entityType: "INVITATION",
               entityId: invitation.id,
-              description: `User ${invitation.user.email} accepted invitation`,
+              description: `User ${invitation.receiver.email} accepted invitation`,
               metadata: { token },
             },
           });
@@ -63,11 +67,15 @@ const invitationResolvers = {
     rejectInvitation: async (_: any, { token }: { token: string }): Promise<InvitationResponse> => {
       try {
         const invitation = await prisma.invitation.findFirst({
-          where: { token, tokenUsed: false, expiresAt: { gt: new Date() } },
-          include: { user: true },
+          where: {
+            token,
+            tokenUsed: false,
+            expiresAt: { gt: new Date() },
+          },
+          include: { receiver: true },
         });
 
-        if (!invitation) {
+        if (!invitation || !invitation.receiver || invitation.receiverId === null) {
           return {
             success: false,
             message: "Invalid, expired, or already used invitation token",
@@ -86,11 +94,11 @@ const invitationResolvers = {
 
           await tx.activityLog.create({
             data: {
-              performedById: invitation.userId,
+              performedById: invitation.receiverId!,
               action: "REJECTED_INVITATION",
               entityType: "INVITATION",
               entityId: invitation.id,
-              description: `User ${invitation.user.email} rejected invitation`,
+              description: `User ${invitation.receiver.email} rejected invitation`,
               metadata: { token },
             },
           });

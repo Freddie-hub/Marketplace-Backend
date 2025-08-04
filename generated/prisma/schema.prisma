@@ -177,8 +177,8 @@ model WarehouseInventory {
   currentStock Int
   movementType MovementType
   reason       String?
-  recordedById Int
-  recordedBy   User         @relation("InventoryRecorder", fields: [recordedById], references: [id], onDelete: Cascade)
+  recordedById Int?
+  recordedBy   User?        @relation("InventoryRecorder", fields: [recordedById], references: [id], onDelete: Cascade)
   createdAt    DateTime     @default(now())
 
   @@unique([productId, warehouseId])
@@ -212,11 +212,11 @@ model Payment {
 model Invitation {
   id Int @id @default(autoincrement())
 
-  senderId Int
-  sender   User @relation("InvitationSender", fields: [senderId], references: [id], onDelete: Cascade)
+  senderId Int?
+  sender   User? @relation("InvitationSender", fields: [senderId], references: [id], onDelete: Cascade)
 
-  receiverId Int
-  receiver   User @relation("InvitationReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  receiverId Int?
+  receiver   User? @relation("InvitationReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
 
   warehouseId Int
   warehouse   Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
@@ -238,8 +238,8 @@ model Invitation {
 model ActivityLog {
   id Int @id @default(autoincrement())
 
-  performedById Int
-  performedBy   User @relation("ActionPerformer", fields: [performedById], references: [id], onDelete: Cascade)
+  performedById Int?
+  performedBy   User? @relation("ActionPerformer", fields: [performedById], references: [id], onDelete: Cascade)
 
   targetUserId Int?
   targetUser   User? @relation("UserActivities", fields: [targetUserId], references: [id], onDelete: Cascade)
